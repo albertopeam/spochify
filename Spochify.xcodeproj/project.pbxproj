@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C31013C422580E39009BDB95 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31013C322580E39009BDB95 /* Network.swift */; };
+		C31013C722581031009BDB95 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31013C622581031009BDB95 /* Storage.swift */; };
 		C3182E9A2257D7B400180BD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3182E992257D7B400180BD5 /* AppDelegate.swift */; };
-		C3182E9C2257D7B400180BD5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3182E9B2257D7B400180BD5 /* ViewController.swift */; };
+		C3182E9C2257D7B400180BD5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3182E9B2257D7B400180BD5 /* LoginViewController.swift */; };
 		C3182E9F2257D7B400180BD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3182E9D2257D7B400180BD5 /* Main.storyboard */; };
 		C3182EA12257D7B600180BD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3182EA02257D7B600180BD5 /* Assets.xcassets */; };
 		C3182EA42257D7B600180BD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3182EA22257D7B600180BD5 /* LaunchScreen.storyboard */; };
@@ -34,9 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C31013C322580E39009BDB95 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		C31013C622581031009BDB95 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		C3182E962257D7B400180BD5 /* Spochify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spochify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3182E992257D7B400180BD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C3182E9B2257D7B400180BD5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C3182E9B2257D7B400180BD5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C3182E9E2257D7B400180BD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3182EA02257D7B600180BD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3182EA32257D7B600180BD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,6 +78,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C31013C222580E27009BDB95 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C31013C322580E39009BDB95 /* Network.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C31013C52258101D009BDB95 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				C31013C622581031009BDB95 /* Storage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		C31013C8225811B8009BDB95 /* Spotify */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Spotify;
+			sourceTree = "<group>";
+		};
+		C31013C922581209009BDB95 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				C31013CB22581299009BDB95 /* Login */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		C31013CA22581229009BDB95 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C31013C8225811B8009BDB95 /* Spotify */,
+				C31013C52258101D009BDB95 /* Storage */,
+				C31013C222580E27009BDB95 /* Network */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C31013CB22581299009BDB95 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C3182E9B2257D7B400180BD5 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C31013CC225814B8009BDB95 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		C3182E8D2257D7B400180BD5 = {
 			isa = PBXGroup;
 			children = (
@@ -97,8 +157,10 @@
 		C3182E982257D7B400180BD5 /* Spochify */ = {
 			isa = PBXGroup;
 			children = (
+				C31013CA22581229009BDB95 /* Core */,
+				C31013C922581209009BDB95 /* Modules */,
+				C31013CC225814B8009BDB95 /* Resources */,
 				C3182E992257D7B400180BD5 /* AppDelegate.swift */,
-				C3182E9B2257D7B400180BD5 /* ViewController.swift */,
 				C3182E9D2257D7B400180BD5 /* Main.storyboard */,
 				C3182EA02257D7B600180BD5 /* Assets.xcassets */,
 				C3182EA22257D7B600180BD5 /* LaunchScreen.storyboard */,
@@ -256,8 +318,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3182E9C2257D7B400180BD5 /* ViewController.swift in Sources */,
+				C3182E9C2257D7B400180BD5 /* LoginViewController.swift in Sources */,
+				C31013C722581031009BDB95 /* Storage.swift in Sources */,
 				C3182E9A2257D7B400180BD5 /* AppDelegate.swift in Sources */,
+				C31013C422580E39009BDB95 /* Network.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,8 +496,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EAL5PKWJ89;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Spochify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -441,6 +505,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.albertopeam.Spochify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -450,8 +515,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EAL5PKWJ89;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Spochify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -459,6 +524,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.albertopeam.Spochify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
