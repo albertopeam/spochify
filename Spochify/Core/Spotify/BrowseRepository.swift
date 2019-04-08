@@ -9,13 +9,6 @@
 import RxCocoa
 import RxSwift
 
-struct PlayList {
-    let id: String
-    let name: String
-    let image: URL?
-    let tracks: Int
-}
-
 class BrowseRepository {
     
     private let network: Network
@@ -27,12 +20,12 @@ class BrowseRepository {
         self.urlSession = urlSession
     }
     
-    lazy var featured: Observable<[PlayList]> = urlSession.rx.response(request: network.featuredPlayListRequest)
+    lazy var featured: Observable<[Playlist]> = urlSession.rx.response(request: network.featuredPlayListRequest)
         .filter({ response, _ in 200..<300 ~= response.statusCode })
         .map({ _, data in try? JSONDecoder().decode(FeaturedPlayListCodable.self, from: data)})
         .flatMap({ Observable.from(optional: $0?.playlists.items) })
-        .flatMap({ (playlist) -> Observable<[PlayList]> in
-            let items = playlist.map { PlayList(id: $0.id, name: $0.name, image: URL(string: $0.images?.first?.url ?? ""), tracks: $0.tracks.total) }
+        .flatMap({ (playlist) -> Observable<[Playlist]> in
+            let items = playlist.map { Playlist(id: $0.id, name: $0.name, image: URL(string: $0.images?.first?.url ?? ""), tracks: $0.tracks.total) }
             return Observable.just(items)
         })
         .share(replay: 1, scope: .forever)

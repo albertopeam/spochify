@@ -14,6 +14,14 @@ class LoginViewController: UIViewController, WKNavigationDelegate, WKUIDelegate 
     @IBOutlet weak var webview: WKWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    init() {
+        super.init(nibName: "LoginViewController", bundle: Bundle.main)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let clientId = "b27608372edf492a85c3e4df2fe914fb"
@@ -25,6 +33,7 @@ class LoginViewController: UIViewController, WKNavigationDelegate, WKUIDelegate 
         webview.uiDelegate = self
         webview.navigationDelegate = self
         webview.load(urlRequest)
+        activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
     }
     
@@ -38,6 +47,7 @@ class LoginViewController: UIViewController, WKNavigationDelegate, WKUIDelegate 
                 .map({ $0.replacingOccurrences(of: "access_token=", with: "") })
                 .first {
                 Storage.accessToken = accessToken
+                navigationController?.setViewControllers([HomeBuilder().build()], animated: true)
             } else {
                 //TODO: error...
             }
