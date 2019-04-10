@@ -11,13 +11,15 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+    //var window: UIWindow?
+    var sceneCoordinator: SceneCoordinatorType!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        //TODO: check tokens, if exists -> Home, else Login
-        window?.rootViewController = LoginBuilder().build()
-        window?.makeKeyAndVisible()
+        let window = UIWindow(frame: UIScreen.main.bounds)        
+        window.rootViewController = UIViewController()
+        window.makeKeyAndVisible()
+        sceneCoordinator = SceneCoordinator(window: window)
+        sceneCoordinator.transition(to: Scene.home, type: SceneTransitionType.root)
         return true
     }
 

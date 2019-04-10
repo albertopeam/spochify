@@ -7,3 +7,5 @@
 */
 
 "app_name" = "Spochify";
+"tab_start" = "Start";
+"tab_search" = "Search";

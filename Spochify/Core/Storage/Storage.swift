@@ -8,11 +8,12 @@
 
 import Foundation
 
+//TODO: maybe a better place to store it
 class Storage {
     
-    private static let accessTokenKey = "accessToken"
+    private let accessTokenKey = "accessToken"
     
-    static var accessToken: String {
+    var accessToken: String {
         get {
             return UserDefaults.standard.string(forKey: accessTokenKey) ?? ""
         }

@@ -15,8 +15,24 @@
 		C3182EA42257D7B600180BD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3182EA22257D7B600180BD5 /* LaunchScreen.storyboard */; };
 		C3182EAF2257D7B600180BD5 /* SpochifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3182EAE2257D7B600180BD5 /* SpochifyTests.swift */; };
 		C3182EBA2257D7B600180BD5 /* SpochifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3182EB92257D7B600180BD5 /* SpochifyUITests.swift */; };
+		C35995B1225B560300F3FAD2 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35995B0225B560300F3FAD2 /* String+Localizable.swift */; };
+		C35995BA225BACCF00F3FAD2 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35995B5225BACCE00F3FAD2 /* Scene.swift */; };
+		C35995BB225BACCF00F3FAD2 /* Scene+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35995B6225BACCE00F3FAD2 /* Scene+ViewController.swift */; };
+		C35995BC225BACCF00F3FAD2 /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35995B7225BACCE00F3FAD2 /* SceneCoordinatorType.swift */; };
+		C35995BD225BACCF00F3FAD2 /* SceneTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35995B8225BACCE00F3FAD2 /* SceneTransitionType.swift */; };
+		C35995BE225BACCF00F3FAD2 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35995B9225BACCE00F3FAD2 /* SceneCoordinator.swift */; };
+		C36C86F5225CEE970035DCF8 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36C86F4225CEE970035DCF8 /* BindableType.swift */; };
+		C36C86F7225CF7FF0035DCF8 /* UIApplication+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36C86F6225CF7FF0035DCF8 /* UIApplication+Shared.swift */; };
+		C36C86F9225D417F0035DCF8 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C86F8225D417F0035DCF8 /* RxDataSources.framework */; };
+		C3C8C28F225C810900EFBED0 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C28E225C810900EFBED0 /* StartViewModel.swift */; };
+		C3C8C291225C811500EFBED0 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C290225C811500EFBED0 /* SearchViewModel.swift */; };
+		C3C8C293225C96F700EFBED0 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C292225C96F700EFBED0 /* UserRepository.swift */; };
+		C3C8C297225CA3A700EFBED0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C296225CA3A700EFBED0 /* User.swift */; };
+		C3C8C299225CB65800EFBED0 /* URL+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C298225CB65800EFBED0 /* URL+Init.swift */; };
 		C3DEBB8722594B2D00B6F9E7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DEBB8322594B2D00B6F9E7 /* RxSwift.framework */; };
 		C3DEBB8822594B2D00B6F9E7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DEBB8422594B2D00B6F9E7 /* RxCocoa.framework */; };
+		C3DFF174225E32690041B7C8 /* PlaylistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DFF172225E32690041B7C8 /* PlaylistCollectionViewCell.swift */; };
+		C3DFF175225E32690041B7C8 /* PlaylistCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3DFF173225E32690041B7C8 /* PlaylistCollectionViewCell.xib */; };
 		C3E55AFC225B25E100DD3D9A /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55AFB225B25E100DD3D9A /* Playlist.swift */; };
 		C3E55AFE225B283E00DD3D9A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E55AFD225B283E00DD3D9A /* LoginViewController.xib */; };
 		C3E55B04225B288F00DD3D9A /* StartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E55B03225B288F00DD3D9A /* StartViewController.xib */; };
@@ -28,6 +44,7 @@
 		C3E55B10225B2A7500DD3D9A /* SearchBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55B0F225B2A7500DD3D9A /* SearchBuilder.swift */; };
 		C3E55B12225B2A7F00DD3D9A /* StartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55B11225B2A7F00DD3D9A /* StartBuilder.swift */; };
 		C3E55B14225B2F0000DD3D9A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3E55B13225B2F0000DD3D9A /* Localizable.strings */; };
+		C3EA0E97225E9188004C74CB /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EA0E96225E9188004C74CB /* Kingfisher.framework */; };
 		C3EC9DFC225A55E100FD0376 /* BrowseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EC9DFB225A55E100FD0376 /* BrowseRepository.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,9 +80,25 @@
 		C3182EB52257D7B600180BD5 /* SpochifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpochifyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3182EB92257D7B600180BD5 /* SpochifyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpochifyUITests.swift; sourceTree = "<group>"; };
 		C3182EBB2257D7B600180BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C35995B0225B560300F3FAD2 /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
+		C35995B5225BACCE00F3FAD2 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		C35995B6225BACCE00F3FAD2 /* Scene+ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Scene+ViewController.swift"; sourceTree = "<group>"; };
+		C35995B7225BACCE00F3FAD2 /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
+		C35995B8225BACCE00F3FAD2 /* SceneTransitionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneTransitionType.swift; sourceTree = "<group>"; };
+		C35995B9225BACCE00F3FAD2 /* SceneCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
+		C36C86F4225CEE970035DCF8 /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
+		C36C86F6225CF7FF0035DCF8 /* UIApplication+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Shared.swift"; sourceTree = "<group>"; };
+		C36C86F8225D417F0035DCF8 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
+		C3C8C28E225C810900EFBED0 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
+		C3C8C290225C811500EFBED0 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		C3C8C292225C96F700EFBED0 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		C3C8C296225CA3A700EFBED0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C3C8C298225CB65800EFBED0 /* URL+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Init.swift"; sourceTree = "<group>"; };
 		C3DEBB8222594B2D00B6F9E7 /* RxAtomic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAtomic.framework; path = Carthage/Build/iOS/RxAtomic.framework; sourceTree = "<group>"; };
 		C3DEBB8322594B2D00B6F9E7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C3DEBB8422594B2D00B6F9E7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		C3DFF172225E32690041B7C8 /* PlaylistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCollectionViewCell.swift; sourceTree = "<group>"; };
+		C3DFF173225E32690041B7C8 /* PlaylistCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaylistCollectionViewCell.xib; sourceTree = "<group>"; };
 		C3E55AFB225B25E100DD3D9A /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		C3E55AFD225B283E00DD3D9A /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		C3E55B03225B288F00DD3D9A /* StartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartViewController.xib; sourceTree = "<group>"; };
@@ -77,6 +110,7 @@
 		C3E55B0F225B2A7500DD3D9A /* SearchBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBuilder.swift; sourceTree = "<group>"; };
 		C3E55B11225B2A7F00DD3D9A /* StartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartBuilder.swift; sourceTree = "<group>"; };
 		C3E55B13225B2F0000DD3D9A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		C3EA0E96225E9188004C74CB /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		C3EC9DFB225A55E100FD0376 /* BrowseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +121,8 @@
 			files = (
 				C3DEBB8722594B2D00B6F9E7 /* RxSwift.framework in Frameworks */,
 				C3DEBB8822594B2D00B6F9E7 /* RxCocoa.framework in Frameworks */,
+				C36C86F9225D417F0035DCF8 /* RxDataSources.framework in Frameworks */,
+				C3EA0E97225E9188004C74CB /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,8 +162,8 @@
 		C31013C8225811B8009BDB95 /* Spotify */ = {
 			isa = PBXGroup;
 			children = (
-				C3EC9DFB225A55E100FD0376 /* BrowseRepository.swift */,
-				C3E55AFB225B25E100DD3D9A /* Playlist.swift */,
+				C3C8C295225CA39800EFBED0 /* Browse */,
+				C3C8C294225CA38E00EFBED0 /* User */,
 			);
 			path = Spotify;
 			sourceTree = "<group>";
@@ -193,6 +229,8 @@
 		C3182E982257D7B400180BD5 /* Spochify */ = {
 			isa = PBXGroup;
 			children = (
+				C35995B4225BACCE00F3FAD2 /* Scenes */,
+				C35995AE225B55E600F3FAD2 /* Common */,
 				C31013CA22581229009BDB95 /* Core */,
 				C31013C922581209009BDB95 /* Modules */,
 				C31013CC225814B8009BDB95 /* Resources */,
@@ -222,9 +260,60 @@
 			path = SpochifyUITests;
 			sourceTree = "<group>";
 		};
+		C35995AE225B55E600F3FAD2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C35995AF225B55F100F3FAD2 /* Extensions */,
+				C36C86F4225CEE970035DCF8 /* BindableType.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C35995AF225B55F100F3FAD2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C35995B0225B560300F3FAD2 /* String+Localizable.swift */,
+				C3C8C298225CB65800EFBED0 /* URL+Init.swift */,
+				C36C86F6225CF7FF0035DCF8 /* UIApplication+Shared.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C35995B4225BACCE00F3FAD2 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				C35995B5225BACCE00F3FAD2 /* Scene.swift */,
+				C35995B6225BACCE00F3FAD2 /* Scene+ViewController.swift */,
+				C35995B7225BACCE00F3FAD2 /* SceneCoordinatorType.swift */,
+				C35995B8225BACCE00F3FAD2 /* SceneTransitionType.swift */,
+				C35995B9225BACCE00F3FAD2 /* SceneCoordinator.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		C3C8C294225CA38E00EFBED0 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				C3C8C292225C96F700EFBED0 /* UserRepository.swift */,
+				C3C8C296225CA3A700EFBED0 /* User.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		C3C8C295225CA39800EFBED0 /* Browse */ = {
+			isa = PBXGroup;
+			children = (
+				C3EC9DFB225A55E100FD0376 /* BrowseRepository.swift */,
+				C3E55AFB225B25E100DD3D9A /* Playlist.swift */,
+			);
+			path = Browse;
+			sourceTree = "<group>";
+		};
 		C3DEBB8122594B2D00B6F9E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3EA0E96225E9188004C74CB /* Kingfisher.framework */,
+				C36C86F8225D417F0035DCF8 /* RxDataSources.framework */,
 				C3DEBB8222594B2D00B6F9E7 /* RxAtomic.framework */,
 				C3DEBB8422594B2D00B6F9E7 /* RxCocoa.framework */,
 				C3DEBB8322594B2D00B6F9E7 /* RxSwift.framework */,
@@ -238,6 +327,9 @@
 				C3E55B11225B2A7F00DD3D9A /* StartBuilder.swift */,
 				C3E55B05225B289B00DD3D9A /* StartViewController.swift */,
 				C3E55B03225B288F00DD3D9A /* StartViewController.xib */,
+				C3C8C28E225C810900EFBED0 /* StartViewModel.swift */,
+				C3DFF172225E32690041B7C8 /* PlaylistCollectionViewCell.swift */,
+				C3DFF173225E32690041B7C8 /* PlaylistCollectionViewCell.xib */,
 			);
 			path = Start;
 			sourceTree = "<group>";
@@ -248,6 +340,7 @@
 				C3E55B0F225B2A7500DD3D9A /* SearchBuilder.swift */,
 				C3E55B0B225B2A4B00DD3D9A /* SearchViewController.swift */,
 				C3E55B0D225B2A5700DD3D9A /* SearchViewController.xib */,
+				C3C8C290225C811500EFBED0 /* SearchViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -370,6 +463,7 @@
 				C3E55AFE225B283E00DD3D9A /* LoginViewController.xib in Resources */,
 				C3E55B14225B2F0000DD3D9A /* Localizable.strings in Resources */,
 				C3182EA42257D7B600180BD5 /* LaunchScreen.storyboard in Resources */,
+				C3DFF175225E32690041B7C8 /* PlaylistCollectionViewCell.xib in Resources */,
 				C3182EA12257D7B600180BD5 /* Assets.xcassets in Resources */,
 				C3E55B04225B288F00DD3D9A /* StartViewController.xib in Resources */,
 				C3E55B0E225B2A5700DD3D9A /* SearchViewController.xib in Resources */,
@@ -403,6 +497,8 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
@@ -410,6 +506,8 @@
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxDataSources.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -425,13 +523,27 @@
 				C3E55B12225B2A7F00DD3D9A /* StartBuilder.swift in Sources */,
 				C3E55B0C225B2A4B00DD3D9A /* SearchViewController.swift in Sources */,
 				C3E55B06225B289B00DD3D9A /* StartViewController.swift in Sources */,
+				C36C86F7225CF7FF0035DCF8 /* UIApplication+Shared.swift in Sources */,
 				C3182E9C2257D7B400180BD5 /* LoginViewController.swift in Sources */,
+				C35995BA225BACCF00F3FAD2 /* Scene.swift in Sources */,
 				C31013C722581031009BDB95 /* Storage.swift in Sources */,
+				C3C8C291225C811500EFBED0 /* SearchViewModel.swift in Sources */,
 				C3E55AFC225B25E100DD3D9A /* Playlist.swift in Sources */,
 				C3182E9A2257D7B400180BD5 /* AppDelegate.swift in Sources */,
+				C35995B1225B560300F3FAD2 /* String+Localizable.swift in Sources */,
+				C3C8C297225CA3A700EFBED0 /* User.swift in Sources */,
+				C35995BE225BACCF00F3FAD2 /* SceneCoordinator.swift in Sources */,
+				C35995BC225BACCF00F3FAD2 /* SceneCoordinatorType.swift in Sources */,
+				C3DFF174225E32690041B7C8 /* PlaylistCollectionViewCell.swift in Sources */,
+				C35995BD225BACCF00F3FAD2 /* SceneTransitionType.swift in Sources */,
 				C3E55B08225B28C500DD3D9A /* HomeBuilder.swift in Sources */,
+				C3C8C299225CB65800EFBED0 /* URL+Init.swift in Sources */,
+				C36C86F5225CEE970035DCF8 /* BindableType.swift in Sources */,
 				C3E55B0A225B291A00DD3D9A /* LoginBuilder.swift in Sources */,
+				C3C8C28F225C810900EFBED0 /* StartViewModel.swift in Sources */,
 				C31013C422580E39009BDB95 /* Network.swift in Sources */,
+				C3C8C293225C96F700EFBED0 /* UserRepository.swift in Sources */,
+				C35995BB225BACCF00F3FAD2 /* Scene+ViewController.swift in Sources */,
 				C3EC9DFC225A55E100FD0376 /* BrowseRepository.swift in Sources */,
 				C3E55B10225B2A7500DD3D9A /* SearchBuilder.swift in Sources */,
 			);

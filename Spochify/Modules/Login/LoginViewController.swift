@@ -13,8 +13,10 @@ class LoginViewController: UIViewController, WKNavigationDelegate, WKUIDelegate 
 
     @IBOutlet weak var webview: WKWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    private let storage: Storage
     
-    init() {
+    init(storage: Storage = Storage()) {
+        self.storage = storage
         super.init(nibName: "LoginViewController", bundle: Bundle.main)
     }
     
@@ -26,9 +28,10 @@ class LoginViewController: UIViewController, WKNavigationDelegate, WKUIDelegate 
         super.viewDidLoad()
         let clientId = "b27608372edf492a85c3e4df2fe914fb"
         let responseType = "token"
+        let scopes = "user-read-email"
         let redirectUri = "https://spochify.com/callback".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         let state = "spochify"
-        let url = URL(string: "https://accounts.spotify.com/authorize?client_id=\(clientId)&response_type=\(responseType)&redirect_uri=\(redirectUri)&state=\(state)")!
+        let url = URL(string: "https://accounts.spotify.com/authorize?client_id=\(clientId)&response_type=\(responseType)&redirect_uri=\(redirectUri)&state=\(state)&scope=\(scopes)")!
         let urlRequest = URLRequest(url: url)
         webview.uiDelegate = self
         webview.navigationDelegate = self
@@ -46,7 +49,8 @@ class LoginViewController: UIViewController, WKNavigationDelegate, WKUIDelegate 
                 .filter({ $0.contains("access_token")})
                 .map({ $0.replacingOccurrences(of: "access_token=", with: "") })
                 .first {
-                Storage.accessToken = accessToken
+                //TODO: usar Variable<Token> y compartirla entre el repo de browse y que sea el punto de partida, cuando se pushee el token hay que relanzar todo
+                storage.accessToken = accessToken
                 navigationController?.setViewControllers([HomeBuilder().build()], animated: true)
             } else {
                 //TODO: error...

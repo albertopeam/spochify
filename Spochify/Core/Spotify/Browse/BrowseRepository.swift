@@ -22,13 +22,14 @@ class BrowseRepository {
     
     lazy var featured: Observable<[Playlist]> = urlSession.rx.response(request: network.featuredPlayListRequest)
         .filter({ response, _ in 200..<300 ~= response.statusCode })
-        .map({ _, data in try? JSONDecoder().decode(FeaturedPlayListCodable.self, from: data)})
+        .map({ (_, data) in try? JSONDecoder().decode(FeaturedPlayListCodable.self, from: data) })
         .flatMap({ Observable.from(optional: $0?.playlists.items) })
         .flatMap({ (playlist) -> Observable<[Playlist]> in
             let items = playlist.map { Playlist(id: $0.id, name: $0.name, image: URL(string: $0.images?.first?.url ?? ""), tracks: $0.tracks.total) }
             return Observable.just(items)
         })
         .share(replay: 1, scope: .forever)
+        .debug()
 
 }
 
@@ -51,8 +52,6 @@ extension BrowseRepository {
     }
 
     private struct ImageCodable: Codable {
-        let height: Int
-        let width: Int
         let url: String
     }
 
