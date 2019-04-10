@@ -32,13 +32,21 @@ class StartViewController: UIViewController{
         let size = (collectionView.frame.size.width - flowLayout.minimumInteritemSpacing) / CGFloat(columns)
         flowLayout.itemSize = CGSize(width: size, height: size)
         collectionView.register(UINib(nibName: "PlaylistCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
-        
-        viewModel
-            .featuredPlaylists
+        collectionView.delegate = self
+        viewModel.featuredPlaylists
             .bind(to: collectionView.rx.items(cellIdentifier: PlaylistCollectionViewCell.identifier)) { index, model, cell in
                 guard let cell = cell as? PlaylistCollectionViewCell else { fatalError() }
                 cell.draw(playlist: model)
             }.disposed(by: disposeBag)
     }
     
+}
+
+extension StartViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("touched")
+        //TODO: how to navigate from here?
+        //Playlist tracks
+        //https://developer.spotify.com/console/get-playlist-tracks/?playlist_id=&market=&fields=&limit=&offset=
+    }
 }
