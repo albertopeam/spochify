@@ -27,7 +27,7 @@ class Network {
     
     private var timestamp: String {
         //TODO: formatter
-        return "2019-04-06T22:00:00"
+        return "2019-04-11T09:00:00"
     }
     
     // MARK: browse
@@ -54,9 +54,20 @@ class Network {
     // MARK: user
     
     private lazy var currentUserUrl = URL(string: endpoint + "/me")!
-    
     var currentUserRequest: URLRequest {
         var request = URLRequest(url: currentUserUrl)
+        request.allHTTPHeaderFields = ["Authorization": "Bearer \(storage.accessToken)"]
+        return request
+    }
+    
+    // MARK: playlist
+    
+    private lazy var playlistTracksfields = "limit,next,offset,previous,total,items(track(id,name,popularity,explicit,preview_url,album(id,release_date,total_tracks,name,images)))"
+    private lazy var playlistTracks = "\(endpoint)/playlists/{playlist_id}/tracks?limit=100&offset=0&market=\(country)&fields=\(playlistTracksfields)"
+    func playlistTracksRequest(playlistId: String) -> URLRequest {
+        let concretePlaylistTracks = playlistTracks.replacingOccurrences(of: "{playlist_id}", with: playlistId)
+        let playlistTracksUrl = URL(string: concretePlaylistTracks)!
+        var request = URLRequest(url: playlistTracksUrl)
         request.allHTTPHeaderFields = ["Authorization": "Bearer \(storage.accessToken)"]
         return request
     }
