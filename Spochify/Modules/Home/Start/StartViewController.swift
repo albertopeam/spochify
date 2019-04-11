@@ -29,10 +29,6 @@ class StartViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //TODO: make an extension with a computed property
-        //let size = (UIScreen.main.bounds.width - flowLayout.minimumInteritemSpacing - flowLayout.sectionInset.left - flowLayout.sectionInset.right) / CGFloat(columns)
-        //flowLayout.itemSize = CGSize(width: size, height: size)
-        
         flowLayout.numberOfColumns(columns)
         collectionView.register(UINib(nibName: "PlaylistCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
         collectionView.delegate = self
@@ -49,17 +45,6 @@ class StartViewController: UIViewController{
 extension StartViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("touched")
-        //TODO: how to navigate from here?
-        //Playlist trackshttps://api.spotify.com/v1/playlists/{playlist_id}/tracks
-        //https://developer.spotify.com/console/get-playlist-tracks/?playlist_id=&market=&fields=&limit=&offset=
+        
     }
-}
-
-extension UICollectionViewFlowLayout {
-    
-    func numberOfColumns(_ columns: Int) {
-        let size = (UIScreen.main.bounds.width - minimumInteritemSpacing - sectionInset.left - sectionInset.right) / CGFloat(columns)
-        itemSize = CGSize(width: size, height: size)
-    }
-    
 }

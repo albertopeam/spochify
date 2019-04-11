@@ -25,6 +25,7 @@
 		C36C86F7225CF7FF0035DCF8 /* UIApplication+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36C86F6225CF7FF0035DCF8 /* UIApplication+Shared.swift */; };
 		C36C86F9225D417F0035DCF8 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C86F8225D417F0035DCF8 /* RxDataSources.framework */; };
 		C3AC5432225F79270007090C /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC5431225F79270007090C /* Album.swift */; };
+		C3AC5434225F802E0007090C /* UICollectionViewFlowLayout+Columns.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC5433225F802E0007090C /* UICollectionViewFlowLayout+Columns.swift */; };
 		C3C8C28F225C810900EFBED0 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C28E225C810900EFBED0 /* StartViewModel.swift */; };
 		C3C8C291225C811500EFBED0 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C290225C811500EFBED0 /* SearchViewModel.swift */; };
 		C3C8C293225C96F700EFBED0 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C292225C96F700EFBED0 /* UserRepository.swift */; };
@@ -93,6 +94,7 @@
 		C36C86F6225CF7FF0035DCF8 /* UIApplication+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Shared.swift"; sourceTree = "<group>"; };
 		C36C86F8225D417F0035DCF8 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		C3AC5431225F79270007090C /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		C3AC5433225F802E0007090C /* UICollectionViewFlowLayout+Columns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+Columns.swift"; sourceTree = "<group>"; };
 		C3C8C28E225C810900EFBED0 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
 		C3C8C290225C811500EFBED0 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		C3C8C292225C96F700EFBED0 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				C35995B0225B560300F3FAD2 /* String+Localizable.swift */,
 				C3C8C298225CB65800EFBED0 /* URL+Init.swift */,
 				C36C86F6225CF7FF0035DCF8 /* UIApplication+Shared.swift */,
+				C3AC5433225F802E0007090C /* UICollectionViewFlowLayout+Columns.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				C3C8C299225CB65800EFBED0 /* URL+Init.swift in Sources */,
 				C36C86F5225CEE970035DCF8 /* BindableType.swift in Sources */,
 				C3E55B0A225B291A00DD3D9A /* LoginBuilder.swift in Sources */,
+				C3AC5434225F802E0007090C /* UICollectionViewFlowLayout+Columns.swift in Sources */,
 				C3C8C28F225C810900EFBED0 /* StartViewModel.swift in Sources */,
 				C31013C422580E39009BDB95 /* Network.swift in Sources */,
 				C3C8C293225C96F700EFBED0 /* UserRepository.swift in Sources */,
