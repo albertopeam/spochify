@@ -29,8 +29,9 @@ class StartViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let size = (collectionView.frame.size.width - flowLayout.minimumInteritemSpacing) / CGFloat(columns)
+        let size = (UIScreen.main.bounds.width - flowLayout.minimumInteritemSpacing - flowLayout.sectionInset.left - flowLayout.sectionInset.right) / CGFloat(columns)
         flowLayout.itemSize = CGSize(width: size, height: size)
+        
         collectionView.register(UINib(nibName: "PlaylistCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
         collectionView.delegate = self
         viewModel.featuredPlaylists
@@ -46,7 +47,7 @@ extension StartViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("touched")
         //TODO: how to navigate from here?
-        //Playlist tracks
+        //Playlist trackshttps://api.spotify.com/v1/playlists/{playlist_id}/tracks
         //https://developer.spotify.com/console/get-playlist-tracks/?playlist_id=&market=&fields=&limit=&offset=
     }
 }
