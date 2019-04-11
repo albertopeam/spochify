@@ -41,7 +41,6 @@ class StartViewController: UIViewController {
         collectionView.rx
             .modelSelected(Playlist.self)
             .subscribe(onNext: { (playlist) in
-                print("tapped")
                 self.viewModel.tapped(playlist: playlist)
             }).disposed(by: disposeBag)        
     }

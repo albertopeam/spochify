@@ -12,8 +12,9 @@ class StartBuilder {
     
     func build() -> UIViewController {
         let browseRepository = BrowseRepository(network: Network(urlSession: URLSession.shared, storage: Storage()))
-        let startViewModel = StartViewModel(browseRepository: browseRepository)
+        let startViewModel = StartViewModel(browseRepository: browseRepository, sceneCoordinator: UIApplication.instance.sceneCoordinator)
         let viewController = StartViewController(viewModel: startViewModel)
         return viewController
     }
+    
 }

@@ -11,9 +11,12 @@ import RxSwift
 class StartViewModel {
     
     private let browseRepository: BrowseRepository
+    private let sceneCoordinator: SceneCoordinatorType
     
-    init(browseRepository: BrowseRepository) {
+    init(browseRepository: BrowseRepository,
+         sceneCoordinator: SceneCoordinatorType) {
         self.browseRepository = browseRepository
+        self.sceneCoordinator = sceneCoordinator
     }
     
     var featuredPlaylists: Observable<[Playlist]> {
@@ -23,6 +26,6 @@ class StartViewModel {
     }
     
     func tapped(playlist: Playlist) {
-        
+        sceneCoordinator.transition(to: Scene.playlist(viewModel: playlist), type: SceneTransitionType.push)
     }
 }

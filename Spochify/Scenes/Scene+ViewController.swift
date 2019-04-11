@@ -12,28 +12,19 @@ extension Scene {
     
     func viewController() -> UIViewController {
         switch self {
-            //    case .tasks(let viewModel):
-            //      let nc = storyboard.instantiateViewController(withIdentifier: "Tasks") as! UINavigationController
-            //      var vc = nc.viewControllers.first as! TasksViewController
-            //      vc.bindViewModel(to: viewModel)
-            //      return nc
-            //
-            //    case .editTask(let viewModel):
-            //      let nc = storyboard.instantiateViewController(withIdentifier: "EditTask") as! UINavigationController
-            //      var vc = nc.viewControllers.first as! EditTaskViewController
-            //      vc.bindViewModel(to: viewModel)
-        //      return nc
         case .home:
-            return HomeBuilder()
-                .build()
+            return HomeBuilder().build()
+        //TODO: ????
         case .start(let viewModel):
-            return StartBuilder()
-                .build()
+            return StartBuilder().build()
         case .search(let viewModel):
-            return SearchBuilder()
-                .build()
+            return SearchBuilder().build()
         case .login:
             return LoginViewController()
+        case .playlist(let playlist):
+            let playlistRepository = PlaylistRepository(playlistId: playlist.id)
+            let viewModel = PlaylistViewModel(playlist: playlist, playlistRepository: playlistRepository)
+            return PlaylistViewController(playlistViewModel: viewModel)
         }
     }
 }

@@ -25,7 +25,8 @@ class HomeBuilder {
         let searchViewController = SearchBuilder().build()
         searchViewController.tabBarItem.title = String(localizedKey: String.Key.tabSearch)
         searchViewController.tabBarItem.image = UIImage(named: "baseline_search_black_24pt")
-        tabBarController.viewControllers = [startViewController, searchViewController]
+        tabBarController.viewControllers = [UINavigationController(rootViewController: startViewController),
+                                            UINavigationController(rootViewController: searchViewController)]
         return tabBarController
     }
     

@@ -14,7 +14,7 @@ class PlaylistRepository {
     private let network: Network
     private let playlistId: String
     
-    init(network: Network,
+    init(network: Network = Network(urlSession: URLSession.shared, storage: Storage()),
          playlistId: String) {
         self.network = network
         self.playlistId = playlistId
