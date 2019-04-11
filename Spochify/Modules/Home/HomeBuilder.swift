@@ -13,7 +13,7 @@ import RxCocoa
 class HomeBuilder {
     
     func build() -> UIViewController {
-        let userRepository = UserRepository(network: Network(storage: Storage()), urlSession: URLSession.shared)
+        let userRepository = UserRepository(network: Network(urlSession: URLSession.shared, storage: Storage()))
         let homeViewModel = HomeViewModel(userRepository: userRepository, sceneCoordinator: UIApplication.instance.sceneCoordinator)
         var homeViewController = HomeViewController()
         homeViewController.bindViewModel(to: homeViewModel)

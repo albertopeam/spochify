@@ -29,11 +29,14 @@ class StartViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let size = (UIScreen.main.bounds.width - flowLayout.minimumInteritemSpacing - flowLayout.sectionInset.left - flowLayout.sectionInset.right) / CGFloat(columns)
-        flowLayout.itemSize = CGSize(width: size, height: size)
+        //TODO: make an extension with a computed property
+        //let size = (UIScreen.main.bounds.width - flowLayout.minimumInteritemSpacing - flowLayout.sectionInset.left - flowLayout.sectionInset.right) / CGFloat(columns)
+        //flowLayout.itemSize = CGSize(width: size, height: size)
         
+        flowLayout.numberOfColumns(columns)
         collectionView.register(UINib(nibName: "PlaylistCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
         collectionView.delegate = self
+        
         viewModel.featuredPlaylists
             .bind(to: collectionView.rx.items(cellIdentifier: PlaylistCollectionViewCell.identifier)) { index, model, cell in
                 guard let cell = cell as? PlaylistCollectionViewCell else { fatalError() }
@@ -50,4 +53,13 @@ extension StartViewController: UICollectionViewDelegate {
         //Playlist trackshttps://api.spotify.com/v1/playlists/{playlist_id}/tracks
         //https://developer.spotify.com/console/get-playlist-tracks/?playlist_id=&market=&fields=&limit=&offset=
     }
+}
+
+extension UICollectionViewFlowLayout {
+    
+    func numberOfColumns(_ columns: Int) {
+        let size = (UIScreen.main.bounds.width - minimumInteritemSpacing - sectionInset.left - sectionInset.right) / CGFloat(columns)
+        itemSize = CGSize(width: size, height: size)
+    }
+    
 }

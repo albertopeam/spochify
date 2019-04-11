@@ -12,8 +12,11 @@ class Network {
     
     private let endpoint = "https://api.spotify.com/v1"
     private let storage: Storage
+    let urlSession: URLSession
     
-    init(storage: Storage) {
+    init(urlSession: URLSession,
+         storage: Storage) {
+        self.urlSession = urlSession
         self.storage = storage
     }
     

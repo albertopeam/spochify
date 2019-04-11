@@ -12,15 +12,12 @@ import RxCocoa
 class UserRepository {
     
     private let network: Network
-    private let urlSession: URLSession
     
-    init(network: Network,
-         urlSession: URLSession) {
+    init(network: Network) {
         self.network = network
-        self.urlSession = urlSession
     }
     
-    lazy var user: Observable<User> = urlSession.rx.response(request: network.currentUserRequest)
+    lazy var user: Observable<User> = network.urlSession.rx.response(request: network.currentUserRequest)
         .map({ (_, data) -> UserCodable in
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -29,7 +26,7 @@ class UserRepository {
             return User(id: codable.id, name: codable.displayName, email: codable.email, country: codable.country, image: URL(string: codable.images?.first?.url))
         })
     
-    lazy var isNotAuthenticated: Observable<Void> = urlSession.rx
+    lazy var isNotAuthenticated: Observable<Void> = network.urlSession.rx
         .response(request: network.currentUserRequest)
         .filter({response, data in response.statusCode == 401 || response.statusCode == 400 })
         .map({ (_,_) -> Void in })

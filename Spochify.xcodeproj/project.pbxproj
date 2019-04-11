@@ -24,6 +24,7 @@
 		C36C86F5225CEE970035DCF8 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36C86F4225CEE970035DCF8 /* BindableType.swift */; };
 		C36C86F7225CF7FF0035DCF8 /* UIApplication+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36C86F6225CF7FF0035DCF8 /* UIApplication+Shared.swift */; };
 		C36C86F9225D417F0035DCF8 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C86F8225D417F0035DCF8 /* RxDataSources.framework */; };
+		C3AC5432225F79270007090C /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC5431225F79270007090C /* Album.swift */; };
 		C3C8C28F225C810900EFBED0 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C28E225C810900EFBED0 /* StartViewModel.swift */; };
 		C3C8C291225C811500EFBED0 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C290225C811500EFBED0 /* SearchViewModel.swift */; };
 		C3C8C293225C96F700EFBED0 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C292225C96F700EFBED0 /* UserRepository.swift */; };
@@ -91,6 +92,7 @@
 		C36C86F4225CEE970035DCF8 /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
 		C36C86F6225CF7FF0035DCF8 /* UIApplication+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Shared.swift"; sourceTree = "<group>"; };
 		C36C86F8225D417F0035DCF8 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
+		C3AC5431225F79270007090C /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		C3C8C28E225C810900EFBED0 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
 		C3C8C290225C811500EFBED0 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		C3C8C292225C96F700EFBED0 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				C3E55AFB225B25E100DD3D9A /* Playlist.swift */,
 				C3C8C296225CA3A700EFBED0 /* User.swift */,
 				C3DFE960225F27FC002D2AF4 /* Track.swift */,
+				C3AC5431225F79270007090C /* Album.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 			files = (
 				C3E55B12225B2A7F00DD3D9A /* StartBuilder.swift in Sources */,
 				C3E55B0C225B2A4B00DD3D9A /* SearchViewController.swift in Sources */,
+				C3AC5432225F79270007090C /* Album.swift in Sources */,
 				C3E55B06225B289B00DD3D9A /* StartViewController.swift in Sources */,
 				C36C86F7225CF7FF0035DCF8 /* UIApplication+Shared.swift in Sources */,
 				C3DFE95E225F23A0002D2AF4 /* PlaylistRepository.swift in Sources */,

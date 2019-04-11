@@ -1,5 +1,5 @@
 //
-//  Track.swift
+//  Album.swift
 //  Spochify
 //
 //  Created by Alberto on 11/04/2019.
@@ -8,15 +8,14 @@
 
 import Foundation
 
-struct Track {
+struct Album {
     let id: String
     let name: String
-    let popularity: Int
-    let url: URL?
-    let explicit: Bool
-    let album: Album
-//    "track": {
-//    "album": {
+    let releaseDate: Date
+    let numTracks: Int
+    let image: URL?
+}
+//"album": {
 //    "id": "4OyP4eAtpTHXjpVBjJvPNG",
 //    "images": [
 //    {
@@ -38,11 +37,4 @@ struct Track {
 //    "name": "Pa Mí (Remix)",
 //    "release_date": "2019-02-07",
 //    "total_tracks": 1
-//    },
-//    "explicit": true,
-//    "id": "224EVTFiLsdQignUFLvDeH",
-//    "name": "Pa Mí - Remix",
-//    "popularity": 93,
-//    "preview_url": "https://p.scdn.co/mp3-preview/99bf02294818b0f72efaa135e1d42cc20584ef6e?cid=b27608372edf492a85c3e4df2fe914fb"
 //    }
-}
