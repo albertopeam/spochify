@@ -10,7 +10,7 @@ import UIKit.UIViewController
 import RxSwift
 import RxDataSources
 
-class StartViewController: UIViewController{
+class StartViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
@@ -31,20 +31,19 @@ class StartViewController: UIViewController{
         super.viewDidLoad()
         flowLayout.numberOfColumns(columns)
         collectionView.register(UINib(nibName: "PlaylistCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
-        collectionView.delegate = self
         
-        viewModel.featuredPlaylists
+        viewModel
+            .featuredPlaylists
             .bind(to: collectionView.rx.items(cellIdentifier: PlaylistCollectionViewCell.identifier)) { index, model, cell in
                 guard let cell = cell as? PlaylistCollectionViewCell else { fatalError() }
                 cell.draw(playlist: model)
             }.disposed(by: disposeBag)
+        collectionView.rx
+            .modelSelected(Playlist.self)
+            .subscribe(onNext: { (playlist) in
+                print("tapped")
+                self.viewModel.tapped(playlist: playlist)
+            }).disposed(by: disposeBag)        
     }
     
-}
-
-extension StartViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("touched")
-        
-    }
 }

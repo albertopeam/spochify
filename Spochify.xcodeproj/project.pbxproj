@@ -302,6 +302,16 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
+		C3AC5435225FDE5B0007090C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C3E55B03225B288F00DD3D9A /* StartViewController.xib */,
+				C3DFF172225E32690041B7C8 /* PlaylistCollectionViewCell.swift */,
+				C3DFF173225E32690041B7C8 /* PlaylistCollectionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C3C8C294225CA38E00EFBED0 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,12 +362,10 @@
 		C3E55B01225B286600DD3D9A /* Start */ = {
 			isa = PBXGroup;
 			children = (
+				C3AC5435225FDE5B0007090C /* View */,
 				C3E55B11225B2A7F00DD3D9A /* StartBuilder.swift */,
 				C3E55B05225B289B00DD3D9A /* StartViewController.swift */,
-				C3E55B03225B288F00DD3D9A /* StartViewController.xib */,
 				C3C8C28E225C810900EFBED0 /* StartViewModel.swift */,
-				C3DFF172225E32690041B7C8 /* PlaylistCollectionViewCell.swift */,
-				C3DFF173225E32690041B7C8 /* PlaylistCollectionViewCell.xib */,
 			);
 			path = Start;
 			sourceTree = "<group>";

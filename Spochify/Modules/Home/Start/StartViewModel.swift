@@ -21,4 +21,8 @@ class StartViewModel {
             .featured
             .map({ $0.sorted(by: { $0.name < $1.name })})
     }
+    
+    func tapped(playlist: Playlist) {
+        
+    }
 }
