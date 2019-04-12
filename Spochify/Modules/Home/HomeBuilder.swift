@@ -37,6 +37,9 @@ class HomeBuilder {
     
 }
 
+//TODO: move to files
+//TODO: refactor
+//TODO: handle no network
 class HomeViewController: UITabBarController, BindableType {
     
     typealias ViewModelType = HomeViewModel

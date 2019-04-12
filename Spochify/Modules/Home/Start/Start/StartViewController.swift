@@ -32,14 +32,15 @@ class StartViewController: UICollectionViewController, BindableType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //TODO: reload widget
         collectionView.backgroundColor = .white
         collectionView.register(UINib(nibName: "PlaylistCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
         flowLayout.numberOfColumns(columns)
     }
     
     func bindViewModel() {
-        viewModel
-            .featuredPlaylists
+        viewModel.featuredPlaylists
+            .observeOn(MainScheduler.instance)
             .bind(to: collectionView.rx.items(cellIdentifier: PlaylistCollectionViewCell.identifier)) { index, model, cell in
                 guard let cell = cell as? PlaylistCollectionViewCell else { fatalError() }
                 cell.draw(playlist: model)

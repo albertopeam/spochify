@@ -70,6 +70,7 @@ class Network {
     func playlistTracksRequest(playlistId: String) -> URLRequest {
         let concretePlaylistTracks = playlistTracks.replacingOccurrences(of: "{playlist_id}", with: playlistId)
         let playlistTracksUrl = URL(string: concretePlaylistTracks)!
+        print(playlistTracksUrl)
         var request = URLRequest(url: playlistTracksUrl)
         request.allHTTPHeaderFields = ["Authorization": "Bearer \(storage.accessToken)"]
         return request

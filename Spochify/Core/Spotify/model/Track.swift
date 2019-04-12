@@ -10,7 +10,7 @@ import Foundation
 
 struct Track {
     let id: String
-    let name: String
+    let title: String
     let popularity: Int
     let url: URL?
     let explicit: Bool

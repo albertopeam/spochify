@@ -22,7 +22,7 @@ extension Scene {
         case .login:
             return LoginViewController()
         case .playlist(let playlist, let sceneCoordinator):
-            let viewController = PlaylistViewController()
+            var viewController = PlaylistViewController()
             let playlistRepository = PlaylistRepository(playlistId: playlist.id)
             let viewModel = PlaylistViewModel(playlist: playlist, playlistRepository: playlistRepository, sceneCoordinator: sceneCoordinator)
             viewController.bindToViewModel(to: viewModel)

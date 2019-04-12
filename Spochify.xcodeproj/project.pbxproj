@@ -279,8 +279,9 @@
 		C35995AE225B55E600F3FAD2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				C35995AF225B55F100F3FAD2 /* Extensions */,
 				C36C86F4225CEE970035DCF8 /* BindableType.swift */,
+				C35995B6225BACCE00F3FAD2 /* Scene+ViewController.swift */,
+				C35995AF225B55F100F3FAD2 /* Extensions */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -300,7 +301,6 @@
 			isa = PBXGroup;
 			children = (
 				C35995B5225BACCE00F3FAD2 /* Scene.swift */,
-				C35995B6225BACCE00F3FAD2 /* Scene+ViewController.swift */,
 				C35995B7225BACCE00F3FAD2 /* SceneCoordinatorType.swift */,
 				C35995B8225BACCE00F3FAD2 /* SceneTransitionType.swift */,
 				C35995B9225BACCE00F3FAD2 /* SceneCoordinator.swift */,
