@@ -10,17 +10,20 @@ import UIKit.UIViewController
 import RxSwift
 import RxDataSources
 
-class StartViewController: UIViewController, BindableType {
+class StartViewController: UICollectionViewController, BindableType {
     typealias ViewModelType = StartViewModel
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    private let flowLayout: UICollectionViewFlowLayout
     private let columns = 2
     private var disposeBag = DisposeBag()
     var viewModel: StartViewModel!
 
     init() {
-        super.init(nibName: "StartViewController", bundle: Bundle.main)
+        flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        flowLayout.minimumLineSpacing = 8
+        flowLayout.minimumInteritemSpacing = 8
+        super.init(collectionViewLayout: flowLayout)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,8 +32,9 @@ class StartViewController: UIViewController, BindableType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        flowLayout.numberOfColumns(columns)
+        collectionView.backgroundColor = .white
         collectionView.register(UINib(nibName: "PlaylistCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
+        flowLayout.numberOfColumns(columns)
     }
     
     func bindViewModel() {

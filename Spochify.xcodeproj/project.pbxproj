@@ -43,7 +43,6 @@
 		C3DFF175225E32690041B7C8 /* PlaylistCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3DFF173225E32690041B7C8 /* PlaylistCollectionViewCell.xib */; };
 		C3E55AFC225B25E100DD3D9A /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55AFB225B25E100DD3D9A /* Playlist.swift */; };
 		C3E55AFE225B283E00DD3D9A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E55AFD225B283E00DD3D9A /* LoginViewController.xib */; };
-		C3E55B04225B288F00DD3D9A /* StartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E55B03225B288F00DD3D9A /* StartViewController.xib */; };
 		C3E55B06225B289B00DD3D9A /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55B05225B289B00DD3D9A /* StartViewController.swift */; };
 		C3E55B08225B28C500DD3D9A /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55B07225B28C500DD3D9A /* HomeBuilder.swift */; };
 		C3E55B0A225B291A00DD3D9A /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55B09225B291A00DD3D9A /* LoginBuilder.swift */; };
@@ -117,7 +116,6 @@
 		C3DFF173225E32690041B7C8 /* PlaylistCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaylistCollectionViewCell.xib; sourceTree = "<group>"; };
 		C3E55AFB225B25E100DD3D9A /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		C3E55AFD225B283E00DD3D9A /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		C3E55B03225B288F00DD3D9A /* StartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartViewController.xib; sourceTree = "<group>"; };
 		C3E55B05225B289B00DD3D9A /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		C3E55B07225B28C500DD3D9A /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		C3E55B09225B291A00DD3D9A /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
@@ -313,7 +311,6 @@
 		C3AC5435225FDE5B0007090C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C3E55B03225B288F00DD3D9A /* StartViewController.xib */,
 				C3DFF172225E32690041B7C8 /* PlaylistCollectionViewCell.swift */,
 				C3DFF173225E32690041B7C8 /* PlaylistCollectionViewCell.xib */,
 			);
@@ -538,7 +535,6 @@
 				C3DFF175225E32690041B7C8 /* PlaylistCollectionViewCell.xib in Resources */,
 				C3182EA12257D7B600180BD5 /* Assets.xcassets in Resources */,
 				C3AC5448225FE3A00007090C /* TrackTableViewCell.xib in Resources */,
-				C3E55B04225B288F00DD3D9A /* StartViewController.xib in Resources */,
 				C3E55B0E225B2A5700DD3D9A /* SearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
