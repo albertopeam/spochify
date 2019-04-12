@@ -33,7 +33,7 @@ class PlaylistViewController: UITableViewController, BindableType {
     }
     
     func bindViewModel() {
-        
+        //TODO:
     }
 
 }

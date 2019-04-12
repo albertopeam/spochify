@@ -27,7 +27,6 @@
 		C3AC5432225F79270007090C /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC5431225F79270007090C /* Album.swift */; };
 		C3AC5434225F802E0007090C /* UICollectionViewFlowLayout+Columns.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC5433225F802E0007090C /* UICollectionViewFlowLayout+Columns.swift */; };
 		C3AC5440225FE3470007090C /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC543E225FE3470007090C /* PlaylistViewController.swift */; };
-		C3AC5441225FE3470007090C /* PlaylistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3AC543F225FE3470007090C /* PlaylistViewController.xib */; };
 		C3AC5443225FE36C0007090C /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC5442225FE36C0007090C /* PlaylistViewModel.swift */; };
 		C3AC5447225FE3A00007090C /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC5445225FE3A00007090C /* TrackTableViewCell.swift */; };
 		C3AC5448225FE3A00007090C /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3AC5446225FE3A00007090C /* TrackTableViewCell.xib */; };
@@ -101,7 +100,6 @@
 		C3AC5431225F79270007090C /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		C3AC5433225F802E0007090C /* UICollectionViewFlowLayout+Columns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+Columns.swift"; sourceTree = "<group>"; };
 		C3AC543E225FE3470007090C /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
-		C3AC543F225FE3470007090C /* PlaylistViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaylistViewController.xib; sourceTree = "<group>"; };
 		C3AC5442225FE36C0007090C /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
 		C3AC5445225FE3A00007090C /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		C3AC5446225FE3A00007090C /* TrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
@@ -346,7 +344,6 @@
 		C3AC5444225FE3710007090C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C3AC543F225FE3470007090C /* PlaylistViewController.xib */,
 				C3AC5445225FE3A00007090C /* TrackTableViewCell.swift */,
 				C3AC5446225FE3A00007090C /* TrackTableViewCell.xib */,
 			);
@@ -539,7 +536,6 @@
 				C3E55B14225B2F0000DD3D9A /* Localizable.strings in Resources */,
 				C3182EA42257D7B600180BD5 /* LaunchScreen.storyboard in Resources */,
 				C3DFF175225E32690041B7C8 /* PlaylistCollectionViewCell.xib in Resources */,
-				C3AC5441225FE3470007090C /* PlaylistViewController.xib in Resources */,
 				C3182EA12257D7B600180BD5 /* Assets.xcassets in Resources */,
 				C3AC5448225FE3A00007090C /* TrackTableViewCell.xib in Resources */,
 				C3E55B04225B288F00DD3D9A /* StartViewController.xib in Resources */,

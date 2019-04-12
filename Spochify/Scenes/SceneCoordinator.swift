@@ -24,6 +24,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+//TODO: full of bugs.... for a TabBarViewController. replace currentViewController by a NavigationController or check another way to do this.
 class SceneCoordinator: SceneCoordinatorType {
     
     private var window: UIWindow
@@ -62,13 +63,13 @@ class SceneCoordinator: SceneCoordinatorType {
                 .map { _ in }
                 .bind(to: subject)
             navigationController.pushViewController(viewController, animated: true)
-            currentViewController = SceneCoordinator.actualViewController(for: viewController)
+            //currentViewController = SceneCoordinator.actualViewController(for: viewController)
             
         case .modal:
             currentViewController.present(viewController, animated: true) {
                 subject.onCompleted()
             }
-            currentViewController = SceneCoordinator.actualViewController(for: viewController)
+            //currentViewController = SceneCoordinator.actualViewController(for: viewController)
         }
         return subject.asObservable()
             .take(1)
