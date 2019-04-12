@@ -12,11 +12,14 @@ class PlaylistViewModel {
     
     private let playlist: Playlist
     private let playlistRepository: PlaylistRepository
+    private let sceneCoordinator: SceneCoordinatorType
     
     init(playlist: Playlist,
-         playlistRepository: PlaylistRepository) {
+         playlistRepository: PlaylistRepository,
+         sceneCoordinator: SceneCoordinatorType) {
         self.playlist = playlist
         self.playlistRepository = playlistRepository
+        self.sceneCoordinator = sceneCoordinator
     }
     
     lazy var currentPlaylist: Observable<Playlist> = Observable.just(playlist)

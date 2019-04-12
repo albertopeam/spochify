@@ -10,16 +10,16 @@ import UIKit.UIViewController
 import RxSwift
 import RxDataSources
 
-class StartViewController: UIViewController {
+class StartViewController: UIViewController, BindableType {
+    typealias ViewModelType = StartViewModel
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     private let columns = 2
-    private let viewModel: StartViewModel
     private var disposeBag = DisposeBag()
-    
-    init(viewModel: StartViewModel) {
-        self.viewModel = viewModel
+    var viewModel: StartViewModel!
+
+    init() {
         super.init(nibName: "StartViewController", bundle: Bundle.main)
     }
     
@@ -31,7 +31,9 @@ class StartViewController: UIViewController {
         super.viewDidLoad()
         flowLayout.numberOfColumns(columns)
         collectionView.register(UINib(nibName: "PlaylistCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
-        
+    }
+    
+    func bindViewModel() {
         viewModel
             .featuredPlaylists
             .bind(to: collectionView.rx.items(cellIdentifier: PlaylistCollectionViewCell.identifier)) { index, model, cell in
@@ -42,7 +44,7 @@ class StartViewController: UIViewController {
             .modelSelected(Playlist.self)
             .subscribe(onNext: { (playlist) in
                 self.viewModel.tapped(playlist: playlist)
-            }).disposed(by: disposeBag)        
+            }).disposed(by: disposeBag)
     }
     
 }

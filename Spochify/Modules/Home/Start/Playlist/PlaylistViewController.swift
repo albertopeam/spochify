@@ -9,12 +9,13 @@
 import UIKit
 import RxSwift
 
-class PlaylistViewController: UITableViewController {
+class PlaylistViewController: UITableViewController, BindableType {
+    typealias ViewModelType = PlaylistViewModel
     
-    private let playlistViewModel: PlaylistViewModel
-    
-    init(playlistViewModel: PlaylistViewModel) {
-        self.playlistViewModel = playlistViewModel
+    var viewModel: PlaylistViewModel!
+
+    //TODO: me sobra el playlistviewcontroller.xib???
+    init() {
         super.init(style: UITableView.Style.plain)
     }
     
@@ -22,9 +23,17 @@ class PlaylistViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func bindToViewModel(to model: PlaylistViewModel) {
+        self.viewModel = model
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "TrackTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: TrackTableViewCell.identifier)
+    }
+    
+    func bindViewModel() {
+        
     }
 
 }

@@ -21,10 +21,12 @@ extension Scene {
             return SearchBuilder().build()
         case .login:
             return LoginViewController()
-        case .playlist(let playlist):
+        case .playlist(let playlist, let sceneCoordinator):
+            let viewController = PlaylistViewController()
             let playlistRepository = PlaylistRepository(playlistId: playlist.id)
-            let viewModel = PlaylistViewModel(playlist: playlist, playlistRepository: playlistRepository)
-            return PlaylistViewController(playlistViewModel: viewModel)
+            let viewModel = PlaylistViewModel(playlist: playlist, playlistRepository: playlistRepository, sceneCoordinator: sceneCoordinator)
+            viewController.bindToViewModel(to: viewModel)
+            return viewController
         }
     }
 }

@@ -13,5 +13,5 @@ enum Scene {
     case home
     case start(viewModel: StartViewModel)
     case search(viewModel: SearchViewModel)
-    case playlist(viewModel: Playlist)
+    case playlist(viewModel: Playlist, sceneCoordinator: SceneCoordinatorType)
 }

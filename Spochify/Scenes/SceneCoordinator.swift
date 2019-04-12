@@ -29,9 +29,9 @@ class SceneCoordinator: SceneCoordinatorType {
     private var window: UIWindow
     private var currentViewController: UIViewController
     
-    required init(window: UIWindow) {
+    required init(window: UIWindow, viewController: UIViewController) {
         self.window = window
-        currentViewController = window.rootViewController!
+        currentViewController = viewController
     }
     
     static func actualViewController(for viewController: UIViewController) -> UIViewController {
