@@ -14,6 +14,7 @@ class Network {
     private let storage: Storage
     let urlSession: URLSession
     
+    //TODO: cache URLSession, revisar si spotify devuelve e-tag o last-mod
     init(urlSession: URLSession,
          storage: Storage) {
         self.urlSession = urlSession

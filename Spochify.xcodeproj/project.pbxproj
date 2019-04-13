@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C31013C422580E39009BDB95 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31013C322580E39009BDB95 /* Network.swift */; };
 		C31013C722581031009BDB95 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31013C622581031009BDB95 /* Storage.swift */; };
+		C313AA5122622ACF003E2895 /* PlaylistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313AA5022622ACF003E2895 /* PlaylistHeaderView.swift */; };
+		C313AA5422624661003E2895 /* UIColor+Spochify.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313AA5322624661003E2895 /* UIColor+Spochify.swift */; };
 		C3182E9A2257D7B400180BD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3182E992257D7B400180BD5 /* AppDelegate.swift */; };
 		C3182E9C2257D7B400180BD5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3182E9B2257D7B400180BD5 /* LoginViewController.swift */; };
 		C3182EA12257D7B600180BD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3182EA02257D7B600180BD5 /* Assets.xcassets */; };
@@ -75,6 +77,8 @@
 /* Begin PBXFileReference section */
 		C31013C322580E39009BDB95 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		C31013C622581031009BDB95 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		C313AA5022622ACF003E2895 /* PlaylistHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistHeaderView.swift; sourceTree = "<group>"; };
+		C313AA5322624661003E2895 /* UIColor+Spochify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Spochify.swift"; sourceTree = "<group>"; };
 		C3182E962257D7B400180BD5 /* Spochify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spochify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3182E992257D7B400180BD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3182E9B2257D7B400180BD5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +225,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		C313AA5222624644003E2895 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C313AA5322624661003E2895 /* UIColor+Spochify.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		C3182E8D2257D7B400180BD5 = {
 			isa = PBXGroup;
 			children = (
@@ -280,8 +292,9 @@
 			isa = PBXGroup;
 			children = (
 				C36C86F4225CEE970035DCF8 /* BindableType.swift */,
-				C35995B6225BACCE00F3FAD2 /* Scene+ViewController.swift */,
 				C35995AF225B55F100F3FAD2 /* Extensions */,
+				C35995B6225BACCE00F3FAD2 /* Scene+ViewController.swift */,
+				C313AA5222624644003E2895 /* UI */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -343,6 +356,7 @@
 			children = (
 				C3AC5445225FE3A00007090C /* TrackTableViewCell.swift */,
 				C3AC5446225FE3A00007090C /* TrackTableViewCell.xib */,
+				C313AA5022622ACF003E2895 /* PlaylistHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -592,6 +606,7 @@
 				C3E55B12225B2A7F00DD3D9A /* StartBuilder.swift in Sources */,
 				C3E55B0C225B2A4B00DD3D9A /* SearchViewController.swift in Sources */,
 				C3AC5432225F79270007090C /* Album.swift in Sources */,
+				C313AA5122622ACF003E2895 /* PlaylistHeaderView.swift in Sources */,
 				C3E55B06225B289B00DD3D9A /* StartViewController.swift in Sources */,
 				C36C86F7225CF7FF0035DCF8 /* UIApplication+Shared.swift in Sources */,
 				C3DFE95E225F23A0002D2AF4 /* PlaylistRepository.swift in Sources */,
@@ -609,6 +624,7 @@
 				C3AC5443225FE36C0007090C /* PlaylistViewModel.swift in Sources */,
 				C35995BC225BACCF00F3FAD2 /* SceneCoordinatorType.swift in Sources */,
 				C3DFF174225E32690041B7C8 /* PlaylistCollectionViewCell.swift in Sources */,
+				C313AA5422624661003E2895 /* UIColor+Spochify.swift in Sources */,
 				C35995BD225BACCF00F3FAD2 /* SceneTransitionType.swift in Sources */,
 				C3E55B08225B28C500DD3D9A /* HomeBuilder.swift in Sources */,
 				C3C8C299225CB65800EFBED0 /* URL+Init.swift in Sources */,

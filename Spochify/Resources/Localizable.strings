@@ -7,5 +7,10 @@
 */
 
 "app_name" = "Spochify";
+
+// MARK: tabs
 "tab_start" = "Start";
 "tab_search" = "Search";
+
+// MARK: playlist
+"play_button" = "Play";

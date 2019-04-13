@@ -15,6 +15,10 @@ class PlaylistViewController: UITableViewController, BindableType {
     
     private let disposeBag = DisposeBag()
     var viewModel: PlaylistViewModel!
+    
+    private enum ViewTraits {
+        static let rowHeight: CGFloat = 58
+    }
 
     init() {
         super.init(style: UITableView.Style.plain)
@@ -28,8 +32,13 @@ class PlaylistViewController: UITableViewController, BindableType {
         super.viewDidLoad()
         tableView.backgroundColor = .white
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        tableView.rowHeight = 58
+        tableView.rowHeight = ViewTraits.rowHeight
         tableView.register(UINib(nibName: "TrackTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: TrackTableViewCell.identifier)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.tableHeaderView?.frame.size = CGSize(width: tableView.frame.width, height: PlaylistHeaderView.ViewTraits.height)
     }
     
     func bindViewModel() {
@@ -38,7 +47,8 @@ class PlaylistViewController: UITableViewController, BindableType {
         viewModel.currentPlaylist
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (playlist) in
-                //TODO: playlist header
+                self.title = playlist.name
+                self.tableView.tableHeaderView = PlaylistHeaderView(playlist: playlist)
             })
             .disposed(by: disposeBag)        
         viewModel.tracks

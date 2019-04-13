@@ -14,6 +14,7 @@ extension String {
         case appName = "app_name"
         case tabStart = "tab_start"
         case tabSearch = "tab_search"
+        case buttonPlay = "play_button"
     }
     
     init(localizedKey: String.Key) {
