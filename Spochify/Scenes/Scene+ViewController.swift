@@ -12,15 +12,11 @@ extension Scene {
     
     func viewController() -> UIViewController {
         switch self {
-        case .home:
-            return HomeBuilder().build()
-        //TODO: ????
-        case .start(let viewModel):
-            return StartBuilder().build()
-        case .search(let viewModel):
-            return SearchBuilder().build()
         case .login:
-            return LoginViewController()
+            let loginViewModel = LoginViewModel()
+            var viewController = LoginViewController()
+            viewController.bindToViewModel(to: loginViewModel)
+            return viewController
         case .playlist(let playlist, let sceneCoordinator):
             var viewController = PlaylistViewController()
             let playlistRepository = PlaylistRepository(playlistId: playlist.id)
@@ -29,4 +25,5 @@ extension Scene {
             return viewController
         }
     }
+    
 }

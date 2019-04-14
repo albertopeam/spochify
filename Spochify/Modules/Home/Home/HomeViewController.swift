@@ -9,8 +9,7 @@
 import UIKit
 import RxSwift
 
-//TODO: refactor
-//TODO: handle no network
+//TODO: handle no network!!!
 class HomeViewController: UITabBarController, BindableType {
     
     typealias ViewModelType = HomeViewModel

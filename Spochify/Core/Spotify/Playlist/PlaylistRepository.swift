@@ -30,6 +30,7 @@ class PlaylistRepository {
         .flatMap({ Observable.from(optional: $0?.items) })
         .flatMap({ (items) -> Observable<[Track]> in
             let tracks = items.map({ (item) -> Track in
+                //TODO: move to an extension or something
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 let date = dateFormatter.date(from: item.track.album.releaseDate) ?? Date()

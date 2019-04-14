@@ -41,6 +41,7 @@
 		C3D810C12263267100153C56 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D810C02263267100153C56 /* HomeViewModel.swift */; };
 		C3D810C322632BB800153C56 /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D810C222632BB800153C56 /* Action.framework */; };
 		C3D810C422632DD500153C56 /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DEBB8222594B2D00B6F9E7 /* RxAtomic.framework */; };
+		C3D810C62263322300153C56 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D810C52263322300153C56 /* LoginViewModel.swift */; };
 		C3DEBB8722594B2D00B6F9E7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DEBB8322594B2D00B6F9E7 /* RxSwift.framework */; };
 		C3DEBB8822594B2D00B6F9E7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DEBB8422594B2D00B6F9E7 /* RxCocoa.framework */; };
 		C3DFE95E225F23A0002D2AF4 /* PlaylistRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DFE95D225F23A0002D2AF4 /* PlaylistRepository.swift */; };
@@ -50,13 +51,10 @@
 		C3E55AFC225B25E100DD3D9A /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55AFB225B25E100DD3D9A /* Playlist.swift */; };
 		C3E55AFE225B283E00DD3D9A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E55AFD225B283E00DD3D9A /* LoginViewController.xib */; };
 		C3E55B06225B289B00DD3D9A /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55B05225B289B00DD3D9A /* StartViewController.swift */; };
-		C3E55B08225B28C500DD3D9A /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55B07225B28C500DD3D9A /* HomeBuilder.swift */; };
-		C3E55B0A225B291A00DD3D9A /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55B09225B291A00DD3D9A /* LoginBuilder.swift */; };
 		C3E55B0C225B2A4B00DD3D9A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55B0B225B2A4B00DD3D9A /* SearchViewController.swift */; };
 		C3E55B0E225B2A5700DD3D9A /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E55B0D225B2A5700DD3D9A /* SearchViewController.xib */; };
-		C3E55B10225B2A7500DD3D9A /* SearchBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55B0F225B2A7500DD3D9A /* SearchBuilder.swift */; };
-		C3E55B12225B2A7F00DD3D9A /* StartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55B11225B2A7F00DD3D9A /* StartBuilder.swift */; };
 		C3E55B14225B2F0000DD3D9A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3E55B13225B2F0000DD3D9A /* Localizable.strings */; };
+		C3E655F222636DB000649F2A /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E655F122636DB000649F2A /* HomeBuilder.swift */; };
 		C3EA0E97225E9188004C74CB /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EA0E96225E9188004C74CB /* Kingfisher.framework */; };
 		C3EC9DFC225A55E100FD0376 /* BrowseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EC9DFB225A55E100FD0376 /* BrowseRepository.swift */; };
 /* End PBXBuildFile section */
@@ -118,6 +116,7 @@
 		C3D810BE2263264F00153C56 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C3D810C02263267100153C56 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C3D810C222632BB800153C56 /* Action.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Action.framework; path = Carthage/Build/iOS/Action.framework; sourceTree = "<group>"; };
+		C3D810C52263322300153C56 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C3DEBB8222594B2D00B6F9E7 /* RxAtomic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAtomic.framework; path = Carthage/Build/iOS/RxAtomic.framework; sourceTree = "<group>"; };
 		C3DEBB8322594B2D00B6F9E7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C3DEBB8422594B2D00B6F9E7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -128,13 +127,10 @@
 		C3E55AFB225B25E100DD3D9A /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		C3E55AFD225B283E00DD3D9A /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		C3E55B05225B289B00DD3D9A /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		C3E55B07225B28C500DD3D9A /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
-		C3E55B09225B291A00DD3D9A /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
 		C3E55B0B225B2A4B00DD3D9A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C3E55B0D225B2A5700DD3D9A /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
-		C3E55B0F225B2A7500DD3D9A /* SearchBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBuilder.swift; sourceTree = "<group>"; };
-		C3E55B11225B2A7F00DD3D9A /* StartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartBuilder.swift; sourceTree = "<group>"; };
 		C3E55B13225B2F0000DD3D9A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		C3E655F122636DB000649F2A /* HomeBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		C3EA0E96225E9188004C74CB /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		C3EC9DFB225A55E100FD0376 /* BrowseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -221,7 +217,7 @@
 			children = (
 				C3182E9B2257D7B400180BD5 /* LoginViewController.swift */,
 				C3E55AFD225B283E00DD3D9A /* LoginViewController.xib */,
-				C3E55B09225B291A00DD3D9A /* LoginBuilder.swift */,
+				C3D810C52263322300153C56 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -237,6 +233,7 @@
 		C313AA5222624644003E2895 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C36C86F4225CEE970035DCF8 /* BindableType.swift */,
 				C313AA5322624661003E2895 /* UIColor+Spochify.swift */,
 			);
 			path = UI;
@@ -300,9 +297,7 @@
 		C35995AE225B55E600F3FAD2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				C36C86F4225CEE970035DCF8 /* BindableType.swift */,
 				C35995AF225B55F100F3FAD2 /* Extensions */,
-				C35995B6225BACCE00F3FAD2 /* Scene+ViewController.swift */,
 				C313AA5222624644003E2895 /* UI */,
 			);
 			path = Common;
@@ -323,9 +318,10 @@
 			isa = PBXGroup;
 			children = (
 				C35995B5225BACCE00F3FAD2 /* Scene.swift */,
+				C35995B6225BACCE00F3FAD2 /* Scene+ViewController.swift */,
+				C35995B9225BACCE00F3FAD2 /* SceneCoordinator.swift */,
 				C35995B7225BACCE00F3FAD2 /* SceneCoordinatorType.swift */,
 				C35995B8225BACCE00F3FAD2 /* SceneTransitionType.swift */,
-				C35995B9225BACCE00F3FAD2 /* SceneCoordinator.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -343,7 +339,6 @@
 			isa = PBXGroup;
 			children = (
 				C3AC5435225FDE5B0007090C /* View */,
-				C3E55B11225B2A7F00DD3D9A /* StartBuilder.swift */,
 				C3E55B05225B289B00DD3D9A /* StartViewController.swift */,
 				C3C8C28E225C810900EFBED0 /* StartViewModel.swift */,
 			);
@@ -389,7 +384,7 @@
 		C3D810BD2263262A00153C56 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				C3E55B07225B28C500DD3D9A /* HomeBuilder.swift */,
+				C3E655F122636DB000649F2A /* HomeBuilder.swift */,
 				C3D810BE2263264F00153C56 /* HomeViewController.swift */,
 				C3D810C02263267100153C56 /* HomeViewModel.swift */,
 			);
@@ -440,7 +435,6 @@
 		C3E55B02225B287D00DD3D9A /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				C3E55B0F225B2A7500DD3D9A /* SearchBuilder.swift */,
 				C3E55B0B225B2A4B00DD3D9A /* SearchViewController.swift */,
 				C3E55B0D225B2A5700DD3D9A /* SearchViewController.xib */,
 				C3C8C290225C811500EFBED0 /* SearchViewModel.swift */,
@@ -627,7 +621,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3E55B12225B2A7F00DD3D9A /* StartBuilder.swift in Sources */,
 				C3E55B0C225B2A4B00DD3D9A /* SearchViewController.swift in Sources */,
 				C3AC5432225F79270007090C /* Album.swift in Sources */,
 				C313AA5122622ACF003E2895 /* PlaylistHeaderView.swift in Sources */,
@@ -645,6 +638,7 @@
 				C3AC5440225FE3470007090C /* PlaylistViewController.swift in Sources */,
 				C35995B1225B560300F3FAD2 /* String+Localizable.swift in Sources */,
 				C3C8C297225CA3A700EFBED0 /* User.swift in Sources */,
+				C3E655F222636DB000649F2A /* HomeBuilder.swift in Sources */,
 				C35995BE225BACCF00F3FAD2 /* SceneCoordinator.swift in Sources */,
 				C3AC5443225FE36C0007090C /* PlaylistViewModel.swift in Sources */,
 				C35995BC225BACCF00F3FAD2 /* SceneCoordinatorType.swift in Sources */,
@@ -652,17 +646,15 @@
 				C313AA5422624661003E2895 /* UIColor+Spochify.swift in Sources */,
 				C35995BD225BACCF00F3FAD2 /* SceneTransitionType.swift in Sources */,
 				C3D810BF2263264F00153C56 /* HomeViewController.swift in Sources */,
-				C3E55B08225B28C500DD3D9A /* HomeBuilder.swift in Sources */,
 				C3C8C299225CB65800EFBED0 /* URL+Init.swift in Sources */,
 				C36C86F5225CEE970035DCF8 /* BindableType.swift in Sources */,
-				C3E55B0A225B291A00DD3D9A /* LoginBuilder.swift in Sources */,
 				C3AC5434225F802E0007090C /* UICollectionViewFlowLayout+Columns.swift in Sources */,
 				C3C8C28F225C810900EFBED0 /* StartViewModel.swift in Sources */,
 				C31013C422580E39009BDB95 /* Network.swift in Sources */,
 				C3C8C293225C96F700EFBED0 /* UserRepository.swift in Sources */,
 				C35995BB225BACCF00F3FAD2 /* Scene+ViewController.swift in Sources */,
 				C3EC9DFC225A55E100FD0376 /* BrowseRepository.swift in Sources */,
-				C3E55B10225B2A7500DD3D9A /* SearchBuilder.swift in Sources */,
+				C3D810C62263322300153C56 /* LoginViewModel.swift in Sources */,
 				C3DFE961225F27FC002D2AF4 /* Track.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,8 +10,5 @@ import Foundation
 
 enum Scene {
     case login
-    case home
-    case start(viewModel: StartViewModel)
-    case search(viewModel: SearchViewModel)
     case playlist(viewModel: Playlist, sceneCoordinator: SceneCoordinatorType)
 }

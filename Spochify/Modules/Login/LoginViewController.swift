@@ -9,14 +9,17 @@
 import UIKit
 import WebKit
 
-class LoginViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
-
+class LoginViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, BindableType {
+    
+    typealias ViewModelType = LoginViewModel
+    var viewModel: LoginViewModel!
     @IBOutlet weak var webview: WKWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    private let storage: Storage
     
-    init(storage: Storage = Storage()) {
-        self.storage = storage
+    //TODO: remove
+    private let storage: Storage = Storage()
+    
+    init() {
         super.init(nibName: "LoginViewController", bundle: Bundle.main)
     }
     
@@ -24,8 +27,13 @@ class LoginViewController: UIViewController, WKNavigationDelegate, WKUIDelegate 
         fatalError("init(coder:) has not been implemented")
     }
     
+    func bindViewModel() {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //TODO: move to plist not commieted to the repo...
         let clientId = "b27608372edf492a85c3e4df2fe914fb"
         let responseType = "token"
         let scopes = "user-read-email"
@@ -51,7 +59,6 @@ class LoginViewController: UIViewController, WKNavigationDelegate, WKUIDelegate 
                 .first {
                 //TODO: usar Variable<Token> y compartirla entre el repo de browse y que sea el punto de partida, cuando se pushee el token hay que relanzar todo
                 storage.accessToken = accessToken
-                navigationController?.setViewControllers([HomeBuilder().build()], animated: true)
             } else {
                 //TODO: error...
             }

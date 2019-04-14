@@ -22,17 +22,32 @@ class HomeBuilder {
         let tabBarController = homeViewController
         tabBarController.title = String(localizedKey: String.Key.appName)
         
-        let startViewController = StartBuilder().build()
+        let startViewController = buildStartViewController()
         startViewController.tabBarItem.title = String(localizedKey: String.Key.tabStart)
         startViewController.tabBarItem.image = UIImage(named: "baseline_home_black_24pt")
         
-        let searchViewController = SearchBuilder().build()
+        let searchViewController = buildSearchViewController()
         searchViewController.tabBarItem.title = String(localizedKey: String.Key.tabSearch)
         searchViewController.tabBarItem.image = UIImage(named: "baseline_search_black_24pt")
         
         tabBarController.viewControllers = [UINavigationController(rootViewController: startViewController),
                                             UINavigationController(rootViewController: searchViewController)]
         return tabBarController
+    }
+    
+    // MARK: private
+    
+    private func buildStartViewController() -> UIViewController {
+        var viewController = StartViewController()
+        let sceneCoordinator = SceneCoordinator(window: UIApplication.instance.window, viewController: viewController)
+        let browseRepository = BrowseRepository(network: Network(urlSession: URLSession.shared, storage: Storage()))
+        let startViewModel = StartViewModel(browseRepository: browseRepository, sceneCoordinator: sceneCoordinator)
+        viewController.bindToViewModel(to: startViewModel)
+        return viewController
+    }
+    
+    private func buildSearchViewController() -> UIViewController {
+        return SearchViewController()
     }
     
 }
