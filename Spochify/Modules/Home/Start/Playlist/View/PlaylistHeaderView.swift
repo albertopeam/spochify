@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Action
 import Kingfisher
 
 class PlaylistHeaderView: UIView {
@@ -24,7 +25,7 @@ class PlaylistHeaderView: UIView {
     private var titleLabel: UILabel!
     private var playButton: UIButton!
 
-    init(playlist: Playlist) {
+    init(playlist: Playlist, action: Action<Void, Void>) {
         super.init(frame: CGRect.zero)
         imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +39,7 @@ class PlaylistHeaderView: UIView {
         playButton.setTitleColor(UIColor.lightBlue, for: .normal)
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playButton.setTitle(String(localizedKey: String.Key.buttonPlay), for: UIControl.State.normal)
-        //playButton.addTarget(self, action: #selector(play), for: UIControl.Event.touchUpInside)
+        playButton.rx.action = action
         addSubview(playButton)
         
         NSLayoutConstraint.activate([
@@ -68,7 +69,5 @@ class PlaylistHeaderView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    @objc private func play() {}
 
 }

@@ -39,6 +39,8 @@
 		C3C8C299225CB65800EFBED0 /* URL+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C298225CB65800EFBED0 /* URL+Init.swift */; };
 		C3D810BF2263264F00153C56 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D810BE2263264F00153C56 /* HomeViewController.swift */; };
 		C3D810C12263267100153C56 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D810C02263267100153C56 /* HomeViewModel.swift */; };
+		C3D810C322632BB800153C56 /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D810C222632BB800153C56 /* Action.framework */; };
+		C3D810C422632DD500153C56 /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DEBB8222594B2D00B6F9E7 /* RxAtomic.framework */; };
 		C3DEBB8722594B2D00B6F9E7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DEBB8322594B2D00B6F9E7 /* RxSwift.framework */; };
 		C3DEBB8822594B2D00B6F9E7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DEBB8422594B2D00B6F9E7 /* RxCocoa.framework */; };
 		C3DFE95E225F23A0002D2AF4 /* PlaylistRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DFE95D225F23A0002D2AF4 /* PlaylistRepository.swift */; };
@@ -115,6 +117,7 @@
 		C3C8C298225CB65800EFBED0 /* URL+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Init.swift"; sourceTree = "<group>"; };
 		C3D810BE2263264F00153C56 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C3D810C02263267100153C56 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		C3D810C222632BB800153C56 /* Action.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Action.framework; path = Carthage/Build/iOS/Action.framework; sourceTree = "<group>"; };
 		C3DEBB8222594B2D00B6F9E7 /* RxAtomic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAtomic.framework; path = Carthage/Build/iOS/RxAtomic.framework; sourceTree = "<group>"; };
 		C3DEBB8322594B2D00B6F9E7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C3DEBB8422594B2D00B6F9E7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -145,6 +148,8 @@
 				C3DEBB8822594B2D00B6F9E7 /* RxCocoa.framework in Frameworks */,
 				C36C86F9225D417F0035DCF8 /* RxDataSources.framework in Frameworks */,
 				C3EA0E97225E9188004C74CB /* Kingfisher.framework in Frameworks */,
+				C3D810C322632BB800153C56 /* Action.framework in Frameworks */,
+				C3D810C422632DD500153C56 /* RxAtomic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +399,7 @@
 		C3DEBB8122594B2D00B6F9E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3D810C222632BB800153C56 /* Action.framework */,
 				C3EA0E96225E9188004C74CB /* Kingfisher.framework */,
 				C36C86F8225D417F0035DCF8 /* RxDataSources.framework */,
 				C3DEBB8222594B2D00B6F9E7 /* RxAtomic.framework */,
@@ -596,6 +602,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Action.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxAtomic.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
@@ -605,6 +613,8 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxDataSources.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Action.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxAtomic.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

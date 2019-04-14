@@ -48,7 +48,7 @@ class PlaylistViewController: UITableViewController, BindableType {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (playlist) in
                 self.title = playlist.name
-                self.tableView.tableHeaderView = PlaylistHeaderView(playlist: playlist)
+                self.tableView.tableHeaderView = PlaylistHeaderView(playlist: playlist, action: self.viewModel.playAction)
             })
             .disposed(by: disposeBag)        
         viewModel.tracks

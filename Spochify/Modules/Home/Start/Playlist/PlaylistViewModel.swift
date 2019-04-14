@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import Action
 
 class PlaylistViewModel {
     
@@ -23,6 +24,13 @@ class PlaylistViewModel {
     }
     
     lazy var currentPlaylist: Observable<Playlist> = Observable.just(playlist)
+    
     lazy var tracks: Observable<[Track]> = playlistRepository.tracks
+    
+    lazy var playAction: Action<Void, Void> = Action {
+        //TODO: play
+        print("TODO: play")
+        return Observable.empty()
+    }
     
 }
