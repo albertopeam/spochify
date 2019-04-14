@@ -30,8 +30,10 @@ class Network {
     }
     
     private var timestamp: String {
-        //TODO: formatter
-        return "2019-04-11T09:00:00"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let now = Date()
+        return dateFormatter.string(from: now)
     }
     
     // MARK: browse
