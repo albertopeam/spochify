@@ -12,5 +12,8 @@
 "tab_start" = "Start";
 "tab_search" = "Search";
 
+// MARK: navigation titles
+"nav_featured" = "Featured";
+
 // MARK: playlist
 "play_button" = "Play";

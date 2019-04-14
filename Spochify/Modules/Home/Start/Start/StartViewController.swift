@@ -33,6 +33,7 @@ class StartViewController: UICollectionViewController, BindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         //TODO: reload widget
+        title = String(localizedKey: String.Key.navFeatured)
         collectionView.backgroundColor = .white
         collectionView.register(UINib(nibName: "PlaylistCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
         flowLayout.numberOfColumns(columns)

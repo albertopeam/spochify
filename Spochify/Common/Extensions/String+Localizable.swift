@@ -12,8 +12,12 @@ extension String {
     
     enum Key: String {
         case appName = "app_name"
+        // TABS
         case tabStart = "tab_start"
         case tabSearch = "tab_search"
+        // NAV
+        case navFeatured = "nav_featured"
+        // UI
         case buttonPlay = "play_button"
     }
     
