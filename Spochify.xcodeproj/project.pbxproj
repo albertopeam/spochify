@@ -37,6 +37,8 @@
 		C3C8C293225C96F700EFBED0 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C292225C96F700EFBED0 /* UserRepository.swift */; };
 		C3C8C297225CA3A700EFBED0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C296225CA3A700EFBED0 /* User.swift */; };
 		C3C8C299225CB65800EFBED0 /* URL+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C298225CB65800EFBED0 /* URL+Init.swift */; };
+		C3D810BF2263264F00153C56 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D810BE2263264F00153C56 /* HomeViewController.swift */; };
+		C3D810C12263267100153C56 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D810C02263267100153C56 /* HomeViewModel.swift */; };
 		C3DEBB8722594B2D00B6F9E7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DEBB8322594B2D00B6F9E7 /* RxSwift.framework */; };
 		C3DEBB8822594B2D00B6F9E7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DEBB8422594B2D00B6F9E7 /* RxCocoa.framework */; };
 		C3DFE95E225F23A0002D2AF4 /* PlaylistRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DFE95D225F23A0002D2AF4 /* PlaylistRepository.swift */; };
@@ -111,6 +113,8 @@
 		C3C8C292225C96F700EFBED0 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		C3C8C296225CA3A700EFBED0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C3C8C298225CB65800EFBED0 /* URL+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Init.swift"; sourceTree = "<group>"; };
+		C3D810BE2263264F00153C56 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C3D810C02263267100153C56 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C3DEBB8222594B2D00B6F9E7 /* RxAtomic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAtomic.framework; path = Carthage/Build/iOS/RxAtomic.framework; sourceTree = "<group>"; };
 		C3DEBB8322594B2D00B6F9E7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C3DEBB8422594B2D00B6F9E7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -377,6 +381,16 @@
 			path = Browse;
 			sourceTree = "<group>";
 		};
+		C3D810BD2263262A00153C56 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C3E55B07225B28C500DD3D9A /* HomeBuilder.swift */,
+				C3D810BE2263264F00153C56 /* HomeViewController.swift */,
+				C3D810C02263267100153C56 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		C3DEBB8122594B2D00B6F9E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,9 +445,9 @@
 		C3EC9DFA225A553E00FD0376 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				C3D810BD2263262A00153C56 /* Home */,
 				C3E55B02225B287D00DD3D9A /* Search */,
 				C3E55B01225B286600DD3D9A /* Start */,
-				C3E55B07225B28C500DD3D9A /* HomeBuilder.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -613,6 +627,7 @@
 				C3182E9C2257D7B400180BD5 /* LoginViewController.swift in Sources */,
 				C35995BA225BACCF00F3FAD2 /* Scene.swift in Sources */,
 				C31013C722581031009BDB95 /* Storage.swift in Sources */,
+				C3D810C12263267100153C56 /* HomeViewModel.swift in Sources */,
 				C3C8C291225C811500EFBED0 /* SearchViewModel.swift in Sources */,
 				C3AC5447225FE3A00007090C /* TrackTableViewCell.swift in Sources */,
 				C3E55AFC225B25E100DD3D9A /* Playlist.swift in Sources */,
@@ -626,6 +641,7 @@
 				C3DFF174225E32690041B7C8 /* PlaylistCollectionViewCell.swift in Sources */,
 				C313AA5422624661003E2895 /* UIColor+Spochify.swift in Sources */,
 				C35995BD225BACCF00F3FAD2 /* SceneTransitionType.swift in Sources */,
+				C3D810BF2263264F00153C56 /* HomeViewController.swift in Sources */,
 				C3E55B08225B28C500DD3D9A /* HomeBuilder.swift in Sources */,
 				C3C8C299225CB65800EFBED0 /* URL+Init.swift in Sources */,
 				C36C86F5225CEE970035DCF8 /* BindableType.swift in Sources */,

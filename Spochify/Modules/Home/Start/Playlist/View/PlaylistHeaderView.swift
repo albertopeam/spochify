@@ -70,5 +70,5 @@ class PlaylistHeaderView: UIView {
     }
     
     @objc private func play() {}
-    
+
 }
