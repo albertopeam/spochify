@@ -53,17 +53,21 @@ class CategoriesViewController: UICollectionViewController, BindableType {
                 self.refreshControl.endRefreshing()
             })
             .disposed(by: disposeBag)
+        
         viewModel.categories
             .observeOn(MainScheduler.instance)
             .bind(to: collectionView.rx.items(cellIdentifier: CategoryCollectionViewCell.identifier)) { index, model, cell in
                 guard let cell = cell as? CategoryCollectionViewCell else { fatalError() }
                 cell.draw(category: model)
             }.disposed(by: disposeBag)
+        
         collectionView.rx
             .modelSelected(Category.self)
-            .subscribe(onNext: { (category) in
-                //self.viewModel.tapped(playlist: playlist)
-            }).disposed(by: disposeBag)
+            .flatMap({ (category) -> Observable<Void> in
+                return self.viewModel.tappedCategory.execute(category)
+            })
+            .subscribe()
+            .disposed(by: disposeBag)
     }
     
 }

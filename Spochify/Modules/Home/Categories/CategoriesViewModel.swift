@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import Action
 
 class CategoriesViewModel {
     
@@ -20,5 +21,12 @@ class CategoriesViewModel {
     }
     
     lazy var categories: Observable<[Category]> = browseRepository.categories
+        .map({ $0.sorted(by: { $0.name < $1.name }) })
+
     
+    lazy var tappedCategory: Action<Category, Void> = Action { _ in
+        //TODO: play
+        print("TODO: tapped category")
+        return Observable<Void>.empty()
+    }
 }
