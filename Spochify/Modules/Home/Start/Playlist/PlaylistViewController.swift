@@ -19,7 +19,7 @@ class PlaylistViewController: UITableViewController, BindableType {
     private enum ViewTraits {
         static let rowHeight: CGFloat = 58
     }
-
+    
     init() {
         super.init(style: UITableView.Style.plain)
     }
@@ -42,25 +42,24 @@ class PlaylistViewController: UITableViewController, BindableType {
     }
     
     func bindViewModel() {
-        //TODO: reload widget
-        //TODO: row deselect
         viewModel.currentPlaylist
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (playlist) in
                 self.title = playlist.name
                 self.tableView.tableHeaderView = PlaylistHeaderView(playlist: playlist, action: self.viewModel.playAction)
             })
-            .disposed(by: disposeBag)        
+            .disposed(by: disposeBag)
+        
         viewModel.tracks
             .bind(to: tableView.rx.items(cellIdentifier: TrackTableViewCell.identifier)) { index, model, cell in
                 guard let cell = cell as? TrackTableViewCell else { fatalError() }
                 cell.draw(index: index + 1, track: model)
             }.disposed(by: disposeBag)
-        tableView.rx
-            .modelSelected(Track.self)
-            .subscribe(onNext: { (track) in
-                //TODO:
+        
+        tableView.rx.itemSelected
+            .subscribe(onNext: { indexPath in
+                self.tableView.deselectRow(at: indexPath, animated: true)
             }).disposed(by: disposeBag)
     }
-
+    
 }

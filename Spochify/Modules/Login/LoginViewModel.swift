@@ -23,6 +23,7 @@ class LoginViewModel {
     lazy var login: Observable<URLRequest> = userRepository.login
     
     lazy var parseTokenAction: Action<URL, Void> = Action { url in
+        //TODO: improve this using observable
         if url.host == "spochify.com", let fragment = url.fragment {
             if let accessToken = fragment.components(separatedBy: "&")
                 .filter({ $0.contains("access_token")})
