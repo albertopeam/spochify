@@ -12,9 +12,11 @@ import RxCocoa
 class UserRepository {
     
     private let network: Network
+    private let storage: Storage
     
-    init(network: Network) {
+    init(network: Network, storage: Storage) {
         self.network = network
+        self.storage = storage
     }
     
     lazy var user: Observable<User> = network.urlSession.rx.response(request: network.currentUserRequest)
@@ -31,6 +33,37 @@ class UserRepository {
         .filter({response, data in response.statusCode == 401 || response.statusCode == 400 })
         .map({ (_,_) -> Void in })
         .debug()
+    
+    lazy var isNotAuth: Observable<Void> = storage.accessTokenVariable.asObservable()
+            .flatMap({ (token) -> Observable<(response: HTTPURLResponse, data: Data)> in
+                if token.isEmpty {
+                    throw Error.invalidToken
+                }
+                return self.network.urlSession.rx.response(request: self.network.currentUserRequest)
+            })
+            .filter({response, data in response.statusCode == 401 || response.statusCode == 400 })
+            .map({ (_,_) -> Void in })
+            .debug()
+    
+    
+    lazy var isAuth: Observable<Void> = storage.accessTokenVariable.asObservable()
+        .flatMap({ (token) -> Observable<(response: HTTPURLResponse, data: Data)> in
+            return self.network.urlSession.rx.response(request: self.network.currentUserRequest)
+        })
+        .filter({response, data in 200..<300 ~= response.statusCode })
+        .map({ (_,_) -> Void in })
+        .debug()
+    
+    lazy var login: Observable<URLRequest> = Observable<URLRequest>.create { (observer) -> Disposable in
+        observer.onNext(self.network.loginUserRequest)
+        return Disposables.create()
+    }
+    
+    lazy var accessToken: Variable<String> = storage.accessTokenVariable
+    
+    enum Error: Swift.Error {
+        case invalidToken
+    }
 }
 
 private class UserCodable: Codable {

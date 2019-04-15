@@ -12,15 +12,20 @@ import RxSwift
 class PlaylistRepository {
     
     private let network: Network
+    private let storage: Storage
     private let playlistId: String
     
-    init(network: Network = Network(urlSession: URLSession.shared, storage: Storage()),
+    init(network: Network,
+         storage: Storage,
          playlistId: String) {
         self.network = network
+        self.storage = storage
         self.playlistId = playlistId
+        
     }
     
-    lazy var tracks: Observable<[Track]> = network.urlSession.rx.response(request: network.playlistTracksRequest(playlistId: playlistId))
+    lazy var tracks: Observable<[Track]> = storage.accessTokenVariable.asObservable()
+        .flatMap({ self.network.urlSession.rx.response(request: self.network.playlistTracksRequest(playlistId: self.playlistId, accessToken: $0))})
         .filter({ response, _ in 200..<300 ~= response.statusCode })
         .map({ (response, data) -> TrackListCodable? in
             let decoder = JSONDecoder()

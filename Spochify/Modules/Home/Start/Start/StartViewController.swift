@@ -15,7 +15,7 @@ class StartViewController: UICollectionViewController, BindableType {
     
     private let flowLayout: UICollectionViewFlowLayout
     private let columns = 2
-    private var disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     var viewModel: StartViewModel!
 
     init() {
@@ -32,7 +32,6 @@ class StartViewController: UICollectionViewController, BindableType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //TODO: reload widget
         title = String(localizedKey: String.Key.navFeatured)
         collectionView.backgroundColor = .white
         collectionView.register(UINib(nibName: "PlaylistCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)

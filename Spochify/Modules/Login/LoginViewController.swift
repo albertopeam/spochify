@@ -8,16 +8,15 @@
 
 import UIKit
 import WebKit
+import RxSwift
 
-class LoginViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, BindableType {
+class LoginViewController: UIViewController, WKNavigationDelegate, BindableType {
     
     typealias ViewModelType = LoginViewModel
     var viewModel: LoginViewModel!
     @IBOutlet weak var webview: WKWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    //TODO: remove
-    private let storage: Storage = Storage()
+    private let disposeBag = DisposeBag()
     
     init() {
         super.init(nibName: "LoginViewController", bundle: Bundle.main)
@@ -28,46 +27,24 @@ class LoginViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
     }
     
     func bindViewModel() {
-        
+        viewModel.login
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (request) in
+                self.webview.load(request)
+            })
+        .disposed(by: disposeBag)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //TODO: move to plist not commieted to the repo...
-        let clientId = "b27608372edf492a85c3e4df2fe914fb"
-        let responseType = "token"
-        let scopes = "user-read-email"
-        let redirectUri = "https://spochify.com/callback".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-        let state = "spochify"
-        let url = URL(string: "https://accounts.spotify.com/authorize?client_id=\(clientId)&response_type=\(responseType)&redirect_uri=\(redirectUri)&state=\(state)&scope=\(scopes)")!
-        let urlRequest = URLRequest(url: url)
-        webview.uiDelegate = self
         webview.navigationDelegate = self
-        webview.load(urlRequest)
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.startAnimating()
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard let url = navigationAction.request.url else { return }
-        if url.host == "spochify.com" {
-            decisionHandler(.cancel)
-            if let fragment = url.fragment,
-                let accessToken = fragment.components(separatedBy: "&")
-                .filter({ $0.contains("access_token")})
-                .map({ $0.replacingOccurrences(of: "access_token=", with: "") })
-                .first {
-                //TODO: usar Variable<Token> y compartirla entre el repo de browse y que sea el punto de partida, cuando se pushee el token hay que relanzar todo
-                storage.accessToken = accessToken
-            } else {
-                //TODO: error...
-            }
-        } else if url.host == "accounts.spotify.com" {
-            decisionHandler(.allow)
-        } else {
-            //TODO: check if necessary
-            decisionHandler(.allow)
-        }
+        decisionHandler(.allow)
+        viewModel.parseTokenAction
+            .execute(url)
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {

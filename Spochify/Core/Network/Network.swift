@@ -47,9 +47,9 @@ class Network {
         return request
     }
     
-    var featuredPlayListRequest: URLRequest {
+    func featuredPlayListRequest(accessToken: String) -> URLRequest {
         var request = URLRequest(url: featuredPlayListUrl)
-        request.allHTTPHeaderFields = ["Authorization": "Bearer \(storage.accessToken)"]
+        request.allHTTPHeaderFields = ["Authorization": "Bearer \(accessToken)"]
         return request
     }
     
@@ -66,16 +66,29 @@ class Network {
         return request
     }
     
+    // MARK: auth
+    
+    var loginUserRequest: URLRequest {
+        //TODO: move clientId to PLIST, not commit to repo
+        let clientId = "b27608372edf492a85c3e4df2fe914fb"
+        let responseType = "token"
+        let scopes = "user-read-email"
+        let redirectUri = "https://spochify.com/callback".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let state = "spochify"
+        let url = URL(string: "https://accounts.spotify.com/authorize?client_id=\(clientId)&response_type=\(responseType)&redirect_uri=\(redirectUri)&state=\(state)&scope=\(scopes)")!
+        return URLRequest(url: url)
+    }
+    
     // MARK: playlist
     
     private lazy var playlistTracksfields = "limit,next,offset,previous,total,items(track(id,name,popularity,explicit,preview_url,album(id,release_date,total_tracks,name,images)))"
     private lazy var playlistTracks = "\(endpoint)/playlists/{playlist_id}/tracks?limit=100&offset=0&market=\(country)&fields=\(playlistTracksfields)"
-    func playlistTracksRequest(playlistId: String) -> URLRequest {
+    func playlistTracksRequest(playlistId: String, accessToken: String) -> URLRequest {
         let concretePlaylistTracks = playlistTracks.replacingOccurrences(of: "{playlist_id}", with: playlistId)
         let playlistTracksUrl = URL(string: concretePlaylistTracks)!
         print(playlistTracksUrl)
         var request = URLRequest(url: playlistTracksUrl)
-        request.allHTTPHeaderFields = ["Authorization": "Bearer \(storage.accessToken)"]
+        request.allHTTPHeaderFields = ["Authorization": "Bearer \(accessToken)"]
         return request
     }
     

@@ -12,12 +12,15 @@ import RxSwift
 class BrowseRepository {
     
     private let network: Network
+    private let storage: Storage
     
-    init(network: Network) {
+    init(network: Network, storage: Storage) {
         self.network = network
+        self.storage = storage
     }
     
-    lazy var featured: Observable<[Playlist]> = network.urlSession.rx.response(request: network.featuredPlayListRequest)
+    lazy var featured: Observable<[Playlist]> = storage.accessTokenVariable.asObservable()
+        .flatMap({ self.network.urlSession.rx.response(request: self.network.featuredPlayListRequest(accessToken: $0)) })
         .filter({ response, _ in 200..<300 ~= response.statusCode })
         .map({ (_, data) in try? JSONDecoder().decode(FeaturedPlayListCodable.self, from: data) })
         .flatMap({ Observable.from(optional: $0?.playlists.items) })

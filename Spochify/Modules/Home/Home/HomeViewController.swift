@@ -15,6 +15,10 @@ class HomeViewController: UITabBarController, BindableType {
     typealias ViewModelType = HomeViewModel
     var viewModel: HomeViewModel!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     func bindViewModel() {
         viewModel.binded()
     }

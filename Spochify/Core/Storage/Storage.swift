@@ -7,12 +7,25 @@
 //
 
 import Foundation
+import RxSwift
 
-//TODO: maybe a better place to store it
+//TODO: maybe a better place to store it, keychain
 class Storage {
     
     private let accessTokenKey = "accessToken"
+    let accessTokenVariable: Variable<String> = Variable<String>("")
+    private let tokenWritter: Observable<String>
     
+    init() {
+        tokenWritter = accessTokenVariable.asObservable()
+        accessTokenVariable.value = accessToken
+        _ = tokenWritter
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (newAccessToken) in
+                self.accessToken = newAccessToken
+            })
+    }
+
     var accessToken: String {
         get {
             return UserDefaults.standard.string(forKey: accessTokenKey) ?? ""
@@ -21,4 +34,5 @@ class Storage {
             UserDefaults.standard.set(newValue, forKey: accessTokenKey)
         }
     }
+    
 }

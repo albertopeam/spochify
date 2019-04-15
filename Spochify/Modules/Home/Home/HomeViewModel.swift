@@ -24,20 +24,34 @@ class HomeViewModel {
         self.sceneCoordinator = sceneCoordinator
     }
     
+    //TODO: ??
     func binded() {
         userRepository
-            .isNotAuthenticated
-            //TODO: intercept, open next scene with params, if respond ok, dismiss
-            //TODO: aún no se como hacerlo
+            .isNotAuth
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { () in
-                self.sceneCoordinator.transition(to: Scene.login, type: SceneTransitionType.modal)
-                //TODO: chola el dismiss
-                //                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                //                    self.sceneCoordinator.pop()
-                //                })
+                print("isNotAuth onNext")
+                self.sceneCoordinator.transition(to: Scene.login(sceneCoordinator: self.sceneCoordinator), type: SceneTransitionType.modal)
+            }, onError: { (error) in
+                print("isNotAuth onError")
+                self.sceneCoordinator.transition(to: Scene.login(sceneCoordinator: self.sceneCoordinator), type: SceneTransitionType.modal)
+            }, onCompleted: {
+                print("isNotAuth onCompleted")
             })
             .disposed(by: disposeBag)
+//        userRepository
+//            .isAuth
+//            .observeOn(MainScheduler.instance)
+//            .subscribe(onNext: { () in
+//                print("isAuth onNext")
+//                self.sceneCoordinator.pop(animated: true)
+//            }, onError: { (error) in
+//                print("isAuth onError")
+//                self.sceneCoordinator.pop(animated: true)
+//            }, onCompleted: {
+//                print("isAuth onCompleted")
+//            })
+//            .disposed(by: disposeBag)
     }
     
 }

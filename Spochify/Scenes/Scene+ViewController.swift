@@ -12,14 +12,14 @@ extension Scene {
     
     func viewController() -> UIViewController {
         switch self {
-        case .login:
-            let loginViewModel = LoginViewModel()
+        case .login(let sceneCoordinator):
+            let loginViewModel = LoginViewModel(userRepository: UIApplication.instance.userRepository, sceneCoordinator: sceneCoordinator)
             var viewController = LoginViewController()
             viewController.bindToViewModel(to: loginViewModel)
             return viewController
         case .playlist(let playlist, let sceneCoordinator):
             var viewController = PlaylistViewController()
-            let playlistRepository = PlaylistRepository(playlistId: playlist.id)
+            let playlistRepository = PlaylistRepository(network: UIApplication.instance.network, storage: UIApplication.instance.storage, playlistId: playlist.id)
             let viewModel = PlaylistViewModel(playlist: playlist, playlistRepository: playlistRepository, sceneCoordinator: sceneCoordinator)
             viewController.bindToViewModel(to: viewModel)
             return viewController
