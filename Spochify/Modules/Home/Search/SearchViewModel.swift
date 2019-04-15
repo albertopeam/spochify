@@ -7,5 +7,18 @@
 //
 
 import Foundation
+import RxSwift
 
-class SearchViewModel {}
+class SearchViewModel {
+    
+    private let browseRepository: BrowseRepository
+    private let sceneCoordinator: SceneCoordinatorType
+    
+    init(browseRepository: BrowseRepository, sceneCoordinator: SceneCoordinatorType) {
+        self.browseRepository = browseRepository
+        self.sceneCoordinator = sceneCoordinator
+    }
+    
+    lazy var categories: Observable<[Category]> = browseRepository.categories
+    
+}

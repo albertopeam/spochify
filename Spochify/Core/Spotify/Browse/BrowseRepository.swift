@@ -9,6 +9,9 @@
 import RxCocoa
 import RxSwift
 
+//TODO: 
+//TODO: remove all 200..300 to avoid never respond
+//TODO:
 class BrowseRepository {
     
     private let network: Network
@@ -30,11 +33,23 @@ class BrowseRepository {
         })
         .share(replay: 1, scope: .forever)
         .debug()
+    
+    lazy var categories: Observable<[Category]> = storage.accessTokenVariable.asObservable()
+        .flatMap({ self.network.urlSession.rx.response(request: self.network.categoriesRequest(accessToken: $0)) })
+        .map({ (_, data) in try? JSONDecoder().decode(CategoriesCodable.self, from: data) })
+        .flatMap({ Observable.from(optional: $0?.categories.items) })
+        .flatMap({ (categories) -> Observable<[Category]> in
+            let items = categories.map { Category.init(id: $0.id, name: $0.name, image: URL(string: $0.icons?.first?.url)) }
+            return Observable.just(items)
+        })
+        .share(replay: 1, scope: .forever)
+        .debug()
 
 }
 
-
 extension BrowseRepository {
+    
+    // MARK: playlist
     
     private struct FeaturedPlayListCodable: Codable {
         let playlists: PlayListsCodable
@@ -59,5 +74,18 @@ extension BrowseRepository {
         let href: String
         let total: Int
     }
+    
+    // MARK: categories
 
+    private struct CategoriesCodable: Codable {
+        let categories: CategoryListCodable
+        struct CategoryListCodable: Codable {
+            let items: [CategoryCodable]
+            struct CategoryCodable: Codable {
+                let id: String
+                let name: String
+                let icons: [ImageCodable]?
+            }
+        }
+    }
 }

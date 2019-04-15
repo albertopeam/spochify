@@ -26,6 +26,9 @@
 		C36C86F5225CEE970035DCF8 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36C86F4225CEE970035DCF8 /* BindableType.swift */; };
 		C36C86F7225CF7FF0035DCF8 /* UIApplication+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36C86F6225CF7FF0035DCF8 /* UIApplication+Shared.swift */; };
 		C36C86F9225D417F0035DCF8 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C86F8225D417F0035DCF8 /* RxDataSources.framework */; };
+		C3AAD3252264C8940026254A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AAD3242264C8940026254A /* Category.swift */; };
+		C3AAD3292264D69D0026254A /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AAD3272264D69D0026254A /* CategoryCollectionViewCell.swift */; };
+		C3AAD32A2264D69D0026254A /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3AAD3282264D69D0026254A /* CategoryCollectionViewCell.xib */; };
 		C3AC5432225F79270007090C /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC5431225F79270007090C /* Album.swift */; };
 		C3AC5434225F802E0007090C /* UICollectionViewFlowLayout+Columns.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC5433225F802E0007090C /* UICollectionViewFlowLayout+Columns.swift */; };
 		C3AC5440225FE3470007090C /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC543E225FE3470007090C /* PlaylistViewController.swift */; };
@@ -52,7 +55,6 @@
 		C3E55AFE225B283E00DD3D9A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E55AFD225B283E00DD3D9A /* LoginViewController.xib */; };
 		C3E55B06225B289B00DD3D9A /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55B05225B289B00DD3D9A /* StartViewController.swift */; };
 		C3E55B0C225B2A4B00DD3D9A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55B0B225B2A4B00DD3D9A /* SearchViewController.swift */; };
-		C3E55B0E225B2A5700DD3D9A /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E55B0D225B2A5700DD3D9A /* SearchViewController.xib */; };
 		C3E55B14225B2F0000DD3D9A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3E55B13225B2F0000DD3D9A /* Localizable.strings */; };
 		C3E655F222636DB000649F2A /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E655F122636DB000649F2A /* HomeBuilder.swift */; };
 		C3EA0E97225E9188004C74CB /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EA0E96225E9188004C74CB /* Kingfisher.framework */; };
@@ -102,6 +104,9 @@
 		C36C86F4225CEE970035DCF8 /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
 		C36C86F6225CF7FF0035DCF8 /* UIApplication+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Shared.swift"; sourceTree = "<group>"; };
 		C36C86F8225D417F0035DCF8 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
+		C3AAD3242264C8940026254A /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		C3AAD3272264D69D0026254A /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		C3AAD3282264D69D0026254A /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		C3AC5431225F79270007090C /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		C3AC5433225F802E0007090C /* UICollectionViewFlowLayout+Columns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+Columns.swift"; sourceTree = "<group>"; };
 		C3AC543E225FE3470007090C /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
@@ -128,7 +133,6 @@
 		C3E55AFD225B283E00DD3D9A /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		C3E55B05225B289B00DD3D9A /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		C3E55B0B225B2A4B00DD3D9A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		C3E55B0D225B2A5700DD3D9A /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		C3E55B13225B2F0000DD3D9A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C3E655F122636DB000649F2A /* HomeBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		C3EA0E96225E9188004C74CB /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -326,6 +330,15 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
+		C3AAD3262264D67B0026254A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C3AAD3272264D69D0026254A /* CategoryCollectionViewCell.swift */,
+				C3AAD3282264D69D0026254A /* CategoryCollectionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C3AC5435225FDE5B0007090C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,6 +432,7 @@
 				C3C8C296225CA3A700EFBED0 /* User.swift */,
 				C3DFE960225F27FC002D2AF4 /* Track.swift */,
 				C3AC5431225F79270007090C /* Album.swift */,
+				C3AAD3242264C8940026254A /* Category.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -435,8 +449,8 @@
 		C3E55B02225B287D00DD3D9A /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				C3AAD3262264D67B0026254A /* View */,
 				C3E55B0B225B2A4B00DD3D9A /* SearchViewController.swift */,
-				C3E55B0D225B2A5700DD3D9A /* SearchViewController.xib */,
 				C3C8C290225C811500EFBED0 /* SearchViewModel.swift */,
 			);
 			path = Search;
@@ -558,12 +572,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3E55AFE225B283E00DD3D9A /* LoginViewController.xib in Resources */,
+				C3AAD32A2264D69D0026254A /* CategoryCollectionViewCell.xib in Resources */,
 				C3E55B14225B2F0000DD3D9A /* Localizable.strings in Resources */,
 				C3182EA42257D7B600180BD5 /* LaunchScreen.storyboard in Resources */,
 				C3DFF175225E32690041B7C8 /* PlaylistCollectionViewCell.xib in Resources */,
 				C3182EA12257D7B600180BD5 /* Assets.xcassets in Resources */,
 				C3AC5448225FE3A00007090C /* TrackTableViewCell.xib in Resources */,
-				C3E55B0E225B2A5700DD3D9A /* SearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +638,7 @@
 				C3E55B0C225B2A4B00DD3D9A /* SearchViewController.swift in Sources */,
 				C3AC5432225F79270007090C /* Album.swift in Sources */,
 				C313AA5122622ACF003E2895 /* PlaylistHeaderView.swift in Sources */,
+				C3AAD3292264D69D0026254A /* CategoryCollectionViewCell.swift in Sources */,
 				C3E55B06225B289B00DD3D9A /* StartViewController.swift in Sources */,
 				C36C86F7225CF7FF0035DCF8 /* UIApplication+Shared.swift in Sources */,
 				C3DFE95E225F23A0002D2AF4 /* PlaylistRepository.swift in Sources */,
@@ -644,6 +659,7 @@
 				C35995BC225BACCF00F3FAD2 /* SceneCoordinatorType.swift in Sources */,
 				C3DFF174225E32690041B7C8 /* PlaylistCollectionViewCell.swift in Sources */,
 				C313AA5422624661003E2895 /* UIColor+Spochify.swift in Sources */,
+				C3AAD3252264C8940026254A /* Category.swift in Sources */,
 				C35995BD225BACCF00F3FAD2 /* SceneTransitionType.swift in Sources */,
 				C3D810BF2263264F00153C56 /* HomeViewController.swift in Sources */,
 				C3C8C299225CB65800EFBED0 /* URL+Init.swift in Sources */,

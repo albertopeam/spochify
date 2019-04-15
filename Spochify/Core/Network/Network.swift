@@ -37,12 +37,19 @@ class Network {
     }
     
     // MARK: browse
-    private lazy var categoriesUrl = URL(string: "https://api.spotify.com/v1/browse/categories?country=\(country)&locale=\(locale)&limit=50&offset=0")!
-    
-    private lazy var featuredPlayListUrl = URL(string: "https://api.spotify.com/v1/browse/featured-playlists?country=\(country)&locale=\(locale)&timestamp=\(timestamp)&limit=50&offset=0")!
+    private lazy var categoriesUrl = URL(string: "\(endpoint)/browse/categories?country=\(country)&locale=\(locale)&limit=50&offset=0")!
+    private lazy var categoryPlaylist = "\(endpoint)/browse/categories/{category_id}/playlists"
+    private lazy var featuredPlayListUrl = URL(string: "\(endpoint)/browse/featured-playlists?country=\(country)&locale=\(locale)&timestamp=\(timestamp)&limit=50&offset=0")!
     
     func categoriesRequest(accessToken: String) -> URLRequest {
         var request = URLRequest(url: categoriesUrl)
+        request.allHTTPHeaderFields = ["Authorization": "Bearer \(accessToken)"]
+        return request
+    }
+    
+    func categoryPlaylist(playlistId: String, accessToken: String) -> URLRequest {
+        let catetoryPlaylistUrl = URL(string: categoryPlaylist.replacingOccurrences(of: "{category_id}", with: playlistId))!
+        var request = URLRequest(url: catetoryPlaylistUrl)
         request.allHTTPHeaderFields = ["Authorization": "Bearer \(accessToken)"]
         return request
     }

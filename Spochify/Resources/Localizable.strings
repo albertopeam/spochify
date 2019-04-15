@@ -14,6 +14,7 @@
 
 // MARK: navigation titles
 "nav_featured" = "Featured";
+"nav_categories" = "Categories";
 
 // MARK: playlist
 "play_button" = "Play";

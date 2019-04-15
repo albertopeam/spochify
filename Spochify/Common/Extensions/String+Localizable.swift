@@ -17,6 +17,7 @@ extension String {
         case tabSearch = "tab_search"
         // NAV
         case navFeatured = "nav_featured"
+        case navCategories = "nav_categories"
         // UI
         case buttonPlay = "play_button"
     }
