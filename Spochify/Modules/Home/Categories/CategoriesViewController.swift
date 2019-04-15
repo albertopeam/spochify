@@ -25,6 +25,7 @@ class CategoriesViewController: UICollectionViewController, BindableType {
         flowLayout.minimumLineSpacing = 8
         flowLayout.minimumInteritemSpacing = 8
         refreshControl = UIRefreshControl(frame: CGRect.zero)
+        refreshControl.tintColor = .gray
         super.init(collectionViewLayout: flowLayout)
     }
     
@@ -36,12 +37,22 @@ class CategoriesViewController: UICollectionViewController, BindableType {
         super.viewDidLoad()
         title = String(localizedKey: String.Key.navCategories)
         collectionView.backgroundColor = .white
-        collectionView.addSubview(refreshControl)
         collectionView.register(UINib(nibName: "CategoryCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
+        collectionView.addSubview(refreshControl)
+        collectionView.alwaysBounceVertical = true
+        refreshControl.beginRefreshing()
         flowLayout.numberOfColumns(columns)
     }
     
     func bindViewModel() {
+        viewModel.categories
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (_) in
+                self.refreshControl.endRefreshing()
+            }, onError: { (_) in
+                self.refreshControl.endRefreshing()
+            })
+            .disposed(by: disposeBag)
         viewModel.categories
             .observeOn(MainScheduler.instance)
             .bind(to: collectionView.rx.items(cellIdentifier: CategoryCollectionViewCell.identifier)) { index, model, cell in

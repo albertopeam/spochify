@@ -14,6 +14,7 @@ class FeaturedViewController: UICollectionViewController, BindableType {
     typealias ViewModelType = FeaturedViewModel
     
     private let flowLayout: UICollectionViewFlowLayout
+    private let refreshControl: UIRefreshControl
     private let columns = 2
     private let disposeBag = DisposeBag()
     var viewModel: FeaturedViewModel!
@@ -23,6 +24,8 @@ class FeaturedViewController: UICollectionViewController, BindableType {
         flowLayout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         flowLayout.minimumLineSpacing = 8
         flowLayout.minimumInteritemSpacing = 8
+        refreshControl = UIRefreshControl(frame: CGRect.zero)
+        refreshControl.tintColor = .gray
         super.init(collectionViewLayout: flowLayout)
     }
     
@@ -35,21 +38,34 @@ class FeaturedViewController: UICollectionViewController, BindableType {
         title = String(localizedKey: String.Key.navFeatured)
         collectionView.backgroundColor = .white
         collectionView.register(UINib(nibName: "PlaylistCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
+        collectionView.addSubview(refreshControl)
+        collectionView.alwaysBounceVertical = true
+        refreshControl.beginRefreshing()
         flowLayout.numberOfColumns(columns)
     }
     
     func bindViewModel() {
         viewModel.featuredPlaylists
             .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (_) in
+                self.refreshControl.endRefreshing()
+            }, onError: { (_) in
+                self.refreshControl.endRefreshing()
+            })
+            .disposed(by: disposeBag)
+        viewModel.featuredPlaylists
+            .observeOn(MainScheduler.instance)
             .bind(to: collectionView.rx.items(cellIdentifier: PlaylistCollectionViewCell.identifier)) { index, model, cell in
                 guard let cell = cell as? PlaylistCollectionViewCell else { fatalError() }
                 cell.draw(playlist: model)
-            }.disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
         collectionView.rx
             .modelSelected(Playlist.self)
             .subscribe(onNext: { (playlist) in
                 self.viewModel.tapped(playlist: playlist)
-            }).disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
     }
     
 }
