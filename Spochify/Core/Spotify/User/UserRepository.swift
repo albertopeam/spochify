@@ -19,7 +19,13 @@ class UserRepository {
         self.storage = storage
     }
     
-    lazy var user: Observable<User> = network.urlSession.rx.response(request: network.currentUserRequest)
+    lazy var user: Observable<User> = storage.accessTokenVariable.asObservable()
+        .flatMap({ (token) -> Observable<(response: HTTPURLResponse, data: Data)> in
+            if token.isEmpty {
+                throw Error.invalidToken
+            }
+            return self.network.urlSession.rx.response(request: self.network.currentUserRequest)
+        })
         .map({ (_, data) -> UserCodable in
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -35,19 +41,22 @@ class UserRepository {
         .debug()
     
     lazy var isNotAuth: Observable<Void> = storage.accessTokenVariable.asObservable()
-            .flatMap({ (token) -> Observable<(response: HTTPURLResponse, data: Data)> in
-                if token.isEmpty {
-                    throw Error.invalidToken
-                }
-                return self.network.urlSession.rx.response(request: self.network.currentUserRequest)
-            })
-            .filter({response, data in response.statusCode == 401 || response.statusCode == 400 })
-            .map({ (_,_) -> Void in })
-            .debug()
+        .flatMap({ (token) -> Observable<(response: HTTPURLResponse, data: Data)> in
+            if token.isEmpty {
+                throw Error.invalidToken
+            }
+            return self.network.urlSession.rx.response(request: self.network.currentUserRequest)
+        })
+        .filter({response, data in response.statusCode == 401 || response.statusCode == 400 })
+        .map({ (_,_) -> Void in })
+        .debug()
     
     
     lazy var isAuth: Observable<Void> = storage.accessTokenVariable.asObservable()
         .flatMap({ (token) -> Observable<(response: HTTPURLResponse, data: Data)> in
+            if token.isEmpty {
+                throw Error.invalidToken
+            }
             return self.network.urlSession.rx.response(request: self.network.currentUserRequest)
         })
         .filter({response, data in 200..<300 ~= response.statusCode })
@@ -60,6 +69,10 @@ class UserRepository {
     }
     
     lazy var accessToken: Variable<String> = storage.accessTokenVariable
+    
+    func store(user: User) {
+        self.storage.country = user.country
+    }
     
     enum Error: Swift.Error {
         case invalidToken

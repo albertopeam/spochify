@@ -22,11 +22,11 @@ class Network {
     }
     
     private var locale: String {
-        return "es"//Locale.current.languageCode ?? "es"
+        return Locale.current.languageCode ?? "es"
     }
     
     private var country: String {
-        return "es"//Locale.current.regionCode ?? "es"
+        return storage.country.isEmpty ? Locale.current.regionCode ?? "es" : storage.country
     }
     
     private var timestamp: String {
@@ -41,9 +41,9 @@ class Network {
     
     private lazy var featuredPlayListUrl = URL(string: "https://api.spotify.com/v1/browse/featured-playlists?country=\(country)&locale=\(locale)&timestamp=\(timestamp)&limit=50&offset=0")!
     
-    var categoriesRequest: URLRequest {
+    func categoriesRequest(accessToken: String) -> URLRequest {
         var request = URLRequest(url: categoriesUrl)
-        request.allHTTPHeaderFields = ["Authorization": "Bearer \(storage.accessToken)"]
+        request.allHTTPHeaderFields = ["Authorization": "Bearer \(accessToken)"]
         return request
     }
     
@@ -72,7 +72,7 @@ class Network {
         //TODO: move clientId to PLIST, not commit to repo
         let clientId = "b27608372edf492a85c3e4df2fe914fb"
         let responseType = "token"
-        let scopes = "user-read-email"
+        let scopes = "user-read-email user-read-private".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         let redirectUri = "https://spochify.com/callback".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         let state = "spochify"
         let url = URL(string: "https://accounts.spotify.com/authorize?client_id=\(clientId)&response_type=\(responseType)&redirect_uri=\(redirectUri)&state=\(state)&scope=\(scopes)")!

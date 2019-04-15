@@ -14,13 +14,20 @@ class HomeViewController: UITabBarController, BindableType {
     
     typealias ViewModelType = HomeViewModel
     var viewModel: HomeViewModel!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    private let disposeBag = DisposeBag()
     
     func bindViewModel() {
-        viewModel.binded()
+        viewModel.user
+            .observeOn(MainScheduler.instance)
+            .subscribe { (event) in
+                switch event {
+                case .next(let user):
+                    self.viewModel.storeAction(user: user)
+                case .error(let error):
+                    self.viewModel.errorAction(error: error)
+                default: break
+                }
+        }.disposed(by: disposeBag)
     }
     
 }

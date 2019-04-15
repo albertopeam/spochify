@@ -13,6 +13,7 @@ import RxSwift
 class Storage {
     
     private let accessTokenKey = "accessToken"
+    private let countryKey = "country"
     let accessTokenVariable: Variable<String> = Variable<String>("")
     private let tokenWritter: Observable<String>
     
@@ -32,6 +33,15 @@ class Storage {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: accessTokenKey)
+        }
+    }
+    
+    var country: String {
+        get {
+            return UserDefaults.standard.string(forKey: countryKey) ?? ""
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: countryKey)
         }
     }
     
