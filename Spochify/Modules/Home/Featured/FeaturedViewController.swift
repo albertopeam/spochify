@@ -10,13 +10,13 @@ import UIKit.UIViewController
 import RxSwift
 import RxDataSources
 
-class StartViewController: UICollectionViewController, BindableType {
-    typealias ViewModelType = StartViewModel
+class FeaturedViewController: UICollectionViewController, BindableType {
+    typealias ViewModelType = FeaturedViewModel
     
     private let flowLayout: UICollectionViewFlowLayout
     private let columns = 2
     private let disposeBag = DisposeBag()
-    var viewModel: StartViewModel!
+    var viewModel: FeaturedViewModel!
 
     init() {
         flowLayout = UICollectionViewFlowLayout()

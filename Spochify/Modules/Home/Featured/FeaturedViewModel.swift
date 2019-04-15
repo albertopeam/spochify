@@ -8,7 +8,7 @@
 
 import RxSwift
 
-class StartViewModel {
+class FeaturedViewModel {
     
     private let browseRepository: BrowseRepository
     private let sceneCoordinator: SceneCoordinatorType

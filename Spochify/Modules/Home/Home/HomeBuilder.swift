@@ -35,10 +35,10 @@ class HomeBuilder {
     // MARK: private
     
     private func buildStartViewController() -> UIViewController {
-        var viewController = StartViewController()
+        var viewController = FeaturedViewController()
         let sceneCoordinator = SceneCoordinator(window: UIApplication.instance.window, viewController: viewController)
         let browseRepository = BrowseRepository(network: UIApplication.instance.network, storage: UIApplication.instance.storage)
-        let startViewModel = StartViewModel(browseRepository: browseRepository, sceneCoordinator: sceneCoordinator)
+        let startViewModel = FeaturedViewModel(browseRepository: browseRepository, sceneCoordinator: sceneCoordinator)
         viewController.bindToViewModel(to: startViewModel)
         return viewController
     }
