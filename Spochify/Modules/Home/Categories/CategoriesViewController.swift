@@ -10,10 +10,10 @@ import UIKit.UIViewController
 import RxSwift
 
 //TODO: change names
-class SearchViewController: UICollectionViewController, BindableType {
-    typealias ViewModelType = SearchViewModel
+class CategoriesViewController: UICollectionViewController, BindableType {
+    typealias ViewModelType = CategoriesViewModel
     
-    var viewModel: SearchViewModel!
+    var viewModel: CategoriesViewModel!
     private let flowLayout: UICollectionViewFlowLayout
     private let refreshControl: UIRefreshControl
     private let columns = 2

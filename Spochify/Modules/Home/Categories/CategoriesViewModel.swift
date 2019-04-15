@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class SearchViewModel {
+class CategoriesViewModel {
     
     private let browseRepository: BrowseRepository
     private let sceneCoordinator: SceneCoordinatorType

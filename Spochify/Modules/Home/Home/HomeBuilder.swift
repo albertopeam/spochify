@@ -44,10 +44,10 @@ class HomeBuilder {
     }
     
     private func buildSearchViewController() -> UIViewController {
-        var viewController = SearchViewController()
+        var viewController = CategoriesViewController()
         let sceneCoordinator = SceneCoordinator(window: UIApplication.instance.window, viewController: viewController)
         let browseRepository = BrowseRepository(network: UIApplication.instance.network, storage: UIApplication.instance.storage)
-        let searchViewModel = SearchViewModel(browseRepository: browseRepository, sceneCoordinator: sceneCoordinator)
+        let searchViewModel = CategoriesViewModel(browseRepository: browseRepository, sceneCoordinator: sceneCoordinator)
         viewController.bindToViewModel(to: searchViewModel)
         return viewController
     }

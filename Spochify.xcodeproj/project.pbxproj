@@ -36,7 +36,7 @@
 		C3AC5447225FE3A00007090C /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC5445225FE3A00007090C /* TrackTableViewCell.swift */; };
 		C3AC5448225FE3A00007090C /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3AC5446225FE3A00007090C /* TrackTableViewCell.xib */; };
 		C3C8C28F225C810900EFBED0 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C28E225C810900EFBED0 /* StartViewModel.swift */; };
-		C3C8C291225C811500EFBED0 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C290225C811500EFBED0 /* SearchViewModel.swift */; };
+		C3C8C291225C811500EFBED0 /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C290225C811500EFBED0 /* CategoriesViewModel.swift */; };
 		C3C8C293225C96F700EFBED0 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C292225C96F700EFBED0 /* UserRepository.swift */; };
 		C3C8C297225CA3A700EFBED0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C296225CA3A700EFBED0 /* User.swift */; };
 		C3C8C299225CB65800EFBED0 /* URL+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C298225CB65800EFBED0 /* URL+Init.swift */; };
@@ -54,7 +54,7 @@
 		C3E55AFC225B25E100DD3D9A /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55AFB225B25E100DD3D9A /* Playlist.swift */; };
 		C3E55AFE225B283E00DD3D9A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E55AFD225B283E00DD3D9A /* LoginViewController.xib */; };
 		C3E55B06225B289B00DD3D9A /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55B05225B289B00DD3D9A /* StartViewController.swift */; };
-		C3E55B0C225B2A4B00DD3D9A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55B0B225B2A4B00DD3D9A /* SearchViewController.swift */; };
+		C3E55B0C225B2A4B00DD3D9A /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E55B0B225B2A4B00DD3D9A /* CategoriesViewController.swift */; };
 		C3E55B14225B2F0000DD3D9A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3E55B13225B2F0000DD3D9A /* Localizable.strings */; };
 		C3E655F222636DB000649F2A /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E655F122636DB000649F2A /* HomeBuilder.swift */; };
 		C3EA0E97225E9188004C74CB /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EA0E96225E9188004C74CB /* Kingfisher.framework */; };
@@ -114,7 +114,7 @@
 		C3AC5445225FE3A00007090C /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		C3AC5446225FE3A00007090C /* TrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
 		C3C8C28E225C810900EFBED0 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
-		C3C8C290225C811500EFBED0 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		C3C8C290225C811500EFBED0 /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		C3C8C292225C96F700EFBED0 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		C3C8C296225CA3A700EFBED0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C3C8C298225CB65800EFBED0 /* URL+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Init.swift"; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 		C3E55AFB225B25E100DD3D9A /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		C3E55AFD225B283E00DD3D9A /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		C3E55B05225B289B00DD3D9A /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		C3E55B0B225B2A4B00DD3D9A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		C3E55B0B225B2A4B00DD3D9A /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		C3E55B13225B2F0000DD3D9A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C3E655F122636DB000649F2A /* HomeBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		C3EA0E96225E9188004C74CB /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -446,21 +446,21 @@
 			path = Start;
 			sourceTree = "<group>";
 		};
-		C3E55B02225B287D00DD3D9A /* Search */ = {
+		C3E55B02225B287D00DD3D9A /* Categories */ = {
 			isa = PBXGroup;
 			children = (
 				C3AAD3262264D67B0026254A /* View */,
-				C3E55B0B225B2A4B00DD3D9A /* SearchViewController.swift */,
-				C3C8C290225C811500EFBED0 /* SearchViewModel.swift */,
+				C3E55B0B225B2A4B00DD3D9A /* CategoriesViewController.swift */,
+				C3C8C290225C811500EFBED0 /* CategoriesViewModel.swift */,
 			);
-			path = Search;
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		C3EC9DFA225A553E00FD0376 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				C3D810BD2263262A00153C56 /* Home */,
-				C3E55B02225B287D00DD3D9A /* Search */,
+				C3E55B02225B287D00DD3D9A /* Categories */,
 				C3E55B01225B286600DD3D9A /* Start */,
 			);
 			path = Home;
@@ -635,7 +635,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3E55B0C225B2A4B00DD3D9A /* SearchViewController.swift in Sources */,
+				C3E55B0C225B2A4B00DD3D9A /* CategoriesViewController.swift in Sources */,
 				C3AC5432225F79270007090C /* Album.swift in Sources */,
 				C313AA5122622ACF003E2895 /* PlaylistHeaderView.swift in Sources */,
 				C3AAD3292264D69D0026254A /* CategoryCollectionViewCell.swift in Sources */,
@@ -646,7 +646,7 @@
 				C35995BA225BACCF00F3FAD2 /* Scene.swift in Sources */,
 				C31013C722581031009BDB95 /* Storage.swift in Sources */,
 				C3D810C12263267100153C56 /* HomeViewModel.swift in Sources */,
-				C3C8C291225C811500EFBED0 /* SearchViewModel.swift in Sources */,
+				C3C8C291225C811500EFBED0 /* CategoriesViewModel.swift in Sources */,
 				C3AC5447225FE3A00007090C /* TrackTableViewCell.swift in Sources */,
 				C3E55AFC225B25E100DD3D9A /* Playlist.swift in Sources */,
 				C3182E9A2257D7B400180BD5 /* AppDelegate.swift in Sources */,
