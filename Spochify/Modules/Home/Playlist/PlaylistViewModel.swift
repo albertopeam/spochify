@@ -25,7 +25,7 @@ class PlaylistViewModel {
     
     lazy var currentPlaylist: Observable<Playlist> = Observable.just(playlist)
     
-    lazy var tracks: Observable<[Track]> = playlistRepository.tracks
+    lazy var tracks: Observable<[Track]> = playlistRepository.tracks(playlistId: self.playlist.id)
     
     lazy var playAction: Action<Void, Void> = Action {
         //TODO: play

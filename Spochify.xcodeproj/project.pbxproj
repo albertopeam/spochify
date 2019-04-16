@@ -47,6 +47,7 @@
 		C3D810C62263322300153C56 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D810C52263322300153C56 /* LoginViewModel.swift */; };
 		C3DC4FA02265C8720069733D /* CategoryPlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4F9F2265C8720069733D /* CategoryPlaylistsViewController.swift */; };
 		C3DC4FA62265C9570069733D /* CategoryPlaylistsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4FA52265C9570069733D /* CategoryPlaylistsViewModel.swift */; };
+		C3DC4FAE2265D7240069733D /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4FAD2265D7240069733D /* Provider.swift */; };
 		C3DEBB8722594B2D00B6F9E7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DEBB8322594B2D00B6F9E7 /* RxSwift.framework */; };
 		C3DEBB8822594B2D00B6F9E7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DEBB8422594B2D00B6F9E7 /* RxCocoa.framework */; };
 		C3DFE95E225F23A0002D2AF4 /* PlaylistRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DFE95D225F23A0002D2AF4 /* PlaylistRepository.swift */; };
@@ -126,6 +127,7 @@
 		C3D810C52263322300153C56 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C3DC4F9F2265C8720069733D /* CategoryPlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPlaylistsViewController.swift; sourceTree = "<group>"; };
 		C3DC4FA52265C9570069733D /* CategoryPlaylistsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPlaylistsViewModel.swift; sourceTree = "<group>"; };
+		C3DC4FAD2265D7240069733D /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		C3DEBB8222594B2D00B6F9E7 /* RxAtomic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAtomic.framework; path = Carthage/Build/iOS/RxAtomic.framework; sourceTree = "<group>"; };
 		C3DEBB8322594B2D00B6F9E7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C3DEBB8422594B2D00B6F9E7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -271,15 +273,16 @@
 		C3182E982257D7B400180BD5 /* Spochify */ = {
 			isa = PBXGroup;
 			children = (
-				C35995B4225BACCE00F3FAD2 /* Scenes */,
+				C3182EA52257D7B600180BD5 /* Info.plist */,
+				C3182EA22257D7B600180BD5 /* LaunchScreen.storyboard */,
+				C3182E992257D7B400180BD5 /* AppDelegate.swift */,
+				C3DC4FAD2265D7240069733D /* Provider.swift */,
+				C3182EA02257D7B600180BD5 /* Assets.xcassets */,
 				C35995AE225B55E600F3FAD2 /* Common */,
 				C31013CA22581229009BDB95 /* Core */,
 				C31013C922581209009BDB95 /* Modules */,
 				C31013CC225814B8009BDB95 /* Resources */,
-				C3182E992257D7B400180BD5 /* AppDelegate.swift */,
-				C3182EA02257D7B600180BD5 /* Assets.xcassets */,
-				C3182EA22257D7B600180BD5 /* LaunchScreen.storyboard */,
-				C3182EA52257D7B600180BD5 /* Info.plist */,
+				C35995B4225BACCE00F3FAD2 /* Scenes */,
 			);
 			path = Spochify;
 			sourceTree = "<group>";
@@ -685,6 +688,7 @@
 				C3AAD3252264C8940026254A /* Category.swift in Sources */,
 				C35995BD225BACCF00F3FAD2 /* SceneTransitionType.swift in Sources */,
 				C3D810BF2263264F00153C56 /* HomeViewController.swift in Sources */,
+				C3DC4FAE2265D7240069733D /* Provider.swift in Sources */,
 				C3C8C299225CB65800EFBED0 /* URL+Init.swift in Sources */,
 				C36C86F5225CEE970035DCF8 /* BindableType.swift in Sources */,
 				C3AC5434225F802E0007090C /* UICollectionViewFlowLayout+Columns.swift in Sources */,

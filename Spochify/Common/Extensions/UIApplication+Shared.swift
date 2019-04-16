@@ -18,4 +18,8 @@ extension UIApplication {
         }
     }
     
+    static var provider: Provider {
+        return instance.provider
+    }
+    
 }

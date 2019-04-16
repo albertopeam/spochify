@@ -15,7 +15,7 @@ class HomeBuilder {
     func build() -> (vc: HomeViewController, hvm: HomeViewModel) {
         let homeViewController = HomeViewController()
         let sceneCoordinator: SceneCoordinatorType = SceneCoordinator(window: UIApplication.instance.window, viewController: homeViewController)
-        let homeViewModel = HomeViewModel(userRepository: UIApplication.instance.userRepository, sceneCoordinator: sceneCoordinator)
+        let homeViewModel = HomeViewModel(userRepository: UIApplication.provider.userRepository, sceneCoordinator: sceneCoordinator)
         
         homeViewController.title = String(localizedKey: String.Key.appName)
         
@@ -37,8 +37,7 @@ class HomeBuilder {
     private func buildStartViewController() -> UIViewController {
         var viewController = FeaturedViewController()
         let sceneCoordinator = SceneCoordinator(window: UIApplication.instance.window, viewController: viewController)
-        let browseRepository = BrowseRepository(network: UIApplication.instance.network, storage: UIApplication.instance.storage)
-        let startViewModel = FeaturedViewModel(browseRepository: browseRepository, sceneCoordinator: sceneCoordinator)
+        let startViewModel = FeaturedViewModel(browseRepository: UIApplication.provider.browseRepository, sceneCoordinator: sceneCoordinator)
         viewController.bindToViewModel(to: startViewModel)
         return viewController
     }
@@ -46,8 +45,7 @@ class HomeBuilder {
     private func buildSearchViewController() -> UIViewController {
         var viewController = CategoriesViewController()
         let sceneCoordinator = SceneCoordinator(window: UIApplication.instance.window, viewController: viewController)
-        let browseRepository = BrowseRepository(network: UIApplication.instance.network, storage: UIApplication.instance.storage)
-        let searchViewModel = CategoriesViewModel(browseRepository: browseRepository, sceneCoordinator: sceneCoordinator)
+        let searchViewModel = CategoriesViewModel(browseRepository: UIApplication.provider.browseRepository, sceneCoordinator: sceneCoordinator)
         viewController.bindToViewModel(to: searchViewModel)
         return viewController
     }

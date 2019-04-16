@@ -16,40 +16,38 @@ class PlaylistRepository {
     
     private let network: Network
     private let storage: Storage
-    //TODO: TRY to remove... de id from here
-    private let playlistId: String
     
     init(network: Network,
-         storage: Storage,
-         playlistId: String) {
+         storage: Storage) {
         self.network = network
         self.storage = storage
-        self.playlistId = playlistId
         
     }
     
-    lazy var tracks: Observable<[Track]> = storage.accessTokenVariable.asObservable()
-        .flatMap({ self.network.urlSession.rx.response(request: self.network.playlistTracksRequest(playlistId: self.playlistId, accessToken: $0))})
-        .filter({ response, _ in 200..<300 ~= response.statusCode })
-        .map({ (response, data) -> TrackListCodable? in
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            return try? decoder.decode(TrackListCodable.self, from: data)
-        })
-        .flatMap({ Observable.from(optional: $0?.items) })
-        .flatMap({ (items) -> Observable<[Track]> in
-            let tracks = items.map({ (item) -> Track in
-                //TODO: move to an extension or something
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd"
-                let date = dateFormatter.date(from: item.track.album.releaseDate) ?? Date()
-                let album = Album(id: item.track.album.id, name: item.track.album.name, releaseDate: date, numTracks: item.track.album.totalTracks, image: URL(string: item.track.album.images?.first?.url))
-                return Track(id: item.track.id, title: item.track.name, popularity: item.track.popularity, url: item.track.previewUrl, explicit: item.track.explicit, album: album)
+    func tracks(playlistId: String) -> Observable<[Track]> {
+        return storage.accessTokenVariable.asObservable()
+            .flatMap({ self.network.urlSession.rx.response(request: self.network.playlistTracksRequest(playlistId: playlistId, accessToken: $0))})
+            .filter({ response, _ in 200..<300 ~= response.statusCode })
+            .map({ (response, data) -> TrackListCodable? in
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                return try? decoder.decode(TrackListCodable.self, from: data)
             })
-            return Observable.just(tracks)
-        })
-        .share(replay: 1, scope: .forever)
-        .debug()
+            .flatMap({ Observable.from(optional: $0?.items) })
+            .flatMap({ (items) -> Observable<[Track]> in
+                let tracks = items.map({ (item) -> Track in
+                    //TODO: move to an extension or something
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    let date = dateFormatter.date(from: item.track.album.releaseDate) ?? Date()
+                    let album = Album(id: item.track.album.id, name: item.track.album.name, releaseDate: date, numTracks: item.track.album.totalTracks, image: URL(string: item.track.album.images?.first?.url))
+                    return Track(id: item.track.id, title: item.track.name, popularity: item.track.popularity, url: item.track.previewUrl, explicit: item.track.explicit, album: album)
+                })
+                return Observable.just(tracks)
+            })
+            .share(replay: 1, scope: .forever)
+            .debug()
+    }
     
 }
 
