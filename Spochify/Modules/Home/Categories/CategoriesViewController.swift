@@ -9,7 +9,6 @@
 import UIKit.UIViewController
 import RxSwift
 
-//TODO: change names
 class CategoriesViewController: UICollectionViewController, BindableType {
     typealias ViewModelType = CategoriesViewModel
     
