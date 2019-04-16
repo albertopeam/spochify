@@ -10,5 +10,6 @@ import Foundation
 
 enum Scene {
     case login(sceneCoordinator: SceneCoordinatorType)
-    case playlist(viewModel: Playlist, sceneCoordinator: SceneCoordinatorType)
+    case playlist(playlist: Playlist, sceneCoordinator: SceneCoordinatorType)
+    case categoryPlaylists(category: Category, sceneCoordinator: SceneCoordinatorType)
 }

@@ -1,23 +1,22 @@
 //
-//  SearchViewController.swift
+//  CategoryPlaylistsViewController.swift
 //  Spochify
 //
-//  Created by Alberto on 08/04/2019.
+//  Created by Alberto on 16/04/2019.
 //  Copyright © 2019 com.github.albertopeam. All rights reserved.
 //
 
-import UIKit.UIViewController
+import UIKit
 import RxSwift
 
-//TODO: change names
-class CategoriesViewController: UICollectionViewController, BindableType {
-    typealias ViewModelType = CategoriesViewModel
+class CategoryPlaylistsViewController: UICollectionViewController, BindableType {
+    typealias ViewModelType = CategoryPlaylistsViewModel
     
-    var viewModel: CategoriesViewModel!
     private let flowLayout: UICollectionViewFlowLayout
     private let refreshControl: UIRefreshControl
     private let columns = 2
     private let disposeBag = DisposeBag()
+    var viewModel: CategoryPlaylistsViewModel!
     
     init() {
         flowLayout = UICollectionViewFlowLayout()
@@ -35,9 +34,8 @@ class CategoriesViewController: UICollectionViewController, BindableType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = String(localizedKey: String.Key.navCategories)
         collectionView.backgroundColor = .white
-        collectionView.register(UINib(nibName: "CategoryCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
+        collectionView.register(UINib(nibName: "PlaylistCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
         collectionView.addSubview(refreshControl)
         collectionView.alwaysBounceVertical = true
         refreshControl.beginRefreshing()
@@ -45,7 +43,14 @@ class CategoriesViewController: UICollectionViewController, BindableType {
     }
     
     func bindViewModel() {
-        viewModel.categories
+        viewModel.currentCategory()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (category) in
+                self.title = category.name
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.playlists()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (_) in
                 self.refreshControl.endRefreshing()
@@ -54,16 +59,17 @@ class CategoriesViewController: UICollectionViewController, BindableType {
             })
             .disposed(by: disposeBag)
         
-        viewModel.categories
+        viewModel.playlists()
             .observeOn(MainScheduler.instance)
-            .bind(to: collectionView.rx.items(cellIdentifier: CategoryCollectionViewCell.identifier)) { index, model, cell in
-                guard let cell = cell as? CategoryCollectionViewCell else { fatalError() }
-                cell.draw(category: model)
-            }.disposed(by: disposeBag)
+            .bind(to: collectionView.rx.items(cellIdentifier: PlaylistCollectionViewCell.identifier)) { index, model, cell in
+                guard let cell = cell as? PlaylistCollectionViewCell else { fatalError() }
+                cell.draw(playlist: model)
+            }
+            .disposed(by: disposeBag)
         
         collectionView.rx
-            .modelSelected(Category.self)
-            .flatMap({ self.viewModel.tappedCategory.execute($0) })            
+            .modelSelected(Playlist.self)
+            .flatMap({ self.viewModel.tappedPlaylist.execute($0) })
             .subscribe()
             .disposed(by: disposeBag)
     }

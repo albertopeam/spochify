@@ -26,7 +26,7 @@ class FeaturedViewModel {
     }
     
     func tapped(playlist: Playlist) {
-        sceneCoordinator.transition(to: Scene.playlist(viewModel: playlist, sceneCoordinator: sceneCoordinator), type: SceneTransitionType.push)
+        sceneCoordinator.transition(to: Scene.playlist(playlist: playlist, sceneCoordinator: sceneCoordinator), type: SceneTransitionType.push)
     }
     
 }

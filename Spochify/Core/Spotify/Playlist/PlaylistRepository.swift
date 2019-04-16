@@ -9,10 +9,14 @@
 import RxCocoa
 import RxSwift
 
+//TODO:
+//TODO: remove all 200..300 to avoid never respond
+//TODO:
 class PlaylistRepository {
     
     private let network: Network
     private let storage: Storage
+    //TODO: TRY to remove... de id from here
     private let playlistId: String
     
     init(network: Network,

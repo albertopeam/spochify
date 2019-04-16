@@ -45,6 +45,8 @@
 		C3D810C322632BB800153C56 /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D810C222632BB800153C56 /* Action.framework */; };
 		C3D810C422632DD500153C56 /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DEBB8222594B2D00B6F9E7 /* RxAtomic.framework */; };
 		C3D810C62263322300153C56 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D810C52263322300153C56 /* LoginViewModel.swift */; };
+		C3DC4FA02265C8720069733D /* CategoryPlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4F9F2265C8720069733D /* CategoryPlaylistsViewController.swift */; };
+		C3DC4FA62265C9570069733D /* CategoryPlaylistsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4FA52265C9570069733D /* CategoryPlaylistsViewModel.swift */; };
 		C3DEBB8722594B2D00B6F9E7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DEBB8322594B2D00B6F9E7 /* RxSwift.framework */; };
 		C3DEBB8822594B2D00B6F9E7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DEBB8422594B2D00B6F9E7 /* RxCocoa.framework */; };
 		C3DFE95E225F23A0002D2AF4 /* PlaylistRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DFE95D225F23A0002D2AF4 /* PlaylistRepository.swift */; };
@@ -122,6 +124,8 @@
 		C3D810C02263267100153C56 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C3D810C222632BB800153C56 /* Action.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Action.framework; path = Carthage/Build/iOS/Action.framework; sourceTree = "<group>"; };
 		C3D810C52263322300153C56 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C3DC4F9F2265C8720069733D /* CategoryPlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPlaylistsViewController.swift; sourceTree = "<group>"; };
+		C3DC4FA52265C9570069733D /* CategoryPlaylistsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPlaylistsViewModel.swift; sourceTree = "<group>"; };
 		C3DEBB8222594B2D00B6F9E7 /* RxAtomic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAtomic.framework; path = Carthage/Build/iOS/RxAtomic.framework; sourceTree = "<group>"; };
 		C3DEBB8322594B2D00B6F9E7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C3DEBB8422594B2D00B6F9E7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -339,19 +343,18 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		C3AC5435225FDE5B0007090C /* View */ = {
+		C3AAD32B226532F50026254A /* CategoryPlaylists */ = {
 			isa = PBXGroup;
 			children = (
-				C3DFF172225E32690041B7C8 /* PlaylistCollectionViewCell.swift */,
-				C3DFF173225E32690041B7C8 /* PlaylistCollectionViewCell.xib */,
+				C3DC4F9F2265C8720069733D /* CategoryPlaylistsViewController.swift */,
+				C3DC4FA52265C9570069733D /* CategoryPlaylistsViewModel.swift */,
 			);
-			path = View;
+			path = CategoryPlaylists;
 			sourceTree = "<group>";
 		};
 		C3AC5436225FE20D0007090C /* Featured */ = {
 			isa = PBXGroup;
 			children = (
-				C3AC5435225FDE5B0007090C /* View */,
 				C3E55B05225B289B00DD3D9A /* FeaturedViewController.swift */,
 				C3C8C28E225C810900EFBED0 /* FeaturedViewModel.swift */,
 			);
@@ -371,8 +374,6 @@
 		C3AC5444225FE3710007090C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C3AC5445225FE3A00007090C /* TrackTableViewCell.swift */,
-				C3AC5446225FE3A00007090C /* TrackTableViewCell.xib */,
 				C313AA5022622ACF003E2895 /* PlaylistHeaderView.swift */,
 			);
 			path = View;
@@ -402,6 +403,33 @@
 				C3D810C02263267100153C56 /* HomeViewModel.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		C3DC4FA22265C8B50069733D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C3DC4FA42265C9030069733D /* Track */,
+				C3DC4FA32265C8D20069733D /* Playlist */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C3DC4FA32265C8D20069733D /* Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				C3DFF172225E32690041B7C8 /* PlaylistCollectionViewCell.swift */,
+				C3DFF173225E32690041B7C8 /* PlaylistCollectionViewCell.xib */,
+			);
+			path = Playlist;
+			sourceTree = "<group>";
+		};
+		C3DC4FA42265C9030069733D /* Track */ = {
+			isa = PBXGroup;
+			children = (
+				C3AC5445225FE3A00007090C /* TrackTableViewCell.swift */,
+				C3AC5446225FE3A00007090C /* TrackTableViewCell.xib */,
+			);
+			path = Track;
 			sourceTree = "<group>";
 		};
 		C3DEBB8122594B2D00B6F9E7 /* Frameworks */ = {
@@ -450,6 +478,8 @@
 		C3EC9DFA225A553E00FD0376 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				C3DC4FA22265C8B50069733D /* View */,
+				C3AAD32B226532F50026254A /* CategoryPlaylists */,
 				C3AC5437225FE2290007090C /* Playlist */,
 				C3D810BD2263262A00153C56 /* Home */,
 				C3E55B02225B287D00DD3D9A /* Categories */,
@@ -641,6 +671,7 @@
 				C3C8C291225C811500EFBED0 /* CategoriesViewModel.swift in Sources */,
 				C3AC5447225FE3A00007090C /* TrackTableViewCell.swift in Sources */,
 				C3E55AFC225B25E100DD3D9A /* Playlist.swift in Sources */,
+				C3DC4FA02265C8720069733D /* CategoryPlaylistsViewController.swift in Sources */,
 				C3182E9A2257D7B400180BD5 /* AppDelegate.swift in Sources */,
 				C3AC5440225FE3470007090C /* PlaylistViewController.swift in Sources */,
 				C35995B1225B560300F3FAD2 /* String+Localizable.swift in Sources */,
@@ -664,6 +695,7 @@
 				C3EC9DFC225A55E100FD0376 /* BrowseRepository.swift in Sources */,
 				C3D810C62263322300153C56 /* LoginViewModel.swift in Sources */,
 				C3DFE961225F27FC002D2AF4 /* Track.swift in Sources */,
+				C3DC4FA62265C9570069733D /* CategoryPlaylistsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

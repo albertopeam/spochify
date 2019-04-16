@@ -25,7 +25,7 @@ class BrowseRepository {
     lazy var featured: Observable<[Playlist]> = storage.accessTokenVariable.asObservable()
         .flatMap({ self.network.urlSession.rx.response(request: self.network.featuredPlayListRequest(accessToken: $0)) })
         .filter({ response, _ in 200..<300 ~= response.statusCode })
-        .map({ (_, data) in try? JSONDecoder().decode(FeaturedPlayListCodable.self, from: data) })
+        .map({ (_, data) in try? JSONDecoder().decode(PlayListResponseCodable.self, from: data) })
         .flatMap({ Observable.from(optional: $0?.playlists.items) })
         .flatMap({ (playlist) -> Observable<[Playlist]> in
             let items = playlist.map { Playlist(id: $0.id, name: $0.name, image: URL(string: $0.images?.first?.url ?? ""), tracks: $0.tracks.total) }
@@ -44,6 +44,19 @@ class BrowseRepository {
         })
         .share(replay: 1, scope: .forever)
         .debug()
+    
+    func playlistsForCategory(categoryId: String) -> Observable<[Playlist]>{
+        return storage.accessTokenVariable.asObservable()
+            .flatMap({ self.network.urlSession.rx.response(request: self.network.categoryPlaylist(categoryId: categoryId, accessToken: $0)) })
+            .map({ (_, data) in try? JSONDecoder().decode(PlayListResponseCodable.self, from: data) })
+            .flatMap({ Observable.from(optional: $0?.playlists.items) })
+            .flatMap({ (playlist) -> Observable<[Playlist]> in
+                let items = playlist.map { Playlist(id: $0.id, name: $0.name, image: URL(string: $0.images?.first?.url ?? ""), tracks: $0.tracks.total) }
+                return Observable.just(items)
+            })
+            .share(replay: 1, scope: .forever)
+            .debug()
+    }
 
 }
 
@@ -51,28 +64,21 @@ extension BrowseRepository {
     
     // MARK: playlist
     
-    private struct FeaturedPlayListCodable: Codable {
+    private struct PlayListResponseCodable: Codable {
         let playlists: PlayListsCodable
-    }
-
-    private struct PlayListsCodable: Codable {
-        let items: [PlayListCodable]
-    }
-
-    private struct PlayListCodable: Codable {
-        let id: String
-        let name: String
-        let images: [ImageCodable]?
-        let tracks: Tracks
-    }
-
-    private struct ImageCodable: Codable {
-        let url: String
-    }
-
-    private struct Tracks: Codable {
-        let href: String
-        let total: Int
+        struct PlayListsCodable: Codable {
+            let items: [PlayListCodable]
+            struct PlayListCodable: Codable {
+                let id: String
+                let name: String
+                let images: [ImageCodable]?
+                let tracks: Tracks
+                struct Tracks: Codable {
+                    let href: String
+                    let total: Int
+                }
+            }
+        }
     }
     
     // MARK: categories
@@ -87,5 +93,11 @@ extension BrowseRepository {
                 let icons: [ImageCodable]?
             }
         }
+    }
+    
+    // MARK: shared
+    
+    private struct ImageCodable: Codable {
+        let url: String
     }
 }

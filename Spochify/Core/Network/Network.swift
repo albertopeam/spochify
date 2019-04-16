@@ -47,8 +47,8 @@ class Network {
         return request
     }
     
-    func categoryPlaylist(playlistId: String, accessToken: String) -> URLRequest {
-        let catetoryPlaylistUrl = URL(string: categoryPlaylist.replacingOccurrences(of: "{category_id}", with: playlistId))!
+    func categoryPlaylist(categoryId: String, accessToken: String) -> URLRequest {
+        let catetoryPlaylistUrl = URL(string: categoryPlaylist.replacingOccurrences(of: "{category_id}", with: categoryId))!
         var request = URLRequest(url: catetoryPlaylistUrl)
         request.allHTTPHeaderFields = ["Authorization": "Bearer \(accessToken)"]
         return request

@@ -20,12 +20,12 @@ class HomeBuilder {
         homeViewController.title = String(localizedKey: String.Key.appName)
         
         let startViewController = buildStartViewController()
-        startViewController.tabBarItem.title = String(localizedKey: String.Key.tabStart)
-        startViewController.tabBarItem.image = UIImage(named: "baseline_home_black_24pt")
+        startViewController.tabBarItem.title = String(localizedKey: String.Key.tabFeatured)
+        startViewController.tabBarItem.image = UIImage(named: "outline_home_black_24pt")
         
         let searchViewController = buildSearchViewController()
-        searchViewController.tabBarItem.title = String(localizedKey: String.Key.tabSearch)
-        searchViewController.tabBarItem.image = UIImage(named: "baseline_search_black_24pt")
+        searchViewController.tabBarItem.title = String(localizedKey: String.Key.tabCategories)
+        searchViewController.tabBarItem.image = UIImage(named: "outline_view_agenda_black_24pt")
         
         homeViewController.viewControllers = [UINavigationController(rootViewController: startViewController),
                                             UINavigationController(rootViewController: searchViewController)]

@@ -23,6 +23,11 @@ extension Scene {
             let viewModel = PlaylistViewModel(playlist: playlist, playlistRepository: playlistRepository, sceneCoordinator: sceneCoordinator)
             viewController.bindToViewModel(to: viewModel)
             return viewController
+        case .categoryPlaylists(let category, let sceneCoordinator):
+            let viewModel = CategoryPlaylistsViewModel(category: category, browseRepository: UIApplication.instance.browseRepository, sceneCoordinator: sceneCoordinator)
+            var viewController = CategoryPlaylistsViewController()
+            viewController.bindToViewModel(to: viewModel)
+            return viewController
         }
     }
     

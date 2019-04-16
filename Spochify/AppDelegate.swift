@@ -15,12 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var storage: Storage!
     var network: Network!
     var userRepository: UserRepository!
+    var browseRepository: BrowseRepository!
     
     override init() {
         super.init()
         storage = Storage()
         network = Network(urlSession: URLSession.shared, storage: storage)
         userRepository = UserRepository(network: network, storage: storage)
+        browseRepository = BrowseRepository(network: network, storage: storage)
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

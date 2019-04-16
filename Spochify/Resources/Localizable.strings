@@ -9,8 +9,8 @@
 "app_name" = "Spochify";
 
 // MARK: tabs
-"tab_start" = "Start";
-"tab_search" = "Search";
+"tab_featured" = "Featured";
+"tab_categories" = "Categories";
 
 // MARK: navigation titles
 "nav_featured" = "Featured";
