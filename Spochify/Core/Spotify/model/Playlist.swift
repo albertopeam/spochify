@@ -12,5 +12,5 @@ struct Playlist {
     let id: String
     let name: String
     let image: URL?
-    let tracks: Int
+    let tracks: [Track]
 }

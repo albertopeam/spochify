@@ -28,7 +28,7 @@ class BrowseRepository {
         .map({ (_, data) in try? JSONDecoder().decode(PlayListResponseCodable.self, from: data) })
         .flatMap({ Observable.from(optional: $0?.playlists.items) })
         .flatMap({ (playlist) -> Observable<[Playlist]> in
-            let items = playlist.map { Playlist(id: $0.id, name: $0.name, image: URL(string: $0.images?.first?.url ?? ""), tracks: $0.tracks.total) }
+            let items = playlist.map { Playlist(id: $0.id, name: $0.name, image: URL(string: $0.images?.first?.url ?? ""), tracks: []) }
             return Observable.just(items)
         })
         .share(replay: 1, scope: .forever)
@@ -51,7 +51,7 @@ class BrowseRepository {
             .map({ (_, data) in try? JSONDecoder().decode(PlayListResponseCodable.self, from: data) })
             .flatMap({ Observable.from(optional: $0?.playlists.items) })
             .flatMap({ (playlist) -> Observable<[Playlist]> in
-                let items = playlist.map { Playlist(id: $0.id, name: $0.name, image: URL(string: $0.images?.first?.url ?? ""), tracks: $0.tracks.total) }
+                let items = playlist.map { Playlist(id: $0.id, name: $0.name, image: URL(string: $0.images?.first?.url ?? ""), tracks: []) }
                 return Observable.just(items)
             })
             .share(replay: 1, scope: .forever)

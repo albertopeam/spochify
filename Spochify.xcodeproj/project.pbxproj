@@ -48,6 +48,10 @@
 		C3DC4FA02265C8720069733D /* CategoryPlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4F9F2265C8720069733D /* CategoryPlaylistsViewController.swift */; };
 		C3DC4FA62265C9570069733D /* CategoryPlaylistsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4FA52265C9570069733D /* CategoryPlaylistsViewModel.swift */; };
 		C3DC4FAE2265D7240069733D /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4FAD2265D7240069733D /* Provider.swift */; };
+		C3DC4FB1226611F70069733D /* SmallPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4FB0226611F70069733D /* SmallPlayerView.swift */; };
+		C3DC4FB4226612AC0069733D /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4FB2226612AC0069733D /* PlayerViewController.swift */; };
+		C3DC4FB5226612AC0069733D /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3DC4FB3226612AC0069733D /* PlayerViewController.xib */; };
+		C3DC4FB8226618690069733D /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4FB7226618690069733D /* PlayerViewModel.swift */; };
 		C3DEBB8722594B2D00B6F9E7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DEBB8322594B2D00B6F9E7 /* RxSwift.framework */; };
 		C3DEBB8822594B2D00B6F9E7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DEBB8422594B2D00B6F9E7 /* RxCocoa.framework */; };
 		C3DFE95E225F23A0002D2AF4 /* PlaylistRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DFE95D225F23A0002D2AF4 /* PlaylistRepository.swift */; };
@@ -128,6 +132,10 @@
 		C3DC4F9F2265C8720069733D /* CategoryPlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPlaylistsViewController.swift; sourceTree = "<group>"; };
 		C3DC4FA52265C9570069733D /* CategoryPlaylistsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPlaylistsViewModel.swift; sourceTree = "<group>"; };
 		C3DC4FAD2265D7240069733D /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		C3DC4FB0226611F70069733D /* SmallPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallPlayerView.swift; sourceTree = "<group>"; };
+		C3DC4FB2226612AC0069733D /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		C3DC4FB3226612AC0069733D /* PlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
+		C3DC4FB7226618690069733D /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		C3DEBB8222594B2D00B6F9E7 /* RxAtomic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAtomic.framework; path = Carthage/Build/iOS/RxAtomic.framework; sourceTree = "<group>"; };
 		C3DEBB8322594B2D00B6F9E7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C3DEBB8422594B2D00B6F9E7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -206,6 +214,7 @@
 		C31013C922581209009BDB95 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C3DC4FAF2265F1250069733D /* Player */,
 				C3EC9DFA225A553E00FD0376 /* Home */,
 				C31013CB22581299009BDB95 /* Login */,
 			);
@@ -435,6 +444,25 @@
 			path = Track;
 			sourceTree = "<group>";
 		};
+		C3DC4FAF2265F1250069733D /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				C3DC4FB9226618710069733D /* View */,
+				C3DC4FB0226611F70069733D /* SmallPlayerView.swift */,
+				C3DC4FB2226612AC0069733D /* PlayerViewController.swift */,
+				C3DC4FB7226618690069733D /* PlayerViewModel.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		C3DC4FB9226618710069733D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C3DC4FB3226612AC0069733D /* PlayerViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C3DEBB8122594B2D00B6F9E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -601,6 +629,7 @@
 				C3E55B14225B2F0000DD3D9A /* Localizable.strings in Resources */,
 				C3182EA42257D7B600180BD5 /* LaunchScreen.storyboard in Resources */,
 				C3DFF175225E32690041B7C8 /* PlaylistCollectionViewCell.xib in Resources */,
+				C3DC4FB5226612AC0069733D /* PlayerViewController.xib in Resources */,
 				C3182EA12257D7B600180BD5 /* Assets.xcassets in Resources */,
 				C3AC5448225FE3A00007090C /* TrackTableViewCell.xib in Resources */,
 			);
@@ -660,6 +689,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3DC4FB1226611F70069733D /* SmallPlayerView.swift in Sources */,
 				C3E55B0C225B2A4B00DD3D9A /* CategoriesViewController.swift in Sources */,
 				C3AC5432225F79270007090C /* Album.swift in Sources */,
 				C313AA5122622ACF003E2895 /* PlaylistHeaderView.swift in Sources */,
@@ -676,9 +706,11 @@
 				C3E55AFC225B25E100DD3D9A /* Playlist.swift in Sources */,
 				C3DC4FA02265C8720069733D /* CategoryPlaylistsViewController.swift in Sources */,
 				C3182E9A2257D7B400180BD5 /* AppDelegate.swift in Sources */,
+				C3DC4FB4226612AC0069733D /* PlayerViewController.swift in Sources */,
 				C3AC5440225FE3470007090C /* PlaylistViewController.swift in Sources */,
 				C35995B1225B560300F3FAD2 /* String+Localizable.swift in Sources */,
 				C3C8C297225CA3A700EFBED0 /* User.swift in Sources */,
+				C3DC4FB8226618690069733D /* PlayerViewModel.swift in Sources */,
 				C3E655F222636DB000649F2A /* HomeBuilder.swift in Sources */,
 				C35995BE225BACCF00F3FAD2 /* SceneCoordinator.swift in Sources */,
 				C3AC5443225FE36C0007090C /* PlaylistViewModel.swift in Sources */,

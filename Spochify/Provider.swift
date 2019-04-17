@@ -10,16 +10,16 @@ import Foundation
 
 class Provider {
     
+    let network: Network
+    let storage: Storage
     let userRepository: UserRepository
     let browseRepository: BrowseRepository
-    let playlistRepository: PlaylistRepository
     
     init(urlSession: URLSession = .shared) {
-        let storage = Storage()
-        let network = Network(urlSession: urlSession, storage: storage)
+        storage = Storage()
+        network = Network(urlSession: urlSession, storage: storage)
         userRepository = UserRepository(network: network, storage: storage)
-        browseRepository = BrowseRepository(network: network, storage: storage)
-        playlistRepository = PlaylistRepository(network: network, storage: storage)
+        browseRepository = BrowseRepository(network: network, storage: storage)        
     }
     
 }

@@ -11,26 +11,23 @@ import Action
 
 class PlaylistViewModel {
     
-    private let playlist: Playlist
     private let playlistRepository: PlaylistRepository
     private let sceneCoordinator: SceneCoordinatorType
     
-    init(playlist: Playlist,
-         playlistRepository: PlaylistRepository,
+    init(playlistRepository: PlaylistRepository,
          sceneCoordinator: SceneCoordinatorType) {
-        self.playlist = playlist
         self.playlistRepository = playlistRepository
         self.sceneCoordinator = sceneCoordinator
     }
     
-    lazy var currentPlaylist: Observable<Playlist> = Observable.just(playlist)
+    lazy var currentPlaylist = playlistRepository.fullPlaylist
     
-    lazy var tracks: Observable<[Track]> = playlistRepository.tracks(playlistId: self.playlist.id)
-    
-    lazy var playAction: Action<Void, Void> = Action {
-        //TODO: play
-        print("TODO: play")
-        return Observable.empty()
+    lazy var tappedPlay: Action<Void, Void> = Action {
+        return self.playlistRepository.fullPlaylist.flatMap({ (playlist) -> Observable<Void> in
+            return self.sceneCoordinator
+                .transition(to: Scene.player(playlist: playlist, sceneCoordinator: self.sceneCoordinator), type: SceneTransitionType.modal)
+                .andThen(Observable<Void>.empty())
+        })
     }
     
 }

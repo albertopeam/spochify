@@ -19,12 +19,18 @@ extension Scene {
             return viewController
         case .playlist(let playlist, let sceneCoordinator):
             var viewController = PlaylistViewController()
-            let viewModel = PlaylistViewModel(playlist: playlist, playlistRepository: UIApplication.provider.playlistRepository, sceneCoordinator: sceneCoordinator)
+            let playlistRepository = PlaylistRepository(playlist: playlist, network: UIApplication.provider.network, storage: UIApplication.provider.storage)
+            let viewModel = PlaylistViewModel(playlistRepository: playlistRepository, sceneCoordinator: sceneCoordinator)
             viewController.bindToViewModel(to: viewModel)
             return viewController
         case .categoryPlaylists(let category, let sceneCoordinator):
             let viewModel = CategoryPlaylistsViewModel(category: category, browseRepository: UIApplication.provider.browseRepository, sceneCoordinator: sceneCoordinator)
             var viewController = CategoryPlaylistsViewController()
+            viewController.bindToViewModel(to: viewModel)
+            return viewController
+        case .player(let playlist, _):
+            var viewController = PlayerViewController()
+            let viewModel = PlayerViewModel(playlist: playlist)
             viewController.bindToViewModel(to: viewModel)
             return viewController
         }
