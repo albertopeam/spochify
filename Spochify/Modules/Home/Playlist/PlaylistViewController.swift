@@ -13,7 +13,10 @@ import RxCocoa
 class PlaylistViewController: UITableViewController, BindableType {
     typealias ViewModelType = PlaylistViewModel
     
+    private let header: PlaylistHeaderView
     private let disposeBag = DisposeBag()
+    //TODO: shitty... SIDE EFFECTS + DISPOSES BAG, IT COULDN'T BE RESOLVED WITH ACTIONS/LAZY VARS... THE PROBLEM IS THAT WHEN LAUNCHED THE ACTION THE REPOSITORY NEVER RESPOND, APPARENTLY IS LIKE WE ARE NOT DOING A SUSCRIPTION...
+    private var playlist: Playlist?
     var viewModel: PlaylistViewModel!
     
     private enum ViewTraits {
@@ -21,6 +24,7 @@ class PlaylistViewController: UITableViewController, BindableType {
     }
     
     init() {
+        header = PlaylistHeaderView()
         super.init(style: UITableView.Style.plain)
     }
     
@@ -46,7 +50,7 @@ class PlaylistViewController: UITableViewController, BindableType {
     }
     
     func bindViewModel() {
-        viewModel.currentPlaylist
+        viewModel.currentPlaylist()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (_) in
                 self.refreshControl?.endRefreshing()
@@ -55,16 +59,18 @@ class PlaylistViewController: UITableViewController, BindableType {
             })
             .disposed(by: disposeBag)
         
-        viewModel.currentPlaylist
+        viewModel.currentPlaylist()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (playlist) in
+                self.playlist = playlist
                 self.title = playlist.name
-                //TODO: se pierde el tap la segunda vez que se entra...
-                self.tableView.tableHeaderView = PlaylistHeaderView(playlist: playlist, action: self.viewModel.tappedPlay)
+                self.tableView.tableHeaderView = self.header
+                self.header.draw(playlist: playlist)
             })
             .disposed(by: disposeBag)
         
-        viewModel.currentPlaylist
+        viewModel.currentPlaylist()
+            .observeOn(MainScheduler.instance)
             .map({ $0.tracks })
             .bind(to: tableView.rx.items(cellIdentifier: TrackTableViewCell.identifier)) { index, model, cell in
                 guard let cell = cell as? TrackTableViewCell else { fatalError() }
@@ -75,6 +81,13 @@ class PlaylistViewController: UITableViewController, BindableType {
             .itemSelected
             .subscribe(onNext: { indexPath in
                 self.tableView.deselectRow(at: indexPath, animated: true)
+            }).disposed(by: disposeBag)
+        
+        header.playButton.rx
+            .tap
+            .subscribe({ _ in
+                guard let playlist = self.playlist else { return }
+                self.viewModel.tappedPlay.execute(playlist)
             }).disposed(by: disposeBag)
     }
     

@@ -19,15 +19,15 @@ class PlaylistViewModel {
         self.playlistRepository = playlistRepository
         self.sceneCoordinator = sceneCoordinator
     }
+
+    func currentPlaylist() -> Observable<Playlist> {
+        return playlistRepository.fullPlaylist
+    }
     
-    lazy var currentPlaylist = playlistRepository.fullPlaylist
-    
-    lazy var tappedPlay: Action<Void, Void> = Action {
-        return self.playlistRepository.fullPlaylist.flatMap({ (playlist) -> Observable<Void> in
-            return self.sceneCoordinator
-                .transition(to: Scene.player(playlist: playlist, sceneCoordinator: self.sceneCoordinator), type: SceneTransitionType.modal)
-                .andThen(Observable<Void>.empty())
-        })
+    lazy var tappedPlay: Action<Playlist, Void> = Action { playlist in
+        return self.sceneCoordinator
+            .transition(to: Scene.player(playlist: playlist, sceneCoordinator: self.sceneCoordinator), type: SceneTransitionType.modal)
+            .andThen(Observable<Void>.empty())
     }
     
 }

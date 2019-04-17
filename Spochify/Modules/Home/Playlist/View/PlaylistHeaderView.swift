@@ -23,9 +23,9 @@ class PlaylistHeaderView: UIView {
     
     private var imageView: UIImageView!
     private var titleLabel: UILabel!
-    private var playButton: UIButton!
+    var playButton: UIButton!
 
-    init(playlist: Playlist, action: Action<Void, Void>) {
+    init() {
         super.init(frame: CGRect.zero)
         imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +39,6 @@ class PlaylistHeaderView: UIView {
         playButton.setTitleColor(UIColor.lightBlue, for: .normal)
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playButton.setTitle(String(localizedKey: String.Key.buttonPlay), for: UIControl.State.normal)
-        playButton.rx.action = action
         addSubview(playButton)
         
         NSLayoutConstraint.activate([
@@ -61,13 +60,15 @@ class PlaylistHeaderView: UIView {
             playButton.trailingAnchor.constraint(lessThanOrEqualTo: self.trailingAnchor, constant: -ViewTraits.margin.right),
             playButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -ViewTraits.margin.bottom)
             ])
-        
-        imageView.kf.setImage(with: playlist.image)
-        titleLabel.text = playlist.name
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func draw(playlist: Playlist) {
+        imageView.kf.setImage(with: playlist.image)
+        titleLabel.text = playlist.name
     }
 
 }
