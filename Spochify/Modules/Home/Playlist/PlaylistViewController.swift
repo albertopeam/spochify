@@ -39,8 +39,9 @@ class PlaylistViewController: UITableViewController, BindableType {
         tableView.refreshControl?.beginRefreshing()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         tableView.tableHeaderView?.frame.size = CGSize(width: tableView.frame.width, height: PlaylistHeaderView.ViewTraits.height)
     }
     
@@ -58,6 +59,7 @@ class PlaylistViewController: UITableViewController, BindableType {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (playlist) in
                 self.title = playlist.name
+                //TODO: se pierde el tap la segunda vez que se entra...
                 self.tableView.tableHeaderView = PlaylistHeaderView(playlist: playlist, action: self.viewModel.tappedPlay)
             })
             .disposed(by: disposeBag)

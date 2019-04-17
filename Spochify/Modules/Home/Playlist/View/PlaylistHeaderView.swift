@@ -35,7 +35,7 @@ class PlaylistHeaderView: UIView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.numberOfLines = 1
         addSubview(titleLabel)
-        playButton = UIButton()
+        playButton = UIButton(type: UIButton.ButtonType.system)
         playButton.setTitleColor(UIColor.lightBlue, for: .normal)
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playButton.setTitle(String(localizedKey: String.Key.buttonPlay), for: UIControl.State.normal)
