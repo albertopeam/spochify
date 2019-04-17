@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 
 //TODO: handle no network!!!
+//TODO: USE DRIVERS https://github.com/ReactiveX/RxSwift/blob/master/Documentation/Traits.md#rxcocoa-traits
 class HomeViewController: UITabBarController, BindableType {
     
     typealias ViewModelType = HomeViewModel

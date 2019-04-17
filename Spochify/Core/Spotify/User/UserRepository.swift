@@ -33,14 +33,18 @@ class UserRepository {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             return try decoder.decode(UserCodable.self, from: data)
-        }).map({ (codable) -> User in
+        })
+        .map({ (codable) -> User in
             return User(id: codable.id, name: codable.displayName, email: codable.email, country: codable.country, image: URL(string: codable.images?.first?.url))
         })
+        .share()
+        .debug()
     
     lazy var isNotAuthenticated: Observable<Void> = network.urlSession.rx
         .response(request: network.currentUserRequest)
         .filter({response, data in response.statusCode == 401 || response.statusCode == 400 })
         .map({ (_,_) -> Void in })
+        .share()
         .debug()
     
     lazy var isNotAuth: Observable<Void> = storage.accessTokenVariable.asObservable()
@@ -52,6 +56,7 @@ class UserRepository {
         })
         .filter({response, data in response.statusCode == 401 || response.statusCode == 400 })
         .map({ (_,_) -> Void in })
+        .share()
         .debug()
     
     
@@ -64,6 +69,7 @@ class UserRepository {
         })
         .filter({response, data in 200..<300 ~= response.statusCode })
         .map({ (_,_) -> Void in })
+        .share()
         .debug()
     
     lazy var login: Observable<URLRequest> = Observable<URLRequest>.create { (observer) -> Disposable in

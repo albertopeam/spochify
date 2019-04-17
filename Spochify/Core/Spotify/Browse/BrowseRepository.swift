@@ -31,7 +31,7 @@ class BrowseRepository {
             let items = playlist.map { Playlist(id: $0.id, name: $0.name, image: URL(string: $0.images?.first?.url ?? ""), tracks: []) }
             return Observable.just(items)
         })
-        .share(replay: 1, scope: .forever)
+        .share()
         .debug()
     
     lazy var categories: Observable<[Category]> = storage.accessTokenVariable.asObservable()
@@ -42,7 +42,7 @@ class BrowseRepository {
             let items = categories.map { Category.init(id: $0.id, name: $0.name, image: URL(string: $0.icons?.first?.url)) }
             return Observable.just(items)
         })
-        .share(replay: 1, scope: .forever)
+        .share()
         .debug()
     
     func playlistsForCategory(categoryId: String) -> Observable<[Playlist]>{
@@ -54,7 +54,7 @@ class BrowseRepository {
                 let items = playlist.map { Playlist(id: $0.id, name: $0.name, image: URL(string: $0.images?.first?.url ?? ""), tracks: []) }
                 return Observable.just(items)
             })
-            .share(replay: 1, scope: .forever)
+            .share()
             .debug()
     }
 
