@@ -17,7 +17,10 @@ class PlayerViewModel {
         self.playlist = playlist
     }
     
-    func currentTrack() -> Observable<Track> {
-        return Observable.empty()
+    lazy var currentPlaylist = Observable<Playlist>.just(playlist)
+    
+    func currentTrack() -> Observable<Track?> {
+        return Observable.just(playlist.tracks.first)
     }
+
 }

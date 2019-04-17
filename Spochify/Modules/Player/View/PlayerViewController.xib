@@ -48,8 +48,8 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TI2-Gr-ClY">
                             <rect key="frame" x="47" y="61.5" width="281" height="368"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5f-OC-I1W">
-                            <rect key="frame" x="166.5" y="445.5" width="42" height="20.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5f-OC-I1W">
+                            <rect key="frame" x="16" y="445.5" width="343" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -59,6 +59,8 @@
                     <constraints>
                         <constraint firstItem="T5f-OC-I1W" firstAttribute="centerX" secondItem="TI2-Gr-ClY" secondAttribute="centerX" id="19c-q5-Hxc"/>
                         <constraint firstItem="TI2-Gr-ClY" firstAttribute="width" secondItem="h7w-e7-ssk" secondAttribute="width" multiplier="3:4" id="5Qa-tk-t2x"/>
+                        <constraint firstAttribute="trailing" secondItem="T5f-OC-I1W" secondAttribute="trailing" constant="16" id="5el-Je-Lib"/>
+                        <constraint firstItem="T5f-OC-I1W" firstAttribute="leading" secondItem="h7w-e7-ssk" secondAttribute="leading" constant="16" id="AOB-tW-KpU"/>
                         <constraint firstItem="TI2-Gr-ClY" firstAttribute="centerY" secondItem="h7w-e7-ssk" secondAttribute="centerY" id="K7F-Pf-GT4"/>
                         <constraint firstItem="TI2-Gr-ClY" firstAttribute="centerX" secondItem="h7w-e7-ssk" secondAttribute="centerX" id="LNa-DC-Vo2"/>
                         <constraint firstItem="T5f-OC-I1W" firstAttribute="top" secondItem="TI2-Gr-ClY" secondAttribute="bottom" constant="16" id="jfW-39-Vdg"/>
