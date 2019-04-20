@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Album {
+struct Album: Equatable {
     let id: String
     let name: String
     let releaseDate: Date

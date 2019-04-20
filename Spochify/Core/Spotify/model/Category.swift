@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Category {
+struct Category: Equatable {
     let id: String
     let name: String
     let image: URL?

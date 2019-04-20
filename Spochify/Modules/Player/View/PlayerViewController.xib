@@ -13,8 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerViewController" customModule="Spochify" customModuleProvider="target">
             <connections>
                 <outlet property="closeButton" destination="gYg-ec-9UV" id="Cco-fZ-s7l"/>
+                <outlet property="controlsStackView" destination="54P-Ib-vws" id="OcF-XS-jIx"/>
                 <outlet property="imageView" destination="TI2-Gr-ClY" id="yg5-cS-cIb"/>
                 <outlet property="nextButton" destination="EUJ-08-Xhx" id="Fl2-AW-VWO"/>
+                <outlet property="pauseButton" destination="8DF-49-aWM" id="OSJ-Aw-erV"/>
                 <outlet property="playButton" destination="bCI-Q3-rYx" id="1mE-fO-ney"/>
                 <outlet property="playingLabel" destination="T5f-OC-I1W" id="8VF-ze-yXa"/>
                 <outlet property="playingProgress" destination="zop-48-tb6" id="KUg-5g-l8J"/>
@@ -36,8 +38,8 @@
                     </constraints>
                     <state key="normal" image="round_close_black_36pt"/>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4af-6r-cwd">
-                    <rect key="frame" x="68" y="28" width="240" height="20.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4af-6r-cwd">
+                    <rect key="frame" x="68" y="38" width="240" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -48,8 +50,8 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TI2-Gr-ClY">
                             <rect key="frame" x="47" y="61.5" width="281" height="368"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5f-OC-I1W">
-                            <rect key="frame" x="16" y="445.5" width="343" height="20.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5f-OC-I1W">
+                            <rect key="frame" x="16" y="445.5" width="343" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -70,11 +72,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9P6-oX-D0Q">
                     <rect key="frame" x="0.0" y="571" width="375" height="96"/>
                     <subviews>
-                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zop-48-tb6">
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zop-48-tb6">
                             <rect key="frame" x="20" y="16" width="335" height="2"/>
                         </progressView>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54P-Ib-vws">
-                            <rect key="frame" x="133.5" y="34" width="108" height="36"/>
+                            <rect key="frame" x="115.5" y="34" width="144" height="36"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wpy-km-y5o">
                                     <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
@@ -90,10 +92,18 @@
                                         <constraint firstAttribute="width" constant="36" id="NZM-Jq-52W"/>
                                         <constraint firstAttribute="height" constant="36" id="jPg-49-VOh"/>
                                     </constraints>
-                                    <state key="normal" image="round_play_circle_filled_black_48pt"/>
+                                    <state key="normal" image="outline_play_circle_filled_black_36pt"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DF-49-aWM">
+                                    <rect key="frame" x="72" y="0.0" width="36" height="36"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="36" id="QBP-B2-pqi"/>
+                                        <constraint firstAttribute="width" constant="36" id="qb6-4j-PK3"/>
+                                    </constraints>
+                                    <state key="normal" image="outline_pause_circle_filled_black_36pt"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUJ-08-Xhx">
-                                    <rect key="frame" x="72" y="0.0" width="36" height="36"/>
+                                    <rect key="frame" x="108" y="0.0" width="36" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="XJe-U1-jqU"/>
                                         <constraint firstAttribute="width" constant="36" id="cBC-T9-7aZ"/>
@@ -135,8 +145,9 @@
         </view>
     </objects>
     <resources>
+        <image name="outline_pause_circle_filled_black_36pt" width="72" height="72"/>
+        <image name="outline_play_circle_filled_black_36pt" width="72" height="72"/>
         <image name="round_close_black_36pt" width="72" height="72"/>
-        <image name="round_play_circle_filled_black_48pt" width="96" height="96"/>
         <image name="round_skip_next_black_36pt" width="72" height="72"/>
         <image name="round_skip_previous_black_36pt" width="72" height="72"/>
     </resources>

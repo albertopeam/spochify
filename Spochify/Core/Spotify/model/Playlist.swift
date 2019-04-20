@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Playlist {
+struct Playlist: Equatable {
     let id: String
     let name: String
     let image: URL?

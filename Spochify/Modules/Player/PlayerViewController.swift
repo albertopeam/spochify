@@ -18,34 +18,62 @@ class PlayerViewController: UIViewController, BindableType {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var playingLabel: UILabel!
     @IBOutlet weak var playingProgress: UIProgressView!
+    @IBOutlet weak var controlsStackView: UIStackView!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     private let disposeBag = DisposeBag()
-    
     var viewModel: PlayerViewModel!
     
     func bindViewModel() {
-        //TODO: try to use scene coordinator
-        closeButton.addTarget(self, action: #selector(close), for: UIControl.Event.touchUpInside)
-        
-        viewModel.currentTrack()
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (track) in
-                guard let track = track else {
-                    //TODO: no tracks???
-                    return
-                }
-                self.playingLabel.text = track.title + " - " + track.album.name
-                self.imageView.kf.setImage(with: track.album.image)
-            }).disposed(by: disposeBag)
-        
         viewModel.currentPlaylist
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (playlist) in
-                //TODO: maybe track album
                 self.titleLabel.text = playlist.name
-            }).disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.track
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (track) in
+                self.playingLabel.text = track.title + " - " + track.album.name
+                self.imageView.kf.setImage(with: track.album.image)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.playing
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (playing) in
+                if playing {
+                    self.playButton.isHidden = true
+                    self.pauseButton.isHidden = false
+                    self.controlsStackView.removeArrangedSubview(self.playButton)
+                    self.controlsStackView.insertArrangedSubview(self.pauseButton, at: 1)
+                } else {
+                    self.pauseButton.isHidden = true
+                    self.playButton.isHidden = false
+                    self.controlsStackView.removeArrangedSubview(self.pauseButton)
+                    self.controlsStackView.insertArrangedSubview(self.playButton, at: 1)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.progress
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (progress) in
+                self.playingProgress.setProgress(progress.current/progress.duration, animated: false)
+            })
+            .disposed(by: disposeBag)
+        
+        playButton.rx.action = viewModel.playAction
+        pauseButton.rx.action = viewModel.pauseAction
+        previousButton.rx.action = viewModel.previousAction
+        nextButton.rx.action = viewModel.nextAction
+    
+        //TODO: try to use scene coordinator
+        //closeButton.rx.action = viewModel.closeAction
+        closeButton.addTarget(self, action: #selector(close), for: UIControl.Event.touchUpInside)
     }
     
     // MARK: private

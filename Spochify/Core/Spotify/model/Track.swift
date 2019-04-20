@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Track {
+struct Track: Equatable {
     let id: String
     let title: String
     let popularity: Int

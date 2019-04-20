@@ -66,6 +66,7 @@
 		C3E655F222636DB000649F2A /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E655F122636DB000649F2A /* HomeBuilder.swift */; };
 		C3EA0E97225E9188004C74CB /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EA0E96225E9188004C74CB /* Kingfisher.framework */; };
 		C3EC9DFC225A55E100FD0376 /* BrowseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EC9DFB225A55E100FD0376 /* BrowseRepository.swift */; };
+		C3FB16292269B9050014FA01 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FB16282269B9050014FA01 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +152,7 @@
 		C3E655F122636DB000649F2A /* HomeBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		C3EA0E96225E9188004C74CB /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		C3EC9DFB225A55E100FD0376 /* BrowseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseRepository.swift; sourceTree = "<group>"; };
+		C3FB16282269B9050014FA01 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -451,6 +453,7 @@
 				C3DC4FB0226611F70069733D /* SmallPlayerView.swift */,
 				C3DC4FB2226612AC0069733D /* PlayerViewController.swift */,
 				C3DC4FB7226618690069733D /* PlayerViewModel.swift */,
+				C3FB16282269B9050014FA01 /* Player.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -689,6 +692,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3FB16292269B9050014FA01 /* Player.swift in Sources */,
 				C3DC4FB1226611F70069733D /* SmallPlayerView.swift in Sources */,
 				C3E55B0C225B2A4B00DD3D9A /* CategoriesViewController.swift in Sources */,
 				C3AC5432225F79270007090C /* Album.swift in Sources */,

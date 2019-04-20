@@ -28,9 +28,9 @@ extension Scene {
             var viewController = CategoryPlaylistsViewController()
             viewController.bindToViewModel(to: viewModel)
             return viewController
-        case .player(let playlist, _):
+        case .player(let playlist, let sceneCoordinator):
             var viewController = PlayerViewController()
-            let viewModel = PlayerViewModel(playlist: playlist)
+            let viewModel = PlayerViewModel(playlist: playlist, player: UIApplication.provider.player, sceneCoordinator: sceneCoordinator)
             viewController.bindToViewModel(to: viewModel)
             return viewController
         }
