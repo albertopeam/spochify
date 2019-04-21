@@ -12,14 +12,12 @@ import RxSwift
 import Action
 
 //TODO: entering/connecting doesn't start reproducing if it is reproducing..
-//TODO: permiso bg
-//TODO: set stream(revisar video udemy) de audio
 //TODO: controles nativos + UI nativa
 //TODO: Audio interruptions
 
 class Player {
     
-    private var avPlayer: AVPlayer
+    private let avPlayer: AVPlayer
     private let notificationCenter: NotificationCenter
     private let tracksSubject: ReplaySubject<Track>
     private let progressSubject: PublishSubject<Progress>
@@ -28,6 +26,7 @@ class Player {
     private var current: Track?
     
     init(avPlayer: AVPlayer = AVPlayer(),
+         avSession: AVAudioSession = AVAudioSession.sharedInstance(),
          notificationCenter: NotificationCenter = .default,
          tracksSubject: ReplaySubject<Track> = ReplaySubject.create(bufferSize: 1),
          progressSubject: PublishSubject<Progress> = PublishSubject(),
@@ -40,9 +39,9 @@ class Player {
         self.notificationCenter.addObserver(self, selector: #selector(self.didPlayToEnd), name: .AVPlayerItemDidPlayToEndTime, object: nil)
         let interval = CMTime(seconds: 1, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
         self.avPlayer.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using: didUpdatedPlayer)
+        try? avSession.setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default, options: [.allowBluetooth, .allowAirPlay, .defaultToSpeaker])
     }
     
-    //T
     deinit {
         notificationCenter.removeObserver(self)
         avPlayer.removeTimeObserver(self)
