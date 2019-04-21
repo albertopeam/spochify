@@ -10,6 +10,7 @@ import UIKit.UIViewController
 import RxSwift
 import RxDataSources
 
+//TODO: add collection view horizontal with another playlists
 class FeaturedViewController: UICollectionViewController, BindableType {
     typealias ViewModelType = FeaturedViewModel
     

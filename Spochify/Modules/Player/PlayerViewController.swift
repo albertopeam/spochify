@@ -27,6 +27,7 @@ class PlayerViewController: UIViewController, BindableType {
     var viewModel: PlayerViewModel!
     
     func bindViewModel() {
+        //TODO: the subscriptions done in this method apparently are not doing good UI, `viewModel.playing` test it, it is not showing correctly the play/pause button if both of them are visible, now pause is hidden.
         viewModel.currentPlaylist
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (playlist) in
@@ -48,13 +49,9 @@ class PlayerViewController: UIViewController, BindableType {
                 if playing {
                     self.playButton.isHidden = true
                     self.pauseButton.isHidden = false
-                    self.controlsStackView.removeArrangedSubview(self.playButton)
-                    self.controlsStackView.insertArrangedSubview(self.pauseButton, at: 1)
                 } else {
                     self.pauseButton.isHidden = true
                     self.playButton.isHidden = false
-                    self.controlsStackView.removeArrangedSubview(self.pauseButton)
-                    self.controlsStackView.insertArrangedSubview(self.playButton, at: 1)
                 }
             })
             .disposed(by: disposeBag)
@@ -70,7 +67,7 @@ class PlayerViewController: UIViewController, BindableType {
         pauseButton.rx.action = viewModel.pauseAction
         previousButton.rx.action = viewModel.previousAction
         nextButton.rx.action = viewModel.nextAction
-    
+        
         //TODO: try to use scene coordinator
         //closeButton.rx.action = viewModel.closeAction
         closeButton.addTarget(self, action: #selector(close), for: UIControl.Event.touchUpInside)

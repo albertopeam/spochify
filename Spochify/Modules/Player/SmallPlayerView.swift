@@ -8,7 +8,7 @@
 
 import UIKit.UIView
 
-//TODO: 
+//TODO: add small player
 class SmallPlayerView: UIView {
     
     init() {

@@ -13,7 +13,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerViewController" customModule="Spochify" customModuleProvider="target">
             <connections>
                 <outlet property="closeButton" destination="gYg-ec-9UV" id="Cco-fZ-s7l"/>
-                <outlet property="controlsStackView" destination="54P-Ib-vws" id="OcF-XS-jIx"/>
                 <outlet property="imageView" destination="TI2-Gr-ClY" id="yg5-cS-cIb"/>
                 <outlet property="nextButton" destination="EUJ-08-Xhx" id="Fl2-AW-VWO"/>
                 <outlet property="pauseButton" destination="8DF-49-aWM" id="OSJ-Aw-erV"/>
@@ -75,8 +74,8 @@
                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zop-48-tb6">
                             <rect key="frame" x="20" y="16" width="335" height="2"/>
                         </progressView>
-                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54P-Ib-vws">
-                            <rect key="frame" x="115.5" y="34" width="144" height="36"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRg-Sg-cyV">
+                            <rect key="frame" x="133.5" y="34" width="108" height="36"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wpy-km-y5o">
                                     <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
@@ -86,6 +85,14 @@
                                     </constraints>
                                     <state key="normal" image="round_skip_previous_black_36pt"/>
                                 </button>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DF-49-aWM">
+                                    <rect key="frame" x="36" y="0.0" width="36" height="36"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="36" id="QBP-B2-pqi"/>
+                                        <constraint firstAttribute="width" constant="36" id="qb6-4j-PK3"/>
+                                    </constraints>
+                                    <state key="normal" image="outline_pause_circle_filled_black_36pt"/>
+                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCI-Q3-rYx">
                                     <rect key="frame" x="36" y="0.0" width="36" height="36"/>
                                     <constraints>
@@ -94,16 +101,8 @@
                                     </constraints>
                                     <state key="normal" image="outline_play_circle_filled_black_36pt"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DF-49-aWM">
-                                    <rect key="frame" x="72" y="0.0" width="36" height="36"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="36" id="QBP-B2-pqi"/>
-                                        <constraint firstAttribute="width" constant="36" id="qb6-4j-PK3"/>
-                                    </constraints>
-                                    <state key="normal" image="outline_pause_circle_filled_black_36pt"/>
-                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUJ-08-Xhx">
-                                    <rect key="frame" x="108" y="0.0" width="36" height="36"/>
+                                    <rect key="frame" x="72" y="0.0" width="36" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="XJe-U1-jqU"/>
                                         <constraint firstAttribute="width" constant="36" id="cBC-T9-7aZ"/>
@@ -111,17 +110,30 @@
                                     <state key="normal" image="round_skip_next_black_36pt"/>
                                 </button>
                             </subviews>
-                        </stackView>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="EUJ-08-Xhx" firstAttribute="leading" secondItem="bCI-Q3-rYx" secondAttribute="trailing" id="2PF-63-4ic"/>
+                                <constraint firstItem="bCI-Q3-rYx" firstAttribute="centerY" secondItem="yRg-Sg-cyV" secondAttribute="centerY" id="2sx-nV-Be3"/>
+                                <constraint firstItem="Wpy-km-y5o" firstAttribute="centerY" secondItem="yRg-Sg-cyV" secondAttribute="centerY" id="4BU-0D-BNl"/>
+                                <constraint firstItem="8DF-49-aWM" firstAttribute="centerY" secondItem="yRg-Sg-cyV" secondAttribute="centerY" id="D2F-V4-Zoy"/>
+                                <constraint firstItem="EUJ-08-Xhx" firstAttribute="centerY" secondItem="yRg-Sg-cyV" secondAttribute="centerY" id="EOV-cg-rvO"/>
+                                <constraint firstAttribute="trailing" secondItem="EUJ-08-Xhx" secondAttribute="trailing" id="PrB-0Y-odJ"/>
+                                <constraint firstItem="Wpy-km-y5o" firstAttribute="leading" secondItem="yRg-Sg-cyV" secondAttribute="leading" id="daO-9d-fKF"/>
+                                <constraint firstItem="bCI-Q3-rYx" firstAttribute="leading" secondItem="Wpy-km-y5o" secondAttribute="trailing" id="hD1-bw-zoJ"/>
+                                <constraint firstItem="EUJ-08-Xhx" firstAttribute="leading" secondItem="8DF-49-aWM" secondAttribute="trailing" id="lIg-32-j9A"/>
+                                <constraint firstItem="8DF-49-aWM" firstAttribute="leading" secondItem="Wpy-km-y5o" secondAttribute="trailing" id="mGM-YK-cq8"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="54P-Ib-vws" secondAttribute="bottom" constant="26" id="4L7-t2-1up"/>
                         <constraint firstAttribute="trailing" secondItem="zop-48-tb6" secondAttribute="trailing" constant="20" id="A7b-o0-lcD"/>
-                        <constraint firstItem="54P-Ib-vws" firstAttribute="centerX" secondItem="9P6-oX-D0Q" secondAttribute="centerX" id="MK7-yZ-9Vb"/>
+                        <constraint firstAttribute="bottom" secondItem="yRg-Sg-cyV" secondAttribute="bottom" constant="26" id="B1I-Ko-WSs"/>
                         <constraint firstAttribute="height" constant="96" id="RqQ-ay-wSP"/>
+                        <constraint firstItem="yRg-Sg-cyV" firstAttribute="centerX" secondItem="9P6-oX-D0Q" secondAttribute="centerX" id="fhn-yq-jeJ"/>
+                        <constraint firstItem="yRg-Sg-cyV" firstAttribute="top" secondItem="zop-48-tb6" secondAttribute="bottom" constant="16" id="kOE-zC-hqb"/>
                         <constraint firstItem="zop-48-tb6" firstAttribute="leading" secondItem="9P6-oX-D0Q" secondAttribute="leading" constant="20" id="mSH-AE-OMq"/>
                         <constraint firstItem="zop-48-tb6" firstAttribute="top" secondItem="9P6-oX-D0Q" secondAttribute="top" constant="16" id="qDH-9i-Zpa"/>
-                        <constraint firstItem="54P-Ib-vws" firstAttribute="top" secondItem="zop-48-tb6" secondAttribute="bottom" constant="16" id="wRo-UY-zOf"/>
                     </constraints>
                 </view>
             </subviews>

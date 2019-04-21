@@ -11,6 +11,12 @@ import MediaPlayer
 import RxSwift
 import Action
 
+//TODO: entering/connecting doesn't start reproducing if it is reproducing..
+//TODO: permiso bg
+//TODO: set stream(revisar video udemy) de audio
+//TODO: controles nativos + UI nativa
+//TODO: Audio interruptions
+
 class Player {
     
     private var avPlayer: AVPlayer
@@ -138,7 +144,7 @@ class Player {
         guard let url = track.url else { return }
         self.current = track
         self.tracksSubject.onNext(track)
-        //TODO: no chola...self.playingSubject.onNext(true)
+        self.playingSubject.onNext(true)
         self.avPlayer.replaceCurrentItem(with: AVPlayerItem(url: url))
         self.avPlayer.play()
     }
