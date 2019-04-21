@@ -85,7 +85,7 @@
                                     </constraints>
                                     <state key="normal" image="round_skip_previous_black_36pt"/>
                                 </button>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DF-49-aWM">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DF-49-aWM">
                                     <rect key="frame" x="36" y="0.0" width="36" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="QBP-B2-pqi"/>
