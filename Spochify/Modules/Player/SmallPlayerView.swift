@@ -8,7 +8,7 @@
 
 import UIKit.UIView
 
-//TODO: add small player
+//TODO: add small player, ask Mike or make it overlap the VC's
 class SmallPlayerView: UIView {
     
     init() {
