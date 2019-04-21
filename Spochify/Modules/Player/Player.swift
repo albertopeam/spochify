@@ -11,7 +11,6 @@ import MediaPlayer
 import RxSwift
 import Action
 
-//TODO: entering/connecting doesn't start reproducing if it is reproducing..
 //TODO: controles nativos + UI nativa
 //TODO: Audio interruptions
 
@@ -51,9 +50,7 @@ class Player {
     
     func tracks(tracks: [Track]) -> Observable<Track> {
         self.tracks = tracks.filter({ $0.url != nil })
-        if let first = self.tracks?.first {
-            play(track: first)
-        }
+        prepareToPlay()
         return tracksSubject
             .asObservable()
             .share()
@@ -146,6 +143,20 @@ class Player {
         self.playingSubject.onNext(true)
         self.avPlayer.replaceCurrentItem(with: AVPlayerItem(url: url))
         self.avPlayer.play()
+    }
+    
+    private func prepareToPlay() {
+        if let first = self.tracks?.first, let url = first.url {
+            if !isPlaying() {
+                self.current = first
+                self.tracksSubject.onNext(first)
+                self.avPlayer.replaceCurrentItem(with: AVPlayerItem(url: url))
+            }
+        }
+    }
+    
+    private func isPlaying() -> Bool {
+        return avPlayer.rate > 0
     }
     
 }

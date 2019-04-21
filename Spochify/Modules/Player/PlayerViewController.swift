@@ -68,6 +68,9 @@ class PlayerViewController: UIViewController, BindableType {
         previousButton.rx.action = viewModel.previousAction
         nextButton.rx.action = viewModel.nextAction
         
+        //force start playing
+        viewModel.playAction.execute()
+        
         //TODO: try to use scene coordinator
         //closeButton.rx.action = viewModel.closeAction
         closeButton.addTarget(self, action: #selector(close), for: UIControl.Event.touchUpInside)
