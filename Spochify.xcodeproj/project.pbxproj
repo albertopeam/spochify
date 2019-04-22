@@ -67,6 +67,7 @@
 		C3EA0E97225E9188004C74CB /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EA0E96225E9188004C74CB /* Kingfisher.framework */; };
 		C3EC9DFC225A55E100FD0376 /* BrowseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EC9DFB225A55E100FD0376 /* BrowseRepository.swift */; };
 		C3EDE15D226E053A004FB94E /* PlayerRemoteControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EDE15C226E053A004FB94E /* PlayerRemoteControls.swift */; };
+		C3EDE15F226E0C48004FB94E /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EDE15E226E0C47004FB94E /* Differentiator.framework */; };
 		C3FB16292269B9050014FA01 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FB16282269B9050014FA01 /* Player.swift */; };
 /* End PBXBuildFile section */
 
@@ -154,6 +155,7 @@
 		C3EA0E96225E9188004C74CB /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		C3EC9DFB225A55E100FD0376 /* BrowseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseRepository.swift; sourceTree = "<group>"; };
 		C3EDE15C226E053A004FB94E /* PlayerRemoteControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRemoteControls.swift; sourceTree = "<group>"; };
+		C3EDE15E226E0C47004FB94E /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
 		C3FB16282269B9050014FA01 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +170,7 @@
 				C3EA0E97225E9188004C74CB /* Kingfisher.framework in Frameworks */,
 				C3D810C322632BB800153C56 /* Action.framework in Frameworks */,
 				C3D810C422632DD500153C56 /* RxAtomic.framework in Frameworks */,
+				C3EDE15F226E0C48004FB94E /* Differentiator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +475,7 @@
 		C3DEBB8122594B2D00B6F9E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3EDE15E226E0C47004FB94E /* Differentiator.framework */,
 				C3D810C222632BB800153C56 /* Action.framework */,
 				C3EA0E96225E9188004C74CB /* Kingfisher.framework */,
 				C36C86F8225D417F0035DCF8 /* RxDataSources.framework */,
@@ -677,6 +681,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Action.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxAtomic.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Differentiator.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
@@ -688,6 +693,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Action.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxAtomic.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Differentiator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
