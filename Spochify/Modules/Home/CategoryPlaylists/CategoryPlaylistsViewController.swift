@@ -38,6 +38,7 @@ class CategoryPlaylistsViewController: UICollectionViewController, BindableType 
         collectionView.register(UINib(nibName: "PlaylistCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
         collectionView.addSubview(refreshControl)
         collectionView.alwaysBounceVertical = true
+        collectionView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 50, right: 0)
         refreshControl.beginRefreshing()
         flowLayout.numberOfColumns(columns)
     }

@@ -15,6 +15,7 @@ class Provider {
     let userRepository: UserRepository
     let browseRepository: BrowseRepository
     let player: Player
+    let remoteControls: PlayerRemoteControls
     
     init(urlSession: URLSession = .shared) {
         storage = Storage()
@@ -22,6 +23,7 @@ class Provider {
         userRepository = UserRepository(network: network, storage: storage)
         browseRepository = BrowseRepository(network: network, storage: storage)
         player = Player()
+        remoteControls = PlayerRemoteControls(player: player)
     }
     
 }

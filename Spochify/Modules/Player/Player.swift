@@ -11,13 +11,16 @@ import MediaPlayer
 import RxSwift
 import Action
 
-//TODO: controles nativos + UI nativa
-//TODO: Audio interruptions
+//TODO: controles nativos + UI nativa: TEST
+//TODO: Audio interruptions: TEST
+//TODO: lock screen/bottom controls: TEST
+//TODO: small player
 
 class Player {
     
     private let avPlayer: AVPlayer
     private let notificationCenter: NotificationCenter
+    private let systemPlayer: MPNowPlayingInfoCenter
     private let tracksSubject: ReplaySubject<Track>
     private let progressSubject: PublishSubject<Progress>
     private let playingSubject: ReplaySubject<Bool>
@@ -27,11 +30,13 @@ class Player {
     init(avPlayer: AVPlayer = AVPlayer(),
          avSession: AVAudioSession = AVAudioSession.sharedInstance(),
          notificationCenter: NotificationCenter = .default,
+         systemPlayer: MPNowPlayingInfoCenter = MPNowPlayingInfoCenter.default(),
          tracksSubject: ReplaySubject<Track> = ReplaySubject.create(bufferSize: 1),
          progressSubject: PublishSubject<Progress> = PublishSubject(),
          playingSubject: ReplaySubject<Bool> = ReplaySubject.create(bufferSize: 1)) {
         self.avPlayer = avPlayer
         self.notificationCenter = notificationCenter
+        self.systemPlayer = systemPlayer
         self.tracksSubject = tracksSubject
         self.progressSubject = progressSubject
         self.playingSubject = playingSubject
@@ -61,12 +66,14 @@ class Player {
         guard let track = self.current, let url = track.url else { return Observable.empty() }
         self.avPlayer.play()
         self.playingSubject.onNext(true)
+        self.notificationCenter.addObserver(self, selector: #selector(self.didArriveInterruption), name: AVAudioSession.interruptionNotification, object: nil)
         return Observable.empty()
     }
     
     lazy var pause: Action<Void, Void> = Action {
         self.avPlayer.pause()
         self.playingSubject.onNext(false)
+        self.notificationCenter.removeObserver(self, name: AVAudioSession.interruptionNotification, object: nil)
         return Observable.empty()
     }
     
@@ -143,6 +150,7 @@ class Player {
         self.playingSubject.onNext(true)
         self.avPlayer.replaceCurrentItem(with: AVPlayerItem(url: url))
         self.avPlayer.play()
+        notifySystemPlayer(track: track)
     }
     
     private func prepareToPlay() {
@@ -158,6 +166,29 @@ class Player {
     private func isPlaying() -> Bool {
         return avPlayer.rate > 0
     }
+
+    private func notifySystemPlayer(track: Track) {
+        let info: [String: Any] = [
+            MPMediaItemPropertyTitle: track.title,
+            MPMediaItemPropertyArtist: track.album.name,
+            MPMediaItemPropertyAssetURL: track.url!
+        ]
+        systemPlayer.nowPlayingInfo = info
+    }
+    
+    // MARK: Interruptions
+    
+    @objc private func didArriveInterruption(notification: NSNotification) {
+        if let value = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? NSNumber,
+            let type = AVAudioSession.InterruptionType(rawValue: value.uintValue){
+            switch type {
+            case .began:
+                pause.execute()
+            case .ended:
+                play.execute()
+            }
+        }
+    }
     
 }
 
@@ -167,3 +198,5 @@ extension Player {
         let current: Float
     }
 }
+
+
