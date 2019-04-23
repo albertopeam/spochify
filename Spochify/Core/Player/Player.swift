@@ -20,7 +20,7 @@ class Player {
     private let systemPlayer: MPNowPlayingInfoCenter
     private let tracksSubject: ReplaySubject<Track>
     private let progressSubject: PublishSubject<Progress>
-    private let playingSubject: ReplaySubject<Bool>
+    private let playingSubject: BehaviorSubject<Bool>
     private var tracks: [Track]?
     private var current: Track?
     
@@ -30,7 +30,7 @@ class Player {
          systemPlayer: MPNowPlayingInfoCenter = MPNowPlayingInfoCenter.default(),
          tracksSubject: ReplaySubject<Track> = ReplaySubject.create(bufferSize: 1),
          progressSubject: PublishSubject<Progress> = PublishSubject(),
-         playingSubject: ReplaySubject<Bool> = ReplaySubject.create(bufferSize: 1)) {
+         playingSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)) {
         self.avPlayer = avPlayer
         self.notificationCenter = notificationCenter
         self.systemPlayer = systemPlayer

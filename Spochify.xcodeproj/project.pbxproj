@@ -212,7 +212,7 @@
 		C31013C8225811B8009BDB95 /* Spotify */ = {
 			isa = PBXGroup;
 			children = (
-				C3DFE95F225F27E8002D2AF4 /* model */,
+				C3DFE95F225F27E8002D2AF4 /* Model */,
 				C3DFE95C225F227C002D2AF4 /* Playlist */,
 				C3C8C295225CA39800EFBED0 /* Browse */,
 				C3C8C294225CA38E00EFBED0 /* User */,
@@ -513,7 +513,7 @@
 			path = Playlist;
 			sourceTree = "<group>";
 		};
-		C3DFE95F225F27E8002D2AF4 /* model */ = {
+		C3DFE95F225F27E8002D2AF4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				C3E55AFB225B25E100DD3D9A /* Playlist.swift */,
@@ -522,7 +522,7 @@
 				C3AC5431225F79270007090C /* Album.swift */,
 				C3AAD3242264C8940026254A /* Category.swift */,
 			);
-			path = model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C3E55B02225B287D00DD3D9A /* Categories */ = {

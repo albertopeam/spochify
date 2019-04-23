@@ -62,7 +62,7 @@ class CategoriesViewController: UICollectionViewController, BindableType {
         
         collectionView.rx
             .modelSelected(Category.self)
-            .flatMap({ self.viewModel.tappedCategory.execute($0) })            
+            .flatMap({ self.viewModel.tappedCategory.execute($0) })
             .subscribe()
             .disposed(by: disposeBag)
     }

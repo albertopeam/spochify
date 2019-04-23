@@ -22,7 +22,6 @@ class CategoriesViewModel {
     
     lazy var categories: Observable<[Category]> = browseRepository.categories
         .map({ $0.sorted(by: { $0.name < $1.name }) })
-
     
     lazy var tappedCategory: Action<Category, Void> = Action { category in
         return self.sceneCoordinator
