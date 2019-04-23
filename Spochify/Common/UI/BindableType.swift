@@ -41,3 +41,13 @@ extension BindableType where Self: UIViewController {
     
 }
 
+extension BindableType where Self: UIView {
+    
+    mutating func bindToViewModel(to model: Self.ViewModelType) {
+        viewModel = model
+        bindViewModel()
+    }
+    
+}
+
+

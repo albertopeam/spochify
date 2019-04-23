@@ -13,7 +13,11 @@ import RxCocoa
 class HomeBuilder {
     
     func build() -> (vc: HomeViewController, hvm: HomeViewModel) {
-        let homeViewController = HomeViewController()
+        var miniPlayerView = MiniPlayerView()
+        let miniPlayerViewModel = MiniPlayerViewModel(player: UIApplication.provider.player)
+        miniPlayerView.bindToViewModel(to: miniPlayerViewModel)
+        
+        let homeViewController = HomeViewController(playerView: miniPlayerView)
         let sceneCoordinator: SceneCoordinatorType = SceneCoordinator(window: UIApplication.instance.window, viewController: homeViewController)
         let homeViewModel = HomeViewModel(userRepository: UIApplication.provider.userRepository, sceneCoordinator: sceneCoordinator)
         

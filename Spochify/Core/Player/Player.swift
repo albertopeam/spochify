@@ -50,13 +50,16 @@ class Player {
     
     // MARK: Player
     
-    func tracks(tracks: [Track]) -> Observable<Track> {
-        self.tracks = tracks.filter({ $0.url != nil })
-        prepareToPlay()
-        return tracksSubject
-            .asObservable()
-            .share()
-            .debug()
+    func playlist(with tracks: [Track]) {
+        let newTracks = tracks.filter({ $0.url != nil })
+        if let first = newTracks.first, let url = first.url {
+            if !isPlaying() || self.tracks != newTracks {
+                self.tracks = newTracks
+                self.current = first
+                self.tracksSubject.onNext(first)
+                self.avPlayer.replaceCurrentItem(with: AVPlayerItem(url: url))
+            }
+        }
     }
     
     lazy var play: Action<Void, Void> = Action {
@@ -94,6 +97,11 @@ class Player {
         .debug()
     
     lazy var playing: Observable<Bool> = playingSubject
+        .asObservable()
+        .share()
+        .debug()
+    
+    lazy var track: Observable<Track> = tracksSubject
         .asObservable()
         .share()
         .debug()
@@ -154,16 +162,6 @@ class Player {
         self.avPlayer.pause()
         self.playingSubject.onNext(false)
         self.notificationCenter.removeObserver(self, name: AVAudioSession.interruptionNotification, object: nil)
-    }
-    
-    private func prepareToPlay() {
-        if let first = self.tracks?.first, let url = first.url {
-            if !isPlaying() {
-                self.current = first
-                self.tracksSubject.onNext(first)
-                self.avPlayer.replaceCurrentItem(with: AVPlayerItem(url: url))
-            }
-        }
     }
     
     private func isPlaying() -> Bool {

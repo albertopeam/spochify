@@ -22,12 +22,13 @@ class PlayerViewModel {
         self.playlist = playlist
         self.player = player
         self.sceneCoordinator = sceneCoordinator
+        self.player.playlist(with: playlist.tracks)
     }
     
     lazy var currentPlaylist = Observable<Playlist>.just(playlist)
     lazy var progress = self.player.progress
     lazy var playing = self.player.playing
-    lazy var track = self.player.tracks(tracks: self.playlist.tracks)
+    lazy var currentTrack = self.player.track
     lazy var playAction = self.player.play
     lazy var pauseAction = self.player.pause
     lazy var nextAction = self.player.next

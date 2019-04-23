@@ -18,7 +18,6 @@ class PlayerViewController: UIViewController, BindableType {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var playingLabel: UILabel!
     @IBOutlet weak var playingProgress: UIProgressView!
-    @IBOutlet weak var controlsStackView: UIStackView!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
@@ -34,7 +33,7 @@ class PlayerViewController: UIViewController, BindableType {
             })
             .disposed(by: disposeBag)
         
-        viewModel.track
+        viewModel.currentTrack
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (track) in
                 self.playingLabel.text = track.title + " - " + track.album.name

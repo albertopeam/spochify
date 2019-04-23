@@ -16,6 +16,27 @@ class HomeViewController: UITabBarController, BindableType {
     typealias ViewModelType = HomeViewModel
     var viewModel: HomeViewModel!
     private let disposeBag = DisposeBag()
+    private let playerView: MiniPlayerView
+    
+    init(playerView: MiniPlayerView) {
+        self.playerView = playerView
+        super.init(nibName: nil, bundle: Bundle.main)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(playerView)
+        NSLayoutConstraint.activate([
+            playerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            playerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            //playerView.heightAnchor.constraint(equalToConstant: MiniPlayerView.ViewTraits.height),
+            playerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -tabBar.frame.height)
+            ])
+    }
     
     func bindViewModel() {
         viewModel.user

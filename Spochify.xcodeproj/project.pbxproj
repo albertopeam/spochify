@@ -40,6 +40,7 @@
 		C3C8C293225C96F700EFBED0 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C292225C96F700EFBED0 /* UserRepository.swift */; };
 		C3C8C297225CA3A700EFBED0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C296225CA3A700EFBED0 /* User.swift */; };
 		C3C8C299225CB65800EFBED0 /* URL+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C8C298225CB65800EFBED0 /* URL+Init.swift */; };
+		C3CB4256226F4E2A00859A23 /* MiniPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CB4255226F4E2A00859A23 /* MiniPlayerViewModel.swift */; };
 		C3D810BF2263264F00153C56 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D810BE2263264F00153C56 /* HomeViewController.swift */; };
 		C3D810C12263267100153C56 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D810C02263267100153C56 /* HomeViewModel.swift */; };
 		C3D810C322632BB800153C56 /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D810C222632BB800153C56 /* Action.framework */; };
@@ -48,7 +49,7 @@
 		C3DC4FA02265C8720069733D /* CategoryPlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4F9F2265C8720069733D /* CategoryPlaylistsViewController.swift */; };
 		C3DC4FA62265C9570069733D /* CategoryPlaylistsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4FA52265C9570069733D /* CategoryPlaylistsViewModel.swift */; };
 		C3DC4FAE2265D7240069733D /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4FAD2265D7240069733D /* Provider.swift */; };
-		C3DC4FB1226611F70069733D /* SmallPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4FB0226611F70069733D /* SmallPlayerView.swift */; };
+		C3DC4FB1226611F70069733D /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4FB0226611F70069733D /* MiniPlayerView.swift */; };
 		C3DC4FB4226612AC0069733D /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4FB2226612AC0069733D /* PlayerViewController.swift */; };
 		C3DC4FB5226612AC0069733D /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3DC4FB3226612AC0069733D /* PlayerViewController.xib */; };
 		C3DC4FB8226618690069733D /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4FB7226618690069733D /* PlayerViewModel.swift */; };
@@ -128,6 +129,7 @@
 		C3C8C292225C96F700EFBED0 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		C3C8C296225CA3A700EFBED0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C3C8C298225CB65800EFBED0 /* URL+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Init.swift"; sourceTree = "<group>"; };
+		C3CB4255226F4E2A00859A23 /* MiniPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewModel.swift; sourceTree = "<group>"; };
 		C3D810BE2263264F00153C56 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C3D810C02263267100153C56 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C3D810C222632BB800153C56 /* Action.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Action.framework; path = Carthage/Build/iOS/Action.framework; sourceTree = "<group>"; };
@@ -135,7 +137,7 @@
 		C3DC4F9F2265C8720069733D /* CategoryPlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPlaylistsViewController.swift; sourceTree = "<group>"; };
 		C3DC4FA52265C9570069733D /* CategoryPlaylistsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPlaylistsViewModel.swift; sourceTree = "<group>"; };
 		C3DC4FAD2265D7240069733D /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
-		C3DC4FB0226611F70069733D /* SmallPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallPlayerView.swift; sourceTree = "<group>"; };
+		C3DC4FB0226611F70069733D /* MiniPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerView.swift; sourceTree = "<group>"; };
 		C3DC4FB2226612AC0069733D /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		C3DC4FB3226612AC0069733D /* PlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		C3DC4FB7226618690069733D /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 		C31013CA22581229009BDB95 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				C3CB4257226F507700859A23 /* Player */,
 				C31013C8225811B8009BDB95 /* Spotify */,
 				C31013C52258101D009BDB95 /* Storage */,
 				C31013C222580E27009BDB95 /* Network */,
@@ -414,6 +417,24 @@
 			path = Browse;
 			sourceTree = "<group>";
 		};
+		C3CB4254226F4E0900859A23 /* Mini */ = {
+			isa = PBXGroup;
+			children = (
+				C3DC4FB0226611F70069733D /* MiniPlayerView.swift */,
+				C3CB4255226F4E2A00859A23 /* MiniPlayerViewModel.swift */,
+			);
+			path = Mini;
+			sourceTree = "<group>";
+		};
+		C3CB4257226F507700859A23 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				C3FB16282269B9050014FA01 /* Player.swift */,
+				C3EDE15C226E053A004FB94E /* PlayerRemoteControls.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
 		C3D810BD2263262A00153C56 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,12 +475,10 @@
 		C3DC4FAF2265F1250069733D /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				C3CB4254226F4E0900859A23 /* Mini */,
 				C3DC4FB9226618710069733D /* View */,
-				C3DC4FB0226611F70069733D /* SmallPlayerView.swift */,
 				C3DC4FB2226612AC0069733D /* PlayerViewController.swift */,
 				C3DC4FB7226618690069733D /* PlayerViewModel.swift */,
-				C3FB16282269B9050014FA01 /* Player.swift */,
-				C3EDE15C226E053A004FB94E /* PlayerRemoteControls.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -707,7 +726,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3FB16292269B9050014FA01 /* Player.swift in Sources */,
-				C3DC4FB1226611F70069733D /* SmallPlayerView.swift in Sources */,
+				C3DC4FB1226611F70069733D /* MiniPlayerView.swift in Sources */,
 				C3E55B0C225B2A4B00DD3D9A /* CategoriesViewController.swift in Sources */,
 				C3AC5432225F79270007090C /* Album.swift in Sources */,
 				C313AA5122622ACF003E2895 /* PlaylistHeaderView.swift in Sources */,
@@ -716,6 +735,7 @@
 				C36C86F7225CF7FF0035DCF8 /* UIApplication+Shared.swift in Sources */,
 				C3DFE95E225F23A0002D2AF4 /* PlaylistRepository.swift in Sources */,
 				C3EDE15D226E053A004FB94E /* PlayerRemoteControls.swift in Sources */,
+				C3CB4256226F4E2A00859A23 /* MiniPlayerViewModel.swift in Sources */,
 				C3182E9C2257D7B400180BD5 /* LoginViewController.swift in Sources */,
 				C35995BA225BACCF00F3FAD2 /* Scene.swift in Sources */,
 				C31013C722581031009BDB95 /* Storage.swift in Sources */,
