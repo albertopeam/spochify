@@ -30,12 +30,12 @@ class PlayerRemoteControls {
         }
         self.commandCenter.previousTrackCommand.isEnabled = true
         self.commandCenter.previousTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
-            player.next.execute()
+            player.previous.execute()
             return MPRemoteCommandHandlerStatus.success
         }
         self.commandCenter.nextTrackCommand.isEnabled = true
         self.commandCenter.nextTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
-            player.previous.execute()
+            player.next.execute()
             return MPRemoteCommandHandlerStatus.success
         }
     }
