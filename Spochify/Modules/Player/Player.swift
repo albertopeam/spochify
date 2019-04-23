@@ -11,10 +11,7 @@ import MediaPlayer
 import RxSwift
 import Action
 
-//TODO: controles nativos + UI nativa: TEST
 //TODO: Audio interruptions: TEST
-//TODO: lock screen/bottom controls: TEST
-//TODO: small player
 
 class Player {
     
@@ -64,16 +61,12 @@ class Player {
     
     lazy var play: Action<Void, Void> = Action {
         guard let track = self.current, let url = track.url else { return Observable.empty() }
-        self.avPlayer.play()
-        self.playingSubject.onNext(true)
-        self.notificationCenter.addObserver(self, selector: #selector(self.didArriveInterruption), name: AVAudioSession.interruptionNotification, object: nil)
+        self.playNow(track: track)
         return Observable.empty()
     }
     
     lazy var pause: Action<Void, Void> = Action {
-        self.avPlayer.pause()
-        self.playingSubject.onNext(false)
-        self.notificationCenter.removeObserver(self, name: AVAudioSession.interruptionNotification, object: nil)
+        self.pauseNow()
         return Observable.empty()
     }
     
@@ -82,7 +75,7 @@ class Player {
             self.current = nil
             return Observable.empty()
         }
-        self.play(track: previousTrack)
+        self.playNow(track: previousTrack)
         return Observable.empty()
     }
     
@@ -91,7 +84,7 @@ class Player {
             self.current = nil
             return Observable.empty()
         }
-        self.play(track: nextTrack)
+        self.playNow(track: nextTrack)
         return Observable.empty()
     }
     
@@ -112,7 +105,7 @@ class Player {
             self.current = nil
             return
         }
-        play(track: nextTrack)
+        playNow(track: nextTrack)
     }
     
     // MARK: Player
@@ -143,14 +136,24 @@ class Player {
         return tracks?[target]
     }
     
-    private func play(track: Track) {
+    private func playNow(track: Track) {
         guard let url = track.url else { return }
+        if current != track {
+            self.avPlayer.replaceCurrentItem(with: AVPlayerItem(url: url))
+        }
+        //todo: al salir y entrar reinicia la cancion al principio
         self.current = track
         self.tracksSubject.onNext(track)
         self.playingSubject.onNext(true)
-        self.avPlayer.replaceCurrentItem(with: AVPlayerItem(url: url))
         self.avPlayer.play()
+        self.notificationCenter.addObserver(self, selector: #selector(self.didArriveInterruption), name: AVAudioSession.interruptionNotification, object: nil)
         notifySystemPlayer(track: track)
+    }
+    
+    private func pauseNow() {
+        self.avPlayer.pause()
+        self.playingSubject.onNext(false)
+        self.notificationCenter.removeObserver(self, name: AVAudioSession.interruptionNotification, object: nil)
     }
     
     private func prepareToPlay() {
@@ -166,13 +169,12 @@ class Player {
     private func isPlaying() -> Bool {
         return avPlayer.rate > 0
     }
-
+    
     private func notifySystemPlayer(track: Track) {
         let info: [String: Any] = [
             MPMediaItemPropertyTitle: track.title,
             MPMediaItemPropertyArtist: track.album.name,
-            MPMediaItemPropertyAssetURL: track.url!
-        ]
+            ]
         systemPlayer.nowPlayingInfo = info
     }
     
