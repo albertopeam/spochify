@@ -46,7 +46,7 @@ class CategoriesViewController: UICollectionViewController, BindableType {
     func bindViewModel() {
         viewModel.categories
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (_) in
+            .subscribe(onNext: { [unowned self] (_) in
                 self.refreshControl.endRefreshing()
             }, onError: { (_) in
                 self.refreshControl.endRefreshing()
@@ -62,7 +62,7 @@ class CategoriesViewController: UICollectionViewController, BindableType {
         
         collectionView.rx
             .modelSelected(Category.self)
-            .flatMap({ self.viewModel.tappedCategory.execute($0) })
+            .flatMap({ [unowned self] in self.viewModel.tappedCategory.execute($0) })
             .subscribe()
             .disposed(by: disposeBag)
     }

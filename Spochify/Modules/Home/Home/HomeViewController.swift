@@ -42,7 +42,7 @@ class HomeViewController: UITabBarController, BindableType {
     func bindViewModel() {
         viewModel.user
             .observeOn(MainScheduler.instance)
-            .subscribe { (event) in
+            .subscribe { [unowned self] (event) in
                 switch event {
                 case .next(let user):
                     self.viewModel.storeAction(user: user)

@@ -12,6 +12,7 @@ import RxSwift
 import Action
 
 //TODO: Audio interruptions: TEST
+//TODO: improve with RXExtensions for AVPlayer
 
 class Player {
     

@@ -28,14 +28,14 @@ class PlayerViewController: UIViewController, BindableType {
     func bindViewModel() {
         viewModel.currentPlaylist
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (playlist) in
+            .subscribe(onNext: { [unowned self] (playlist) in
                 self.titleLabel.text = playlist.name
             })
             .disposed(by: disposeBag)
         
         viewModel.currentTrack
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (track) in
+            .subscribe(onNext: { [unowned self] (track) in
                 self.playingLabel.text = track.title + " - " + track.album.name
                 self.imageView.kf.setImage(with: track.album.image)
             })
@@ -43,7 +43,7 @@ class PlayerViewController: UIViewController, BindableType {
         
         viewModel.playing
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (playing) in
+            .subscribe(onNext: { [unowned self] (playing) in
                 if playing {
                     self.playButton.isHidden = true
                     self.pauseButton.isHidden = false
@@ -56,7 +56,7 @@ class PlayerViewController: UIViewController, BindableType {
         
         viewModel.progress
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (progress) in
+            .subscribe(onNext: { [unowned self] (progress) in
                 self.playingProgress.setProgress(progress.current/progress.duration, animated: false)
             })
             .disposed(by: disposeBag)

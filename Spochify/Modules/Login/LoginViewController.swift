@@ -29,7 +29,7 @@ class LoginViewController: UIViewController, WKNavigationDelegate, BindableType 
     func bindViewModel() {
         viewModel.login
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (request) in
+            .subscribe(onNext: { [unowned self] (request) in
                 self.webview.load(request)
             })
         .disposed(by: disposeBag)

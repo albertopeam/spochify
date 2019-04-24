@@ -43,7 +43,6 @@ class PlaylistViewController: UITableViewController, BindableType {
         tableView.refreshControl?.beginRefreshing()
     }
     
-    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         tableView.tableHeaderView?.frame.size = CGSize(width: tableView.frame.width, height: PlaylistHeaderView.ViewTraits.height)
@@ -52,7 +51,7 @@ class PlaylistViewController: UITableViewController, BindableType {
     func bindViewModel() {
         viewModel.currentPlaylist()
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (_) in
+            .subscribe(onNext: { [unowned self] (_) in
                 self.refreshControl?.endRefreshing()
             }, onError: { (_) in
                 self.refreshControl?.endRefreshing()
@@ -61,7 +60,7 @@ class PlaylistViewController: UITableViewController, BindableType {
         
         viewModel.currentPlaylist()
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (playlist) in
+            .subscribe(onNext: { [unowned self] (playlist) in
                 self.playlist = playlist
                 self.title = playlist.name
                 self.tableView.tableHeaderView = self.header
@@ -79,13 +78,13 @@ class PlaylistViewController: UITableViewController, BindableType {
         
         tableView.rx
             .itemSelected
-            .subscribe(onNext: { indexPath in
+            .subscribe(onNext: { [unowned self] indexPath in
                 self.tableView.deselectRow(at: indexPath, animated: true)
             }).disposed(by: disposeBag)
         
         header.playButton.rx
             .tap
-            .subscribe({ _ in
+            .subscribe({ [unowned self] _ in
                 guard let playlist = self.playlist else { return }
                 self.viewModel.tappedPlay.execute(playlist)
             }).disposed(by: disposeBag)

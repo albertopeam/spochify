@@ -46,14 +46,14 @@ class CategoryPlaylistsViewController: UICollectionViewController, BindableType 
     func bindViewModel() {
         viewModel.currentCategory()
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (category) in
+            .subscribe(onNext: { [unowned self] (category) in
                 self.title = category.name
             })
             .disposed(by: disposeBag)
         
         viewModel.playlists()
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (_) in
+            .subscribe(onNext: { [unowned self] (_) in
                 self.refreshControl.endRefreshing()
             }, onError: { (_) in
                 self.refreshControl.endRefreshing()
@@ -70,7 +70,7 @@ class CategoryPlaylistsViewController: UICollectionViewController, BindableType 
         
         collectionView.rx
             .modelSelected(Playlist.self)
-            .flatMap({ self.viewModel.tappedPlaylist.execute($0) })
+            .flatMap({ [unowned self] in self.viewModel.tappedPlaylist.execute($0) })
             .subscribe()
             .disposed(by: disposeBag)
     }

@@ -96,7 +96,7 @@ class MiniPlayerView: UIView, BindableType {
     func bindViewModel() {
         viewModel.currentTrack
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (track) in
+            .subscribe(onNext: { [unowned self] (track) in
                 self.titleLabel.text = track.title + " - " + track.album.name
                 self.imageView.kf.setImage(with: track.album.image)
             })
@@ -104,7 +104,7 @@ class MiniPlayerView: UIView, BindableType {
         
         viewModel.playing
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (playing) in
+            .subscribe(onNext: { [unowned self] (playing) in
                 if playing {
                     self.heightConstraint.constant = ViewTraits.height
                     self.playButton.isHidden = true
@@ -119,7 +119,7 @@ class MiniPlayerView: UIView, BindableType {
         
         viewModel.currentProgress
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (progress) in
+            .subscribe(onNext: { [unowned self] (progress) in
                 self.playingProgress.setProgress(progress.current/progress.duration, animated: false)
             })
             .disposed(by: disposeBag)

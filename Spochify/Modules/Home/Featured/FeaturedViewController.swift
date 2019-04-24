@@ -50,7 +50,7 @@ class FeaturedViewController: UICollectionViewController, BindableType {
     func bindViewModel() {
         viewModel.featuredPlaylists
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (_) in
+            .subscribe(onNext: { [unowned self] (_) in
                 self.refreshControl.endRefreshing()
             }, onError: { (_) in
                 self.refreshControl.endRefreshing()
@@ -65,7 +65,7 @@ class FeaturedViewController: UICollectionViewController, BindableType {
             .disposed(by: disposeBag)
         collectionView.rx
             .modelSelected(Playlist.self)
-            .subscribe(onNext: { (playlist) in
+            .subscribe(onNext: { [unowned self] (playlist) in
                 self.viewModel.tapped(playlist: playlist)
             })
             .disposed(by: disposeBag)
