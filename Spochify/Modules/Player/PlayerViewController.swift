@@ -61,10 +61,22 @@ class PlayerViewController: UIViewController, BindableType {
             })
             .disposed(by: disposeBag)
         
+        nextButton.rx
+            .tap
+            .throttle(2, latest: true, scheduler: MainScheduler.instance)
+            .flatMap({ self.viewModel.nextAction.execute() })
+            .subscribe()
+            .disposed(by: disposeBag)
+        
+        previousButton.rx
+            .tap
+            .throttle(2, latest: true, scheduler: MainScheduler.instance)
+            .flatMap({ self.viewModel.previousAction.execute() })
+            .subscribe()
+            .disposed(by: disposeBag)
+        
         playButton.rx.action = viewModel.playAction
         pauseButton.rx.action = viewModel.pauseAction
-        previousButton.rx.action = viewModel.previousAction
-        nextButton.rx.action = viewModel.nextAction
         
         viewModel.playAction.execute() //force start playing
         
