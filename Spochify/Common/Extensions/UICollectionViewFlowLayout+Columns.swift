@@ -15,4 +15,9 @@ extension UICollectionViewFlowLayout {
         itemSize = CGSize(width: size, height: size)
     }
     
+    func numberOfColumns(_ columns: Float) {
+        let size = (UIScreen.main.bounds.width - minimumInteritemSpacing - sectionInset.left - sectionInset.right) / CGFloat(columns)
+        itemSize = CGSize(width: size, height: size)
+    }
+    
 }

@@ -13,13 +13,16 @@ extension String {
     enum Key: String {
         case appName = "app_name"
         // TABS
-        case tabFeatured = "tab_featured"
+        case tabStart = "tab_start"
         case tabCategories = "tab_categories"
         // NAV
-        case navFeatured = "nav_featured"
+        case navStart = "nav_start"
         case navCategories = "nav_categories"
         // UI
         case buttonPlay = "play_button"
+        // START
+        case startFeatured = "Featured"
+        case startNewReleases = "section_new_releases"
     }
     
     init(localizedKey: String.Key) {

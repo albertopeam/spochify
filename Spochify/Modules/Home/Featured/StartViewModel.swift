@@ -7,8 +7,9 @@
 //
 
 import RxSwift
+import Action
 
-class FeaturedViewModel {
+class StartViewModel {
     
     private let browseRepository: BrowseRepository
     private let sceneCoordinator: SceneCoordinatorType
@@ -25,8 +26,14 @@ class FeaturedViewModel {
             .map({ $0.sorted(by: { $0.name < $1.name })})
     }
     
-    func tapped(playlist: Playlist) {
-        sceneCoordinator.transition(to: Scene.playlist(playlist: playlist, sceneCoordinator: sceneCoordinator), type: SceneTransitionType.push)
+    lazy var start: Observable<Start> = self.browseRepository.start.map { (start) -> Start in
+        return Start(featured: start.featured.sorted(by: { $0.name < $1.name }), newReleases: start.newReleases.sorted(by: { $0.name < $1.name }))
+    }
+    
+    func tapped(playlist: Playlist) -> Observable<Void> {
+        return sceneCoordinator
+            .transition(to: Scene.playlist(playlist: playlist, sceneCoordinator: sceneCoordinator), type: SceneTransitionType.push)
+            .andThen(Observable.empty())
     }
     
 }

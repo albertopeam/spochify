@@ -40,6 +40,7 @@ class Network {
     private lazy var categoriesUrl = URL(string: "\(endpoint)/browse/categories?country=\(country)&locale=\(locale)&limit=50&offset=0")!
     private lazy var categoryPlaylist = "\(endpoint)/browse/categories/{category_id}/playlists"
     private lazy var featuredPlayListUrl = URL(string: "\(endpoint)/browse/featured-playlists?country=\(country)&locale=\(locale)&timestamp=\(timestamp)&limit=50&offset=0")!
+    private lazy var newReleasesUrl = URL(string: "\(endpoint)/browse/new-releases?country=\(country)&limit=50&offset=0")!
     
     func categoriesRequest(accessToken: String) -> URLRequest {
         var request = URLRequest(url: categoriesUrl)
@@ -60,9 +61,11 @@ class Network {
         return request
     }
     
-    //TODO:
-    //Get a playlist
-    //get playlist tracks
+    func newReleases(accessToken: String) -> URLRequest {
+        var request = URLRequest(url: newReleasesUrl)
+        request.allHTTPHeaderFields = ["Authorization": "Bearer \(accessToken)"]
+        return request
+    }
     
     // MARK: user
     

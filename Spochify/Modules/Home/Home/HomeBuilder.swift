@@ -24,7 +24,7 @@ class HomeBuilder {
         homeViewController.title = String(localizedKey: String.Key.appName)
         
         let startViewController = buildStartViewController()
-        startViewController.tabBarItem.title = String(localizedKey: String.Key.tabFeatured)
+        startViewController.tabBarItem.title = String(localizedKey: String.Key.tabStart)
         startViewController.tabBarItem.image = UIImage(named: "outline_home_black_24pt")
         
         let searchViewController = buildSearchViewController()
@@ -39,9 +39,9 @@ class HomeBuilder {
     // MARK: private
     
     private func buildStartViewController() -> UIViewController {
-        var viewController = FeaturedViewController()
+        var viewController = StartViewController()
         let sceneCoordinator = SceneCoordinator(window: UIApplication.instance.window, viewController: viewController)
-        let startViewModel = FeaturedViewModel(browseRepository: UIApplication.provider.browseRepository, sceneCoordinator: sceneCoordinator)
+        let startViewModel = StartViewModel(browseRepository: UIApplication.provider.browseRepository, sceneCoordinator: sceneCoordinator)
         viewController.bindToViewModel(to: startViewModel)
         return viewController
     }

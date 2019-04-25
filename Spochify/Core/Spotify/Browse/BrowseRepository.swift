@@ -24,13 +24,41 @@ class BrowseRepository {
     
     lazy var featured: Observable<[Playlist]> = storage.accessTokenVariable.asObservable()
         .flatMap({ self.network.urlSession.rx.response(request: self.network.featuredPlayListRequest(accessToken: $0)) })
-        .filter({ response, _ in 200..<300 ~= response.statusCode })
         .map({ (_, data) in try? JSONDecoder().decode(PlayListResponseCodable.self, from: data) })
         .flatMap({ Observable.from(optional: $0?.playlists.items) })
         .flatMap({ (playlist) -> Observable<[Playlist]> in
-            let items = playlist.map { Playlist(id: $0.id, name: $0.name, image: URL(string: $0.images?.first?.url ?? ""), tracks: []) }
-            return Observable.just(items)
+            return Observable.just(playlist.map { Playlist(id: $0.id,
+                                                           name: $0.name,
+                                                           image: URL(string: $0.images?.first?.url ?? ""),
+                                                           tracks: []) }) })
+        .share()
+        .debug()
+    
+    lazy var newReleases: Observable<[Album]> = storage.accessTokenVariable.asObservable()
+        .flatMap({ self.network.urlSession.rx.response(request: self.network.newReleases(accessToken: $0)) })
+        .map({ (_, data) -> AlbumsCodable? in
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                return try decoder.decode(AlbumsCodable.self, from: data)
+            }catch {
+                print(error)
+                return nil
+            }
         })
+        .flatMap({ Observable.from(optional: $0?.albums.items) })
+        .flatMap({ (albums) -> Observable<[Album]> in
+            return Observable.just(albums.map { Album.init(id: $0.id,
+                                                           name: $0.name,
+                                                           releaseDate: DateFormatter().toDate(string: $0.releaseDate),
+                                                           numTracks: $0.totalTracks,
+                                                           image: URL(string: $0.images?.first?.url)) })
+        })
+        .share()
+        .debug()
+
+    lazy var start: Observable<Start> = Observable
+        .zip(self.featured, self.newReleases) { Start(featured: $0, newReleases: $1) }
         .share()
         .debug()
     
@@ -39,8 +67,10 @@ class BrowseRepository {
         .map({ (_, data) in try? JSONDecoder().decode(CategoriesCodable.self, from: data) })
         .flatMap({ Observable.from(optional: $0?.categories.items) })
         .flatMap({ (categories) -> Observable<[Category]> in
-            let items = categories.map { Category.init(id: $0.id, name: $0.name, image: URL(string: $0.icons?.first?.url)) }
-            return Observable.just(items)
+            return Observable.just(categories.map { Category.init(id: $0.id,
+                                                                  name: $0.name,
+                                                                  image: URL(string: $0.icons?.first?.url))
+            })
         })
         .share()
         .debug()
@@ -51,13 +81,15 @@ class BrowseRepository {
             .map({ (_, data) in try? JSONDecoder().decode(PlayListResponseCodable.self, from: data) })
             .flatMap({ Observable.from(optional: $0?.playlists.items) })
             .flatMap({ (playlist) -> Observable<[Playlist]> in
-                let items = playlist.map { Playlist(id: $0.id, name: $0.name, image: URL(string: $0.images?.first?.url ?? ""), tracks: []) }
-                return Observable.just(items)
+                return Observable.just(playlist.map { Playlist(id: $0.id,
+                                                               name: $0.name,
+                                                               image: URL(string: $0.images?.first?.url ?? ""),
+                                                               tracks: []) })
             })
             .share()
             .debug()
     }
-
+    
 }
 
 extension BrowseRepository {
@@ -82,7 +114,7 @@ extension BrowseRepository {
     }
     
     // MARK: categories
-
+    
     private struct CategoriesCodable: Codable {
         let categories: CategoryListCodable
         struct CategoryListCodable: Codable {
@@ -91,6 +123,22 @@ extension BrowseRepository {
                 let id: String
                 let name: String
                 let icons: [ImageCodable]?
+            }
+        }
+    }
+    
+    // MARK: releases
+    
+    private struct AlbumsCodable: Codable {
+        let albums: AlbumListCodable
+        struct AlbumListCodable: Codable {
+            let items: [AlbumCodable]
+            struct AlbumCodable: Codable {
+                let id: String
+                let name: String
+                let releaseDate: String
+                let totalTracks: Int
+                let images: [ImageCodable]?
             }
         }
     }

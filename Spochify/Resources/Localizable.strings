@@ -9,12 +9,16 @@
 "app_name" = "Spochify";
 
 // MARK: tabs
-"tab_featured" = "Featured";
+"tab_start" = "Start";
 "tab_categories" = "Categories";
 
 // MARK: navigation titles
-"nav_featured" = "Featured";
+"nav_start" = "Start";
 "nav_categories" = "Categories";
 
 // MARK: playlist
 "play_button" = "Play";
+
+// MARK: start
+"section_featured" = "Featured";
+"section_new_releases" = "New Releases";

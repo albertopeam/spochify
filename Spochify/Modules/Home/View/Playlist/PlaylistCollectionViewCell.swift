@@ -27,7 +27,7 @@ class PlaylistCollectionViewCell: UICollectionViewCell {
     }
     
     func draw(playlist: Playlist) {
-        titleLabel.text = playlist.name
+        titleLabel.text = playlist.name.isEmpty ? "-" : playlist.name
         imageView.kf.setImage(with: playlist.image)
     }
 

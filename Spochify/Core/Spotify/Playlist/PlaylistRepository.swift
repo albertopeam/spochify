@@ -38,12 +38,17 @@ class PlaylistRepository {
         .flatMap({ Observable.from(optional: $0?.items) })
         .flatMap({ (items) -> Observable<Playlist> in
             let tracks = items.map({ (item) -> Track in
-                //TODO: move to an extension or something
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd"
-                let date = dateFormatter.date(from: item.track.album.releaseDate) ?? Date()
-                let album = Album(id: item.track.album.id, name: item.track.album.name, releaseDate: date, numTracks: item.track.album.totalTracks, image: URL(string: item.track.album.images?.first?.url))
-                return Track(id: item.track.id, title: item.track.name, popularity: item.track.popularity, url: item.track.previewUrl, explicit: item.track.explicit, album: album)
+                let album = Album(id: item.track.album.id,
+                                  name: item.track.album.name,
+                                  releaseDate: DateFormatter().toDate(string: item.track.album.releaseDate),
+                                  numTracks: item.track.album.totalTracks,
+                                  image: URL(string: item.track.album.images?.first?.url))
+                return Track(id: item.track.id,
+                             title: item.track.name,
+                             popularity: item.track.popularity,
+                             url: item.track.previewUrl,
+                             explicit: item.track.explicit,
+                             album: album)
             })
             return Observable.just(Playlist(id: self.playlist.id, name: self.playlist.name, image: self.playlist.image, tracks: tracks))
         })        
