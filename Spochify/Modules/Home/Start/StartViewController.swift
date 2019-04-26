@@ -12,6 +12,7 @@ import RxDataSources
 import RxCocoa
 
 //TODO: https://developer.spotify.com/console/get-recommendations/
+//TODO: https://developer.spotify.com/console/get-available-genre-seeds/
 class StartViewController: UICollectionViewController, BindableType {
     typealias ViewModelType = StartViewModel
     
@@ -78,13 +79,18 @@ class StartViewController: UICollectionViewController, BindableType {
                     .modelSelected(Playlist.self)
                     .flatMap({ self.viewModel.tapped(playlist: $0) })
                     .subscribe()
-                    .disposed(by: self.disposeBag)
+                    .disposed(by: cell.disposeBag)
                 return cell
             case .albums(let albumsViewModel):
                 guard let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: AlbumsCollectionViewCell.identifier, for: indexPath) as? AlbumsCollectionViewCell else {
                     fatalError()
                 }
                 cell.items = albumsViewModel.albums
+                cell.collectionView.rx
+                    .modelSelected(Album.self)
+                    .flatMap({ self.viewModel.tapped(album: $0) })
+                    .subscribe()
+                    .disposed(by: cell.disposeBag)
                 return cell
             }
         })

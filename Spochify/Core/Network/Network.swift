@@ -15,6 +15,7 @@ class Network {
     let urlSession: URLSession
     
     //TODO: cache URLSession, revisar si spotify devuelve e-tag o last-mod
+    //TODO: try to remove the storage and inject the Variable to accessToken... less coupling or inject market always
     init(urlSession: URLSession,
          storage: Storage) {
         self.urlSession = urlSession
@@ -43,37 +44,26 @@ class Network {
     private lazy var newReleasesUrl = URL(string: "\(endpoint)/browse/new-releases?country=\(country)&limit=50&offset=0")!
     
     func categoriesRequest(accessToken: String) -> URLRequest {
-        var request = URLRequest(url: categoriesUrl)
-        request.allHTTPHeaderFields = ["Authorization": "Bearer \(accessToken)"]
-        return request
+        return request(for: categoriesUrl, accessToken: accessToken)
     }
     
     func categoryPlaylist(categoryId: String, accessToken: String) -> URLRequest {
         let catetoryPlaylistUrl = URL(string: categoryPlaylist.replacingOccurrences(of: "{category_id}", with: categoryId))!
-        var request = URLRequest(url: catetoryPlaylistUrl)
-        request.allHTTPHeaderFields = ["Authorization": "Bearer \(accessToken)"]
-        return request
+        return request(for: catetoryPlaylistUrl, accessToken: accessToken)
     }
     
     func featuredPlayListRequest(accessToken: String) -> URLRequest {
-        var request = URLRequest(url: featuredPlayListUrl)
-        request.allHTTPHeaderFields = ["Authorization": "Bearer \(accessToken)"]
-        return request
+        return request(for: featuredPlayListUrl, accessToken: accessToken)
     }
     
     func newReleases(accessToken: String) -> URLRequest {
-        var request = URLRequest(url: newReleasesUrl)
-        request.allHTTPHeaderFields = ["Authorization": "Bearer \(accessToken)"]
-        return request
+        return request(for: newReleasesUrl, accessToken: accessToken)
     }
     
     // MARK: user
     
-    private lazy var currentUserUrl = URL(string: endpoint + "/me")!
-    var currentUserRequest: URLRequest {
-        var request = URLRequest(url: currentUserUrl)
-        request.allHTTPHeaderFields = ["Authorization": "Bearer \(storage.accessToken)"]
-        return request
+    func currentUserRequest(accessToken: String) -> URLRequest {
+        return request(for: URL(string: endpoint + "/me")!, accessToken: accessToken)
     }
     
     // MARK: auth
@@ -95,9 +85,20 @@ class Network {
     private lazy var playlistTracks = "\(endpoint)/playlists/{playlist_id}/tracks?limit=100&offset=0&market=\(country)&fields=\(playlistTracksfields)"
     func playlistTracksRequest(playlistId: String, accessToken: String) -> URLRequest {
         let concretePlaylistTracks = playlistTracks.replacingOccurrences(of: "{playlist_id}", with: playlistId)
-        let playlistTracksUrl = URL(string: concretePlaylistTracks)!
-        print(playlistTracksUrl)
-        var request = URLRequest(url: playlistTracksUrl)
+        return request(for: URL(string: concretePlaylistTracks)!, accessToken: accessToken)
+    }
+    
+    // MARK: album
+    
+    func albumTracksRequest(albumId: String, accessToken: String) -> URLRequest {
+        let albumTracks = "\(endpoint)/albums/{album_id}/tracks?limit=50&offset=0&market=\(country)".replacingOccurrences(of: "{album_id}", with: albumId)
+        return request(for: URL(string: albumTracks)!, accessToken: accessToken)
+    }
+    
+    // MARK: private
+    
+    private func request(for url: URL, accessToken: String) -> URLRequest {
+        var request = URLRequest(url: url)
         request.allHTTPHeaderFields = ["Authorization": "Bearer \(accessToken)"]
         return request
     }

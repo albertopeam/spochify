@@ -13,7 +13,7 @@ class HorizontalCollectionViewCell: UICollectionViewCell {
         
     static let visibleColumns: Float = 1.5
     private(set) var collectionView: UICollectionView!
-    private(set) var disposeBag: DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

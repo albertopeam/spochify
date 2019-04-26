@@ -27,7 +27,7 @@ class UserRepository {
             if token.isEmpty {
                 throw Error.invalidToken
             }
-            return self.network.urlSession.rx.response(request: self.network.currentUserRequest)
+            return self.network.urlSession.rx.response(request: self.network.currentUserRequest(accessToken: token))
         })
         .map({ (_, data) -> UserCodable in
             let decoder = JSONDecoder()
@@ -40,8 +40,13 @@ class UserRepository {
         .share()
         .debug()
     
-    lazy var isNotAuthenticated: Observable<Void> = network.urlSession.rx
-        .response(request: network.currentUserRequest)
+    lazy var isNotAuthenticated: Observable<Void> = storage.accessTokenVariable.asObservable()
+        .flatMap({ (token) -> Observable<(response: HTTPURLResponse, data: Data)> in
+            if token.isEmpty {
+                throw Error.invalidToken
+            }
+            return self.network.urlSession.rx.response(request: self.network.currentUserRequest(accessToken: token))
+        })
         .filter({response, data in response.statusCode == 401 || response.statusCode == 400 })
         .map({ (_,_) -> Void in })
         .share()
@@ -52,7 +57,7 @@ class UserRepository {
             if token.isEmpty {
                 throw Error.invalidToken
             }
-            return self.network.urlSession.rx.response(request: self.network.currentUserRequest)
+            return self.network.urlSession.rx.response(request: self.network.currentUserRequest(accessToken: token))
         })
         .filter({response, data in response.statusCode == 401 || response.statusCode == 400 })
         .map({ (_,_) -> Void in })
@@ -65,7 +70,7 @@ class UserRepository {
             if token.isEmpty {
                 throw Error.invalidToken
             }
-            return self.network.urlSession.rx.response(request: self.network.currentUserRequest)
+            return self.network.urlSession.rx.response(request: self.network.currentUserRequest(accessToken: token))
         })
         .filter({response, data in 200..<300 ~= response.statusCode })
         .map({ (_,_) -> Void in })

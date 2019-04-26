@@ -18,6 +18,7 @@ extension String {
         // NAV
         case navStart = "nav_start"
         case navCategories = "nav_categories"
+        case navAlbum = "nav_album"
         // UI
         case buttonPlay = "play_button"
         // START

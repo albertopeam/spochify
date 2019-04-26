@@ -36,4 +36,10 @@ class StartViewModel {
             .andThen(Observable.empty())
     }
     
+    func tapped(album: Album) -> Observable<Void> {
+        return sceneCoordinator
+            .transition(to: Scene.album(album: album, sceneCoordinator: sceneCoordinator), type: SceneTransitionType.push)
+            .andThen(Observable.empty())
+    }
+    
 }

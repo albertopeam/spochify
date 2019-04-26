@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import Kingfisher
 
+//TODO: tap open tracks
 class PlayerViewController: UIViewController, BindableType {
     typealias ViewModelType = PlayerViewModel
     

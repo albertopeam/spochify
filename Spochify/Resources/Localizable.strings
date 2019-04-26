@@ -15,6 +15,7 @@
 // MARK: navigation titles
 "nav_start" = "Start";
 "nav_categories" = "Categories";
+"nav_album" = "Album";
 
 // MARK: playlist
 "play_button" = "Play";

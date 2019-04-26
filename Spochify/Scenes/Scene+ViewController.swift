@@ -33,6 +33,8 @@ extension Scene {
             let viewModel = PlayerViewModel(playlist: playlist, player: UIApplication.provider.player, sceneCoordinator: sceneCoordinator)
             viewController.bindToViewModel(to: viewModel)
             return viewController
+        case .album(let album):
+            return AlbumViewController()
         }
     }
     

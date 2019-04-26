@@ -7,21 +7,20 @@
 //
 
 import UIKit
+import Kingfisher
 
 class AlbumCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "AlbumCollectionViewCell"
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+    @IBOutlet weak var imageView: UIImageView!
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        imageView.image = nil
     }
     
     func draw(album: Album) {
-        backgroundColor = .red
+        imageView.kf.setImage(with: album.image)
     }
 
 }
