@@ -20,9 +20,8 @@ class PlaylistViewModel {
         self.sceneCoordinator = sceneCoordinator
     }
 
-    func currentPlaylist() -> Observable<Playlist> {
-        return playlistRepository.fullPlaylist
-    }
+    lazy var fullPlaylist: Observable<Playlist> = playlistRepository.fullPlaylist
+    lazy var emptyTracks: Observable<Bool> = playlistRepository.fullPlaylist.map({ $0.tracks }).map { (tracks) -> Bool in tracks.filter({ $0.url != nil }).count == 0 }
     
     lazy var tappedPlay: Action<Playlist, Void> = Action { playlist in
         return self.sceneCoordinator

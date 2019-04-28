@@ -15,8 +15,6 @@ class PlaylistViewController: UITableViewController, BindableType {
     
     private let header: PlaylistHeaderView
     private let disposeBag = DisposeBag()
-    //TODO: shitty... SIDE EFFECTS + DISPOSES BAG, IT COULDN'T BE RESOLVED WITH ACTIONS/LAZY VARS... THE PROBLEM IS THAT WHEN LAUNCHED THE ACTION THE REPOSITORY NEVER RESPOND, APPARENTLY IS LIKE WE ARE NOT DOING A SUSCRIPTION...
-    private var playlist: Playlist?
     var viewModel: PlaylistViewModel!
     
     private enum ViewTraits {
@@ -49,7 +47,7 @@ class PlaylistViewController: UITableViewController, BindableType {
     }
     
     func bindViewModel() {
-        viewModel.currentPlaylist()
+        viewModel.fullPlaylist
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [unowned self] (_) in
                 self.refreshControl?.endRefreshing()
@@ -58,23 +56,29 @@ class PlaylistViewController: UITableViewController, BindableType {
             })
             .disposed(by: disposeBag)
         
-        viewModel.currentPlaylist()
+        viewModel.fullPlaylist
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [unowned self] (playlist) in
-                self.playlist = playlist
                 self.title = playlist.name
                 self.tableView.tableHeaderView = self.header
                 self.header.draw(playlist: playlist)
             })
             .disposed(by: disposeBag)
         
-        viewModel.currentPlaylist()
+        viewModel.fullPlaylist
             .observeOn(MainScheduler.instance)
             .map({ $0.tracks })
             .bind(to: tableView.rx.items(cellIdentifier: TrackTableViewCell.identifier)) { index, model, cell in
                 guard let cell = cell as? TrackTableViewCell else { fatalError() }
                 cell.draw(index: index + 1, track: model)
+                
             }.disposed(by: disposeBag)
+        viewModel.emptyTracks
+            .observeOn(MainScheduler.instance)
+            .bind(onNext: { [unowned self] (empty) in
+                self.header.playButton.isHidden = empty
+            })
+            .disposed(by: disposeBag)
         
         tableView.rx
             .itemSelected
@@ -82,13 +86,11 @@ class PlaylistViewController: UITableViewController, BindableType {
                 self.tableView.deselectRow(at: indexPath, animated: true)
             }).disposed(by: disposeBag)
         
-        //TODO: fixed in album view controller, use same strategy
-        header.playButton.rx
-            .tap
-            .subscribe({ [unowned self] _ in
-                guard let playlist = self.playlist else { return }
-                self.viewModel.tappedPlay.execute(playlist)
-            }).disposed(by: disposeBag)
+        header.playButton.rx.tap.asObservable()
+            .observeOn(MainScheduler.instance)
+            .withLatestFrom(viewModel.fullPlaylist)
+            .bind(onNext: { [unowned self] in self.viewModel.tappedPlay.execute($0) })
+            .disposed(by: disposeBag)
     }
     
 }
