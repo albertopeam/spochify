@@ -91,6 +91,10 @@ class PlaylistViewController: UITableViewController, BindableType {
             .withLatestFrom(viewModel.fullPlaylist)
             .bind(onNext: { [unowned self] in self.viewModel.tappedPlay.execute($0) })
             .disposed(by: disposeBag)
+        
+        viewModel.hasTracks
+            .bind(onNext: { [unowned self] playing in self.tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: MiniPlayerView.ViewTraits.height, right: 0) })
+            .disposed(by: disposeBag)
     }
     
 }

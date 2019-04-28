@@ -41,7 +41,7 @@ class HomeBuilder {
     private func buildStartViewController() -> UIViewController {
         var viewController = StartViewController()
         let sceneCoordinator = SceneCoordinator(window: UIApplication.instance.window, viewController: viewController)
-        let startViewModel = StartViewModel(browseRepository: UIApplication.provider.browseRepository, sceneCoordinator: sceneCoordinator)
+        let startViewModel = StartViewModel(browseRepository: UIApplication.provider.browseRepository, sceneCoordinator: sceneCoordinator, player: UIApplication.provider.player)
         viewController.bindToViewModel(to: startViewModel)
         return viewController
     }
@@ -49,7 +49,7 @@ class HomeBuilder {
     private func buildSearchViewController() -> UIViewController {
         var viewController = CategoriesViewController()
         let sceneCoordinator = SceneCoordinator(window: UIApplication.instance.window, viewController: viewController)
-        let searchViewModel = CategoriesViewModel(browseRepository: UIApplication.provider.browseRepository, sceneCoordinator: sceneCoordinator)
+        let searchViewModel = CategoriesViewModel(browseRepository: UIApplication.provider.browseRepository, sceneCoordinator: sceneCoordinator, player: UIApplication.provider.player)
         viewController.bindToViewModel(to: searchViewModel)
         return viewController
     }

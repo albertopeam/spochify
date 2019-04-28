@@ -54,7 +54,7 @@ class Player {
     func playlist(with tracks: [Track]) {
         let newTracks = tracks.filter({ $0.url != nil })
         if let first = newTracks.first, let url = first.url {
-            if !isPlaying() || self.tracks != newTracks {
+            if !isPlayingNow() || self.tracks != newTracks {
                 self.tracks = newTracks
                 self.current = first
                 self.tracksSubject.onNext(first)
@@ -106,6 +106,9 @@ class Player {
         .asObservable()
         .share()
         .debug()
+    
+    lazy var hasTracks: Observable<Void> = self.tracksSubject
+        .map { _ -> Void in }
     
     // MARK: NotificationCenter
     
@@ -165,7 +168,7 @@ class Player {
         self.notificationCenter.removeObserver(self, name: AVAudioSession.interruptionNotification, object: nil)
     }
     
-    private func isPlaying() -> Bool {
+    private func isPlayingNow() -> Bool {
         return avPlayer.rate > 0
     }
     

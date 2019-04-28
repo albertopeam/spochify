@@ -65,6 +65,10 @@ class CategoriesViewController: UICollectionViewController, BindableType {
             .flatMap({ [unowned self] in self.viewModel.tappedCategory.execute($0) })
             .subscribe()
             .disposed(by: disposeBag)
+        
+        viewModel.hasTracks
+            .bind(onNext: { playing in self.collectionView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: MiniPlayerView.ViewTraits.height, right: 0) })
+            .disposed(by: disposeBag)
     }
     
 }

@@ -15,11 +15,16 @@ class CategoryPlaylistsViewModel {
     private let category: Category
     private let browseRepository: BrowseRepository
     private let sceneCoordinator: SceneCoordinatorType
+    private let player: Player
     
-    init(category: Category, browseRepository: BrowseRepository, sceneCoordinator: SceneCoordinatorType) {
+    init(category: Category,
+         browseRepository: BrowseRepository,
+         sceneCoordinator: SceneCoordinatorType,
+         player: Player) {
         self.category = category
         self.browseRepository = browseRepository
         self.sceneCoordinator = sceneCoordinator
+        self.player = player
     }
     
     func currentCategory() -> Observable<Category> {
@@ -30,6 +35,8 @@ class CategoryPlaylistsViewModel {
         return browseRepository.playlistsForCategory(categoryId: category.id)
             .map({ $0.sorted(by: { $0.name < $1.name })})
     }
+    
+    lazy var hasTracks: Observable<Void> = player.hasTracks
     
     lazy var tappedPlaylist: Action<Playlist, Void> = Action { playlist in
         return self.sceneCoordinator.transition(to: Scene.playlist(playlist: playlist, sceneCoordinator: self.sceneCoordinator), type: SceneTransitionType.push)

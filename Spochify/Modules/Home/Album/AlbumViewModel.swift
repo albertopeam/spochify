@@ -14,16 +14,20 @@ class AlbumViewModel {
     
     private let albumRepository: AlbumRepository
     private let sceneCoordinator: SceneCoordinatorType
+    private let player: Player
     
     init(albumRepository: AlbumRepository,
-         sceneCoordinator: SceneCoordinatorType) {
+         sceneCoordinator: SceneCoordinatorType,
+         player: Player) {
         self.albumRepository = albumRepository
         self.sceneCoordinator = sceneCoordinator
+        self.player = player
     }
     
     lazy var fullAlbum: Observable<Album> = albumRepository.fullAlbum
     lazy var tracks: Observable<[Track]> = albumRepository.fullAlbum.map({ $0.tracks })
     lazy var emptyTracks: Observable<Bool> = albumRepository.fullAlbum.map({ $0.tracks }).map { (tracks) -> Bool in tracks.filter({ $0.url != nil }).count == 0 }
+    lazy var hasTracks: Observable<Void> = player.hasTracks
     
     lazy var tappedPlay: Action<Album, Void> = Action { album in
         return self.sceneCoordinator

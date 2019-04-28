@@ -13,11 +13,14 @@ class StartViewModel {
     
     private let browseRepository: BrowseRepository
     private let sceneCoordinator: SceneCoordinatorType
+    private let player: Player
     
     init(browseRepository: BrowseRepository,
-         sceneCoordinator: SceneCoordinatorType) {
+         sceneCoordinator: SceneCoordinatorType,
+         player: Player) {
         self.browseRepository = browseRepository
         self.sceneCoordinator = sceneCoordinator
+        self.player = player
     }
     
     var featuredPlaylists: Observable<[Playlist]> {
@@ -26,9 +29,11 @@ class StartViewModel {
             .map({ $0.sorted(by: { $0.name < $1.name })})
     }
     
-    lazy var start: Observable<Start> = self.browseRepository.start.map { (start) -> Start in
+    lazy var start: Observable<Start> = browseRepository.start.map { (start) -> Start in
         return Start(featured: start.featured.sorted(by: { $0.name < $1.name }), newReleases: start.newReleases.sorted(by: { $0.name < $1.name }))
     }
+    
+    lazy var hasTracks: Observable<Void> = player.hasTracks
     
     func tapped(playlist: Playlist) -> Observable<Void> {
         return sceneCoordinator

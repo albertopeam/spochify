@@ -51,8 +51,6 @@ class StartViewController: UICollectionViewController, BindableType {
                                 withReuseIdentifier: HorizontalCollectionReusableView.identifier)
         collectionView.addSubview(refreshControl)
         collectionView.alwaysBounceVertical = true
-        //TODO: migrate to something more scalable, listen to the player(through viewModel) to hide show
-        collectionView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: MiniPlayerView.ViewTraits.height, right: 0)
         refreshControl.beginRefreshing()
         let size = (UIScreen.main.bounds.width - flowLayout.minimumInteritemSpacing - flowLayout.sectionInset.left - flowLayout.sectionInset.right) / CGFloat(columns)
         flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right, height: size)
@@ -115,6 +113,10 @@ class StartViewController: UICollectionViewController, BindableType {
                 return [playlistSection, albumsSection]
             }
             .bind(to: collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        viewModel.hasTracks
+            .bind(onNext: { playing in self.collectionView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: MiniPlayerView.ViewTraits.height, right: 0) })
             .disposed(by: disposeBag)
     }
     

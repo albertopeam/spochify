@@ -20,11 +20,11 @@ extension Scene {
         case .playlist(let playlist, let sceneCoordinator):
             var viewController = PlaylistViewController()
             let playlistRepository = PlaylistRepository(playlist: playlist, network: UIApplication.provider.network, storage: UIApplication.provider.storage)
-            let viewModel = PlaylistViewModel(playlistRepository: playlistRepository, sceneCoordinator: sceneCoordinator)
+            let viewModel = PlaylistViewModel(playlistRepository: playlistRepository, sceneCoordinator: sceneCoordinator, player: UIApplication.provider.player)
             viewController.bindToViewModel(to: viewModel)
             return viewController
         case .categoryPlaylists(let category, let sceneCoordinator):
-            let viewModel = CategoryPlaylistsViewModel(category: category, browseRepository: UIApplication.provider.browseRepository, sceneCoordinator: sceneCoordinator)
+            let viewModel = CategoryPlaylistsViewModel(category: category, browseRepository: UIApplication.provider.browseRepository, sceneCoordinator: sceneCoordinator, player: UIApplication.provider.player)
             var viewController = CategoryPlaylistsViewController()
             viewController.bindToViewModel(to: viewModel)
             return viewController
@@ -36,7 +36,7 @@ extension Scene {
         case .album(let album, let sceneCoordinator):
             let albumRepository = AlbumRepository(album: album, network: UIApplication.provider.network, storage: UIApplication.provider.storage)
             var viewController = AlbumViewController()
-            let viewModel = AlbumViewModel(albumRepository: albumRepository, sceneCoordinator: sceneCoordinator)
+            let viewModel = AlbumViewModel(albumRepository: albumRepository, sceneCoordinator: sceneCoordinator, player: UIApplication.provider.player)
             viewController.bindToViewModel(to: viewModel)
             return viewController
         }
