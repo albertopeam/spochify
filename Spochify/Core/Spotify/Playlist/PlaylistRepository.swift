@@ -42,7 +42,8 @@ class PlaylistRepository {
                                   name: item.track.album.name,
                                   releaseDate: DateFormatter().toDate(string: item.track.album.releaseDate),
                                   numTracks: item.track.album.totalTracks,
-                                  image: URL(string: item.track.album.images?.first?.url))
+                                  image: URL(string: item.track.album.images?.first?.url),
+                                  tracks: [])
                 return Track(id: item.track.id,
                              title: item.track.name,
                              popularity: item.track.popularity,

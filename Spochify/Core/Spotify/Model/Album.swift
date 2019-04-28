@@ -14,4 +14,5 @@ struct Album: Equatable {
     let releaseDate: Date
     let numTracks: Int
     let image: URL?
+    var tracks: [Track]
 }

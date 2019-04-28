@@ -82,6 +82,7 @@ class PlaylistViewController: UITableViewController, BindableType {
                 self.tableView.deselectRow(at: indexPath, animated: true)
             }).disposed(by: disposeBag)
         
+        //TODO: fixed in album view controller, use same strategy
         header.playButton.rx
             .tap
             .subscribe({ [unowned self] _ in

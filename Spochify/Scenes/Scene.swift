@@ -12,6 +12,6 @@ enum Scene {
     case login(sceneCoordinator: SceneCoordinatorType)
     case playlist(playlist: Playlist, sceneCoordinator: SceneCoordinatorType)
     case categoryPlaylists(category: Category, sceneCoordinator: SceneCoordinatorType)
-    case player(playlist: Playlist, sceneCoordinator: SceneCoordinatorType)
+    case player(title: String, tracks: [Track], sceneCoordinator: SceneCoordinatorType)
     case album(album: Album, sceneCoordinator: SceneCoordinatorType)
 }

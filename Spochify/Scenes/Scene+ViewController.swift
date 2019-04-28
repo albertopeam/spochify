@@ -28,13 +28,17 @@ extension Scene {
             var viewController = CategoryPlaylistsViewController()
             viewController.bindToViewModel(to: viewModel)
             return viewController
-        case .player(let playlist, let sceneCoordinator):
+        case .player(let title, let tracks, let sceneCoordinator):
             var viewController = PlayerViewController()
-            let viewModel = PlayerViewModel(playlist: playlist, player: UIApplication.provider.player, sceneCoordinator: sceneCoordinator)
+            let viewModel = PlayerViewModel(title: title, player: UIApplication.provider.player, tracks: tracks, sceneCoordinator: sceneCoordinator)
             viewController.bindToViewModel(to: viewModel)
             return viewController
-        case .album(let album):
-            return AlbumViewController()
+        case .album(let album, let sceneCoordinator):
+            let albumRepository = AlbumRepository(album: album, network: UIApplication.provider.network, storage: UIApplication.provider.storage)
+            var viewController = AlbumViewController()
+            let viewModel = AlbumViewModel(albumRepository: albumRepository, sceneCoordinator: sceneCoordinator)
+            viewController.bindToViewModel(to: viewModel)
+            return viewController
         }
     }
     

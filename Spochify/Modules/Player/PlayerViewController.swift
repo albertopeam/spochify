@@ -27,11 +27,8 @@ class PlayerViewController: UIViewController, BindableType {
     var viewModel: PlayerViewModel!
     
     func bindViewModel() {
-        viewModel.currentPlaylist
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [unowned self] (playlist) in
-                self.titleLabel.text = playlist.name
-            })
+        viewModel.current
+            .bind(onNext: { self.titleLabel.text = $0 })
             .disposed(by: disposeBag)
         
         viewModel.currentTrack

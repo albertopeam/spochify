@@ -12,20 +12,21 @@ import Action
 
 class PlayerViewModel {
     
-    private let playlist: Playlist
+    private let title: String
     private let player: Player
     private let sceneCoordinator: SceneCoordinatorType
     
-    init(playlist: Playlist,
+    init(title: String,
          player: Player,
+         tracks: [Track],
          sceneCoordinator: SceneCoordinatorType) {
-        self.playlist = playlist
+        self.title = title
         self.player = player
         self.sceneCoordinator = sceneCoordinator
-        self.player.playlist(with: playlist.tracks)
+        self.player.playlist(with: tracks)
     }
     
-    lazy var currentPlaylist = Observable<Playlist>.just(playlist)
+    lazy var current = Observable<String>.just(title)
     lazy var progress = self.player.progress
     lazy var playing = self.player.playing
     lazy var currentTrack = self.player.track

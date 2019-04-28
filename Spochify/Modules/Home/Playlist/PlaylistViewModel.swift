@@ -26,7 +26,7 @@ class PlaylistViewModel {
     
     lazy var tappedPlay: Action<Playlist, Void> = Action { playlist in
         return self.sceneCoordinator
-            .transition(to: Scene.player(playlist: playlist, sceneCoordinator: self.sceneCoordinator), type: SceneTransitionType.modal)
+            .transition(to: Scene.player(title: playlist.name, tracks: playlist.tracks, sceneCoordinator: self.sceneCoordinator), type: SceneTransitionType.modal)
             .andThen(Observable<Void>.empty())
     }
     

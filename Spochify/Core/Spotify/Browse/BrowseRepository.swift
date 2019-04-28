@@ -52,7 +52,8 @@ class BrowseRepository {
                                                            name: $0.name,
                                                            releaseDate: DateFormatter().toDate(string: $0.releaseDate),
                                                            numTracks: $0.totalTracks,
-                                                           image: URL(string: $0.images?.first?.url)) })
+                                                           image: URL(string: $0.images?.first?.url),
+                                                           tracks: []) })
         })
         .share()
         .debug()
