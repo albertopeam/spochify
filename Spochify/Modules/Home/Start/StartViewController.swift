@@ -11,8 +11,6 @@ import RxSwift
 import RxDataSources
 import RxCocoa
 
-//TODO: https://developer.spotify.com/console/get-recommendations/
-//TODO: https://developer.spotify.com/console/get-available-genre-seeds/
 class StartViewController: UICollectionViewController, BindableType {
     typealias ViewModelType = StartViewModel
     

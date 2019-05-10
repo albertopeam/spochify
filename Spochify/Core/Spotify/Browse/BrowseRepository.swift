@@ -9,9 +9,6 @@
 import RxCocoa
 import RxSwift
 
-//TODO: 
-//TODO: remove all 200..300 to avoid never respond
-//TODO:
 class BrowseRepository {
     
     private let network: Network

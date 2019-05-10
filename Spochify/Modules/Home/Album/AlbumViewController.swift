@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 
 //TODO: sometimes fails loading... not doing requests...
+//TODO: playlists 304, but I don't have content locally, maybe cache is removed(because of some reason, filesystem) and request headers etag/if-none not??? The request had etag
 //TODO: refactor collectionview controllers and tableview controllers
 class AlbumViewController: UITableViewController, BindableType {
     typealias ViewModelType = AlbumViewModel

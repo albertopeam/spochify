@@ -9,9 +9,6 @@
 import UIKit
 import RxSwift
 
-//TODO: handle no network!!!
-//TODO: USE DRIVERS https://github.com/ReactiveX/RxSwift/blob/master/Documentation/Traits.md#rxcocoa-traits
-//TODO: check dispose bag usage with [unowned self]
 class HomeViewController: UITabBarController, BindableType {
     
     typealias ViewModelType = HomeViewModel

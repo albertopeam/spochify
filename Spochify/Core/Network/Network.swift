@@ -14,7 +14,7 @@ class Network {
     private let storage: Storage
     let urlSession: URLSession
     
-    //TODO: cache URLSession, revisar si spotify devuelve e-tag o last-mod
+    //TODO: cache URLSession, revisar si spotify devuelve e-tag o last-mod.
     //TODO: try to remove the storage and inject the Variable to accessToken... less coupling or inject market always
     init(urlSession: URLSession,
          storage: Storage) {

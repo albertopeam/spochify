@@ -9,9 +9,6 @@
 import RxCocoa
 import RxSwift
 
-//TODO:
-//TODO: remove all 200..300 to avoid never respond
-//TODO:
 class PlaylistRepository {
     
     private let playlist: Playlist
@@ -29,7 +26,6 @@ class PlaylistRepository {
     lazy var fullPlaylist: Observable<Playlist> = storage
         .accessTokenVariable.asObservable()
         .flatMap({ self.network.urlSession.rx.response(request: self.network.playlistTracksRequest(playlistId: self.playlist.id, accessToken: $0)) })
-        .filter({ response, _ in 200..<300 ~= response.statusCode })
         .map({ (response, data) -> TrackListCodable? in
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase

@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import Kingfisher
 
-//TODO: tap open tracks
+//TODO: tap en player view open, full player view.??? posible
 class PlayerViewController: UIViewController, BindableType {
     typealias ViewModelType = PlayerViewModel
     
