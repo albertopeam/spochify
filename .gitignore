@@ -40,6 +40,9 @@ playground.xcworkspace
 # Package.resolved
 .build/
 
+# Credentials
+Spochify/SpotifyCredentials.plist
+
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However

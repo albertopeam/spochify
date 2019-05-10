@@ -18,8 +18,9 @@ class Provider {
     let remoteControls: PlayerRemoteControls
     
     init(urlSession: URLSession = .shared) {
+        let credentials = Credentials()
         storage = Storage()
-        network = Network(urlSession: urlSession, storage: storage)
+        network = Network(urlSession: urlSession, storage: storage, credential: credentials.get())
         userRepository = UserRepository(network: network, storage: storage)
         browseRepository = BrowseRepository(network: network, storage: storage)
         player = Player()

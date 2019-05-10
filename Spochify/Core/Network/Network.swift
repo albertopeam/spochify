@@ -12,14 +12,17 @@ class Network {
     
     private let endpoint = "https://api.spotify.com/v1"
     private let storage: Storage
+    private let credential: Credential
     let urlSession: URLSession
     
     //TODO: cache URLSession, revisar si spotify devuelve e-tag o last-mod.
     //TODO: try to remove the storage and inject the Variable to accessToken... less coupling or inject market always
     init(urlSession: URLSession,
-         storage: Storage) {
+         storage: Storage,
+         credential: Credential) {
         self.urlSession = urlSession
         self.storage = storage
+        self.credential = credential
     }
     
     private var locale: String {
@@ -69,11 +72,10 @@ class Network {
     // MARK: auth
     
     var loginUserRequest: URLRequest {
-        //TODO: move clientId to PLIST, not commit to repo
-        let clientId = "b27608372edf492a85c3e4df2fe914fb"
+        let clientId = credential.clientId
         let responseType = "token"
         let scopes = "user-read-email user-read-private".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-        let redirectUri = "https://spochify.com/callback".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let redirectUri = credential.redirectUri.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         let state = "spochify"
         let url = URL(string: "https://accounts.spotify.com/authorize?client_id=\(clientId)&response_type=\(responseType)&redirect_uri=\(redirectUri)&state=\(state)&scope=\(scopes)")!
         return URLRequest(url: url)

@@ -17,6 +17,8 @@
 		C3182EA42257D7B600180BD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3182EA22257D7B600180BD5 /* LaunchScreen.storyboard */; };
 		C3182EAF2257D7B600180BD5 /* SpochifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3182EAE2257D7B600180BD5 /* SpochifyTests.swift */; };
 		C3182EBA2257D7B600180BD5 /* SpochifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3182EB92257D7B600180BD5 /* SpochifyUITests.swift */; };
+		C35704E02285DCA10033EEAE /* SpotifyCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = C35704DF2285DCA10033EEAE /* SpotifyCredentials.plist */; };
+		C35704E2228621F70033EEAE /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35704E1228621F70033EEAE /* Credentials.swift */; };
 		C35995B1225B560300F3FAD2 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35995B0225B560300F3FAD2 /* String+Localizable.swift */; };
 		C35995BA225BACCF00F3FAD2 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35995B5225BACCE00F3FAD2 /* Scene.swift */; };
 		C35995BB225BACCF00F3FAD2 /* Scene+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35995B6225BACCE00F3FAD2 /* Scene+ViewController.swift */; };
@@ -119,6 +121,8 @@
 		C3182EB52257D7B600180BD5 /* SpochifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpochifyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3182EB92257D7B600180BD5 /* SpochifyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpochifyUITests.swift; sourceTree = "<group>"; };
 		C3182EBB2257D7B600180BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C35704DF2285DCA10033EEAE /* SpotifyCredentials.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = SpotifyCredentials.plist; sourceTree = "<group>"; };
+		C35704E1228621F70033EEAE /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		C35995B0225B560300F3FAD2 /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
 		C35995B5225BACCE00F3FAD2 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		C35995B6225BACCE00F3FAD2 /* Scene+ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Scene+ViewController.swift"; sourceTree = "<group>"; };
@@ -231,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				C31013C622581031009BDB95 /* Storage.swift */,
+				C35704E1228621F70033EEAE /* Credentials.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -319,6 +324,7 @@
 		C3182E982257D7B400180BD5 /* Spochify */ = {
 			isa = PBXGroup;
 			children = (
+				C35704DF2285DCA10033EEAE /* SpotifyCredentials.plist */,
 				C3182EA52257D7B600180BD5 /* Info.plist */,
 				C3182EA22257D7B600180BD5 /* LaunchScreen.storyboard */,
 				C3182E992257D7B400180BD5 /* AppDelegate.swift */,
@@ -749,6 +755,7 @@
 				C3AAD32A2264D69D0026254A /* CategoryCollectionViewCell.xib in Resources */,
 				C3E55B14225B2F0000DD3D9A /* Localizable.strings in Resources */,
 				C3182EA42257D7B600180BD5 /* LaunchScreen.storyboard in Resources */,
+				C35704E02285DCA10033EEAE /* SpotifyCredentials.plist in Resources */,
 				C3DFF175225E32690041B7C8 /* PlaylistCollectionViewCell.xib in Resources */,
 				C3DC4FB5226612AC0069733D /* PlayerViewController.xib in Resources */,
 				C3182EA12257D7B600180BD5 /* Assets.xcassets in Resources */,
@@ -846,6 +853,7 @@
 				C3DC4FB4226612AC0069733D /* PlayerViewController.swift in Sources */,
 				C3AC5440225FE3470007090C /* PlaylistViewController.swift in Sources */,
 				C35995B1225B560300F3FAD2 /* String+Localizable.swift in Sources */,
+				C35704E2228621F70033EEAE /* Credentials.swift in Sources */,
 				C3A988EC22725E0700842FD9 /* AlbumViewController.swift in Sources */,
 				C3C8C297225CA3A700EFBED0 /* User.swift in Sources */,
 				C3DC4FB8226618690069733D /* PlayerViewModel.swift in Sources */,
