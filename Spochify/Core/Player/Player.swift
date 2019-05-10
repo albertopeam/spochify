@@ -153,7 +153,6 @@ class Player {
         if current != track {
             self.avPlayer.replaceCurrentItem(with: AVPlayerItem(url: url))
         }
-        //todo: al salir y entrar reinicia la cancion al principio
         self.current = track
         self.tracksSubject.onNext(track)
         self.playingSubject.onNext(true)

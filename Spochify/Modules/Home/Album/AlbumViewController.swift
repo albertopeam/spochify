@@ -10,6 +10,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+//TODO: sometimes fails loading... not doing requests...
+//TODO: refactor collectionview controllers and tableview controllers
 class AlbumViewController: UITableViewController, BindableType {
     typealias ViewModelType = AlbumViewModel
     
