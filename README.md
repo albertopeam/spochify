@@ -1,5 +1,9 @@
 # Spochify
 
+[![Build Status](https://travis-ci.com/albertopeam/spochify.svg?branch=master)](https://travis-ci.com/albertopeam/spochify)
+[![Swift Version](https://img.shields.io/badge/Swift-4.2-F16D39.svg?style=flat)](https://developer.apple.com/swift)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Spochify is a example of usage of RXSwift using the [Spotify API](https://developer.spotify.com/documentation/web-api/) 
 The app itself shows categories, playlists, albums and songs. It provides a player to listen the audio samples that spotify provides(30 secs), the player can be controlled from the system player and it shows the playing song in the lock screen. Some of the features are only available in real devices.
 
@@ -9,6 +13,7 @@ The app itself shows categories, playlists, albums and songs. It provides a play
 * Add unit testing
 * Replace `UserDefaults` by `Keychain`
 * Improve navigation
+* Update `Player` player to become more reactive
 
 ## Installation
 

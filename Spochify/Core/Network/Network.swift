@@ -15,7 +15,7 @@ class Network {
     private let credential: Credential
     let urlSession: URLSession
     
-    //TODO: cache URLSession, revisar si spotify devuelve e-tag o last-mod.
+    //TODO: cache URLSession, check spotify api to analyse if they handle etags and if-none-match
     //TODO: try to remove the storage and inject the Variable to accessToken... less coupling or inject market always
     init(urlSession: URLSession,
          storage: Storage,
