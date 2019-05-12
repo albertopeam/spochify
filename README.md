@@ -19,23 +19,23 @@ The app itself shows categories, playlists, albums and songs. It provides a play
 
 ## Installation
 
-To use the app is mandatory to create an app in the Spotify Dashboard and create a plist with the needed information, follow the next steps to do it.
+To use the app is mandatory to create an app in the Spotify Dashboard and update a plist with the needed information, follow the next steps to do it.
 
 1. You need to access Spotify [dashboard](https://developer.spotify.com/dashboard/)
 2. Once access is granted, create a new app entry, more info on [Spotify](https://developer.spotify.com/documentation/general/guides/app-settings/). If you want to understand the authorization process(Implicit Grant Flow) you can check more information on [Spotify](https://developer.spotify.com/documentation/general/guides/authorization-guide/#implicit-grant-flow)
 3. Once created the app we need two strings to make the app work:
    1. Client id
    2. Redirect Uri
-4. Create an file called `"SpotifyCredentials.plist"` with the following format and replace the default values with the `client id` and `redirect uri` that we have obtained from Spotify dashboard
+4. Update the file called `"SpotifyCredentials.plist"` with the the values `client id` and `redirect uri` that we have obtained from Spotify dashboard
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>redirectUri</key>
-	<string>YOUR-REDIRECT-URI</string>
-	<key>clientId</key>
-	<string>YOUR-CLIENT-ID</string>
+  <key>redirectUri</key>
+  <string>YOUR-REDIRECT-URI</string>
+  <key>clientId</key>
+  <string>YOUR-CLIENT-ID</string>
 </dict>
 </plist>
 ```
