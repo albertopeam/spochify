@@ -1,6 +1,8 @@
 # Spochify
 
 [![Build Status](https://travis-ci.com/albertopeam/spochify.svg?branch=master)](https://travis-ci.com/albertopeam/spochify)
+[![Maintainability](https://api.codeclimate.com/v1/badges/5678a0e5d0b5fd9724fc/maintainability)](https://codeclimate.com/github/albertopeam/spochify/maintainability)
+
 [![Swift Version](https://img.shields.io/badge/Swift-4.2-F16D39.svg?style=flat)](https://developer.apple.com/swift)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
