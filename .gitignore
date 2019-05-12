@@ -41,7 +41,7 @@ playground.xcworkspace
 .build/
 
 # Credentials
-Spochify/SpotifyCredentials.plist
+# Spochify/SpotifyCredentials.plist
 
 # CocoaPods
 #
