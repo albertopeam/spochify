@@ -14,7 +14,7 @@ class CategoryPlaylistsViewController: UICollectionViewController, BindableType 
     
     private let flowLayout: UICollectionViewFlowLayout
     private let refreshControl: UIRefreshControl
-    private let columns = 2
+    private let columns: Float = 2
     private let disposeBag = DisposeBag()
     var viewModel: CategoryPlaylistsViewModel!
     
