@@ -63,59 +63,75 @@ class StartViewController: UICollectionViewController, BindableType {
                     self.refreshControl.endRefreshing()
             })
             .disposed(by: disposeBag)
-        
         let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, StartModel>>(configureCell: { [unowned self] dataSource, table, indexPath, item in
-            switch item {
-            case .playlist(let playlistsViewModel):
-                guard let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistsCollectionViewCell.identifier, for: indexPath) as? PlaylistsCollectionViewCell else {
-                    fatalError()
-                }
-                cell.items = playlistsViewModel.playlists
-                cell.collectionView.rx
-                    .modelSelected(Playlist.self)
-                    .flatMap({ self.viewModel.tapped(playlist: $0) })
-                    .subscribe()
-                    .disposed(by: cell.disposeBag)
-                return cell
-            case .albums(let albumsViewModel):
-                guard let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: AlbumsCollectionViewCell.identifier, for: indexPath) as? AlbumsCollectionViewCell else {
-                    fatalError()
-                }
-                cell.items = albumsViewModel.albums
-                cell.collectionView.rx
-                    .modelSelected(Album.self)
-                    .flatMap({ self.viewModel.tapped(album: $0) })
-                    .subscribe()
-                    .disposed(by: cell.disposeBag)
-                return cell
-            }
+            return self.cell(for: indexPath, item: item)
         })
-        
         dataSource.configureSupplementaryView = { (dataSource, collectionView, kind, indexPath) -> UICollectionReusableView in
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
-                                                                               withReuseIdentifier: HorizontalCollectionReusableView.identifier,
-                                                                               for: indexPath) as? HorizontalCollectionReusableView else {
-                                                                                fatalError()
-            }
-            header.titleLabel.text = dataSource.sectionModels[indexPath.section].model
-            return header
+            return self.sectionHeader(dataSource: dataSource, indexPath: indexPath)
         }
-        
         viewModel
             .start
-            .map { (start) -> [SectionModel<String, StartModel>] in
-                let playlistSection = SectionModel<String, StartModel>(model: String(localizedKey: String.Key.startFeatured),
-                                                                           items: [StartModel.playlist(playlistViewModel: PlaylistsViewModel(playlists: start.featured))])
-                let albumsSection = SectionModel<String, StartModel>(model: String(localizedKey: String.Key.startNewReleases),
-                                                                         items: [StartModel.albums(albumsViewModel: AlbumsViewModel(albums: start.newReleases))])
-                return [playlistSection, albumsSection]
-            }
+            .map({ self.map(start: $0 )})
             .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
         viewModel.hasTracks
             .bind(onNext: { playing in self.collectionView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: MiniPlayerView.ViewTraits.height, right: 0) })
             .disposed(by: disposeBag)
+    }
+    
+    // MARK: private
+    
+    private func cell(for indexPath: IndexPath, item: StartModel) -> UICollectionViewCell {
+        switch item {
+        case .playlist(let playlistsViewModel):
+            return self.playlistCell(playlistsViewModel: playlistsViewModel, indexPath: indexPath)
+        case .albums(let albumsViewModel):
+            return self.albumCell(albumsViewModel: albumsViewModel, indexPath: indexPath)
+        }
+    }
+    
+    private func albumCell(albumsViewModel: AlbumsViewModel, indexPath: IndexPath) -> AlbumsCollectionViewCell {
+        guard let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: AlbumsCollectionViewCell.identifier, for: indexPath) as? AlbumsCollectionViewCell else {
+            fatalError()
+        }
+        cell.items = albumsViewModel.albums
+        cell.collectionView.rx
+            .modelSelected(Album.self)
+            .flatMap({ self.viewModel.tapped(album: $0) })
+            .subscribe()
+            .disposed(by: cell.disposeBag)
+        return cell
+    }
+    
+    private func playlistCell(playlistsViewModel: PlaylistsViewModel, indexPath: IndexPath) -> PlaylistsCollectionViewCell {
+        guard let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistsCollectionViewCell.identifier, for: indexPath) as? PlaylistsCollectionViewCell else {
+            fatalError()
+        }
+        cell.items = playlistsViewModel.playlists
+        cell.collectionView.rx
+            .modelSelected(Playlist.self)
+            .flatMap({ self.viewModel.tapped(playlist: $0) })
+            .subscribe()
+            .disposed(by: cell.disposeBag)
+        return cell
+    }
+    
+    private func sectionHeader(dataSource: CollectionViewSectionedDataSource<SectionModel<String, StartViewController.StartModel>>, indexPath: IndexPath) -> HorizontalCollectionReusableView {
+        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                           withReuseIdentifier: HorizontalCollectionReusableView.identifier,
+                                                                           for: indexPath) as? HorizontalCollectionReusableView else {
+                                                                            fatalError()
+        }
+        header.titleLabel.text = dataSource.sectionModels[indexPath.section].model
+        return header
+    }
+    
+    private func map(start: Start) -> [SectionModel<String, StartModel>] {
+        let playlistSection = SectionModel<String, StartModel>(model: String(localizedKey: String.Key.startFeatured),
+                                                               items: [StartModel.playlist(playlistViewModel: PlaylistsViewModel(playlists: start.featured))])
+        let albumsSection = SectionModel<String, StartModel>(model: String(localizedKey: String.Key.startNewReleases),
+                                                             items: [StartModel.albums(albumsViewModel: AlbumsViewModel(albums: start.newReleases))])
+        return [playlistSection, albumsSection]
     }
     
     enum StartModel {
