@@ -47,15 +47,17 @@ class PlaylistViewController: UITableViewController, BindableType {
     }
     
     func bindViewModel() {
+        configureUI()
+        configureActions()
+    }
+    
+    // MARK: private
+    
+    private func configureUI() {
         viewModel.fullPlaylist
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [unowned self] (_) in
-                self.refreshControl?.endRefreshing()
-            }, onError: { (_) in
-                self.refreshControl?.endRefreshing()
-            })
+            .subscribe(onNext: { [unowned self] (_) in self.refreshControl?.endRefreshing() }, onError: { (_) in self.refreshControl?.endRefreshing() })
             .disposed(by: disposeBag)
-        
         viewModel.fullPlaylist
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [unowned self] (playlist) in
@@ -64,36 +66,31 @@ class PlaylistViewController: UITableViewController, BindableType {
                 self.header.draw(playlist: playlist)
             })
             .disposed(by: disposeBag)
-        
         viewModel.fullPlaylist
             .observeOn(MainScheduler.instance)
             .map({ $0.tracks })
             .bind(to: tableView.rx.items(cellIdentifier: TrackTableViewCell.identifier)) { index, model, cell in
                 guard let cell = cell as? TrackTableViewCell else { fatalError() }
                 cell.draw(index: index + 1, track: model)
-                
             }.disposed(by: disposeBag)
+        viewModel.hasTracks
+            .bind(onNext: { [unowned self] playing in self.tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: MiniPlayerView.ViewTraits.height, right: 0) })
+            .disposed(by: disposeBag)
+    }
+    
+    private func configureActions() {
         viewModel.emptyTracks
             .observeOn(MainScheduler.instance)
-            .bind(onNext: { [unowned self] (empty) in
-                self.header.playButton.isHidden = empty
-            })
+            .bind(onNext: { [unowned self] (empty) in self.header.playButton.isHidden = empty })
             .disposed(by: disposeBag)
-        
         tableView.rx
             .itemSelected
-            .subscribe(onNext: { [unowned self] indexPath in
-                self.tableView.deselectRow(at: indexPath, animated: true)
-            }).disposed(by: disposeBag)
-        
+            .subscribe(onNext: { [unowned self] indexPath in self.tableView.deselectRow(at: indexPath, animated: true) })
+            .disposed(by: disposeBag)
         header.playButton.rx.tap.asObservable()
             .observeOn(MainScheduler.instance)
             .withLatestFrom(viewModel.fullPlaylist)
             .bind(onNext: { [unowned self] in self.viewModel.tappedPlay.execute($0) })
-            .disposed(by: disposeBag)
-        
-        viewModel.hasTracks
-            .bind(onNext: { [unowned self] playing in self.tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: MiniPlayerView.ViewTraits.height, right: 0) })
             .disposed(by: disposeBag)
     }
     
