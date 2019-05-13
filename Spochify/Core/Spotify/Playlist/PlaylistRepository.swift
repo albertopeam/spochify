@@ -71,14 +71,6 @@ extension PlaylistRepository{
             let album: AlbumCodable
         }
         
-        struct AlbumCodable: Codable {
-            let id: String
-            let name: String
-            let releaseDate: String
-            let totalTracks: Int
-            let images: [ImageCodable]?
-        }
-        
         struct ImageCodable: Codable {
             let url: String
         }

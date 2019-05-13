@@ -130,20 +130,7 @@ extension BrowseRepository {
     private struct AlbumsCodable: Codable {
         let albums: AlbumListCodable
         struct AlbumListCodable: Codable {
-            let items: [AlbumCodable]
-            struct AlbumCodable: Codable {
-                let id: String
-                let name: String
-                let releaseDate: String
-                let totalTracks: Int
-                let images: [ImageCodable]?
-            }
+            let items: [AlbumCodable]            
         }
-    }
-    
-    // MARK: shared
-    
-    private struct ImageCodable: Codable {
-        let url: String
     }
 }

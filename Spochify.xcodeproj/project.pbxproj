@@ -30,6 +30,7 @@
 		C36C86F5225CEE970035DCF8 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36C86F4225CEE970035DCF8 /* BindableType.swift */; };
 		C36C86F7225CF7FF0035DCF8 /* UIApplication+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36C86F6225CF7FF0035DCF8 /* UIApplication+Shared.swift */; };
 		C36C86F9225D417F0035DCF8 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C86F8225D417F0035DCF8 /* RxDataSources.framework */; };
+		C36E3AC92289A1A800C9D4E0 /* Codables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36E3AC82289A1A800C9D4E0 /* Codables.swift */; };
 		C3A988DC2271F6FE00842FD9 /* PlaylistsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A988DB2271F6FE00842FD9 /* PlaylistsCollectionViewCell.swift */; };
 		C3A988DE2271F76000842FD9 /* AlbumsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A988DD2271F76000842FD9 /* AlbumsCollectionViewCell.swift */; };
 		C3A988E22271F7BA00842FD9 /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A988E02271F7BA00842FD9 /* AlbumCollectionViewCell.swift */; };
@@ -134,6 +135,7 @@
 		C36C86F4225CEE970035DCF8 /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
 		C36C86F6225CF7FF0035DCF8 /* UIApplication+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Shared.swift"; sourceTree = "<group>"; };
 		C36C86F8225D417F0035DCF8 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
+		C36E3AC82289A1A800C9D4E0 /* Codables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codables.swift; sourceTree = "<group>"; };
 		C3A988DB2271F6FE00842FD9 /* PlaylistsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsCollectionViewCell.swift; sourceTree = "<group>"; };
 		C3A988DD2271F76000842FD9 /* AlbumsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsCollectionViewCell.swift; sourceTree = "<group>"; };
 		C3A988E02271F7BA00842FD9 /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 		C31013C8225811B8009BDB95 /* Spotify */ = {
 			isa = PBXGroup;
 			children = (
+				C36E3AC72289A09C00C9D4E0 /* Codable */,
 				C3ED7ACD227319C200676284 /* Album */,
 				C3DFE95F225F27E8002D2AF4 /* Model */,
 				C3DFE95C225F227C002D2AF4 /* Playlist */,
@@ -388,6 +391,14 @@
 				C35995B8225BACCE00F3FAD2 /* SceneTransitionType.swift */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		C36E3AC72289A09C00C9D4E0 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				C36E3AC82289A1A800C9D4E0 /* Codables.swift */,
+			);
+			path = Codable;
 			sourceTree = "<group>";
 		};
 		C3A988DA2271F6F300842FD9 /* View */ = {
@@ -867,6 +878,7 @@
 				C35995BD225BACCF00F3FAD2 /* SceneTransitionType.swift in Sources */,
 				C3D810BF2263264F00153C56 /* HomeViewController.swift in Sources */,
 				C3DC4FAE2265D7240069733D /* Provider.swift in Sources */,
+				C36E3AC92289A1A800C9D4E0 /* Codables.swift in Sources */,
 				C3A988E22271F7BA00842FD9 /* AlbumCollectionViewCell.swift in Sources */,
 				C3C8C299225CB65800EFBED0 /* URL+Init.swift in Sources */,
 				C36C86F5225CEE970035DCF8 /* BindableType.swift in Sources */,
