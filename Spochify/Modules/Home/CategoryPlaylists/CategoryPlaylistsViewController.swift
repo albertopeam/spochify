@@ -45,20 +45,12 @@ class CategoryPlaylistsViewController: UICollectionViewController, BindableType 
     func bindViewModel() {
         viewModel.currentCategory()
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [unowned self] (category) in
-                self.title = category.name
-            })
+            .subscribe(onNext: { [unowned self] (category) in self.title = category.name })
             .disposed(by: disposeBag)
-        
         viewModel.playlists()
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [unowned self] (_) in
-                self.refreshControl.endRefreshing()
-            }, onError: { (_) in
-                self.refreshControl.endRefreshing()
-            })
+            .subscribe(onNext: { [unowned self] (_) in self.refreshControl.endRefreshing() }, onError: { (_) in self.refreshControl.endRefreshing() })
             .disposed(by: disposeBag)
-        
         viewModel.playlists()
             .observeOn(MainScheduler.instance)
             .bind(to: collectionView.rx.items(cellIdentifier: PlaylistCollectionViewCell.identifier)) { index, model, cell in
@@ -66,13 +58,11 @@ class CategoryPlaylistsViewController: UICollectionViewController, BindableType 
                 cell.draw(playlist: model)
             }
             .disposed(by: disposeBag)
-        
         collectionView.rx
             .modelSelected(Playlist.self)
             .flatMap({ [unowned self] in self.viewModel.tappedPlaylist.execute($0) })
             .subscribe()
             .disposed(by: disposeBag)
-        
         viewModel.hasTracks
             .bind(onNext: { playing in self.collectionView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: MiniPlayerView.ViewTraits.height, right: 0) })
             .disposed(by: disposeBag)
