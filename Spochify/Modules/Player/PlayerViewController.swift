@@ -27,10 +27,16 @@ class PlayerViewController: UIViewController, BindableType {
     var viewModel: PlayerViewModel!
     
     func bindViewModel() {
+        configureUI()
+        configureActions()
+    }
+    
+    // MARK: private
+    
+    private func configureUI() {
         viewModel.current
             .bind(onNext: { self.titleLabel.text = $0 })
             .disposed(by: disposeBag)
-        
         viewModel.currentTrack
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [unowned self] (track) in
@@ -38,52 +44,51 @@ class PlayerViewController: UIViewController, BindableType {
                 self.imageView.kf.setImage(with: track.album.image)
             })
             .disposed(by: disposeBag)
-        
         viewModel.playing
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [unowned self] (playing) in
-                if playing {
-                    self.playButton.isHidden = true
-                    self.pauseButton.isHidden = false
-                } else {
-                    self.pauseButton.isHidden = true
-                    self.playButton.isHidden = false
-                }
+            .subscribe(onNext: { [unowned self] (isPlaying) in
+                self.configurePlayButton(isPlaying: isPlaying)
             })
             .disposed(by: disposeBag)
-        
         viewModel.progress
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [unowned self] (progress) in
                 self.playingProgress.setProgress(progress.current/progress.duration, animated: false)
             })
             .disposed(by: disposeBag)
-        
+    }
+    
+    private func configureActions() {
         nextButton.rx
             .tap
             .throttle(2, latest: true, scheduler: MainScheduler.instance)
             .flatMap({ self.viewModel.nextAction.execute() })
             .subscribe()
             .disposed(by: disposeBag)
-        
         previousButton.rx
             .tap
             .throttle(2, latest: true, scheduler: MainScheduler.instance)
             .flatMap({ self.viewModel.previousAction.execute() })
             .subscribe()
             .disposed(by: disposeBag)
-        
         playButton.rx.action = viewModel.playAction
         pauseButton.rx.action = viewModel.pauseAction
         
         viewModel.playAction.execute() //force start playing
-        
         //TODO: try to use scene coordinator
         //closeButton.rx.action = viewModel.closeAction
         closeButton.addTarget(self, action: #selector(close), for: UIControl.Event.touchUpInside)
     }
     
-    // MARK: private
+    private func configurePlayButton(isPlaying: Bool) {
+        if isPlaying {
+            self.playButton.isHidden = true
+            self.pauseButton.isHidden = false
+        } else {
+            self.pauseButton.isHidden = true
+            self.playButton.isHidden = false
+        }
+    }
     
     @objc private func close() {
         dismiss(animated: true, completion: nil)
