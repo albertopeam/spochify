@@ -101,31 +101,30 @@ class MiniPlayerView: UIView, BindableType {
                 self.imageView.kf.setImage(with: track.album.image)
             })
             .disposed(by: disposeBag)
-        
         viewModel.playing
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [unowned self] (playing) in
-                if playing {
-                    self.heightConstraint.constant = ViewTraits.height
-                    self.playButton.isHidden = true
-                    self.pauseButton.isHidden = false
-                    self.layoutIfNeeded()
-                } else {
-                    self.pauseButton.isHidden = true
-                    self.playButton.isHidden = false
-                }
-            })
+            .subscribe(onNext: { [unowned self] (isPlaying) in self.configurePlayButton(isPlaying: isPlaying)})
             .disposed(by: disposeBag)
-        
         viewModel.currentProgress
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [unowned self] (progress) in
-                self.playingProgress.setProgress(progress.current/progress.duration, animated: false)
-            })
+            .subscribe(onNext: { [unowned self] (progress) in self.playingProgress.setProgress(progress.current/progress.duration, animated: false) })
             .disposed(by: disposeBag)
         
         playButton.rx.action = viewModel.playAction
         pauseButton.rx.action = viewModel.pauseAction
     }
     
+    // MARK: private
+    
+    private func configurePlayButton(isPlaying: Bool) {
+        if isPlaying {
+            self.heightConstraint.constant = ViewTraits.height
+            self.playButton.isHidden = true
+            self.pauseButton.isHidden = false
+            self.layoutIfNeeded()
+        } else {
+            self.pauseButton.isHidden = true
+            self.playButton.isHidden = false
+        }
+    }
 }
