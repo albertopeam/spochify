@@ -10,9 +10,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class PlaylistViewController: UITableViewController, BindableType {
-    typealias ViewModelType = PlaylistViewModel
+class PlaylistViewController: UIViewController, BindableType {
     
+    typealias ViewModelType = PlaylistViewModel
+    private let tableView: UITableView
     private let header: PlaylistHeaderView
     private let disposeBag = DisposeBag()
     var viewModel: PlaylistViewModel!
@@ -22,8 +23,10 @@ class PlaylistViewController: UITableViewController, BindableType {
     }
     
     init() {
+        tableView = UITableView.mold
+        tableView.rowHeight = ViewTraits.rowHeight
         header = PlaylistHeaderView()
-        super.init(style: UITableView.Style.plain)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,13 +35,7 @@ class PlaylistViewController: UITableViewController, BindableType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.backgroundColor = .white
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        tableView.rowHeight = ViewTraits.rowHeight
-        tableView.register(UINib(nibName: "TrackTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: TrackTableViewCell.identifier)
-        tableView.refreshControl = UIRefreshControl(frame: CGRect.zero)
-        tableView.alwaysBounceVertical = true
-        tableView.refreshControl?.beginRefreshing()
+        addStickedView(tableView)
     }
     
     override func viewWillLayoutSubviews() {
@@ -56,7 +53,7 @@ class PlaylistViewController: UITableViewController, BindableType {
     private func configureUI() {
         viewModel.fullPlaylist
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [unowned self] (_) in self.refreshControl?.endRefreshing() }, onError: { (_) in self.refreshControl?.endRefreshing() })
+            .subscribe(onNext: { [unowned self] (_) in self.tableView.refreshControl?.endRefreshing() }, onError: { (_) in self.tableView.refreshControl?.endRefreshing() })
             .disposed(by: disposeBag)
         viewModel.fullPlaylist
             .observeOn(MainScheduler.instance)

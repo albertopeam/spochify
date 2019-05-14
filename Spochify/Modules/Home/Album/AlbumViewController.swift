@@ -12,10 +12,10 @@ import RxCocoa
 
 //TODO: sometimes fails loading... not doing requests...
 //TODO: playlists 304, but I don't have content locally, maybe cache is removed(because of some reason, filesystem) and request headers etag/if-none not??? The request had etag
-//TODO: refactor collectionview controllers and tableview controllers
-class AlbumViewController: UITableViewController, BindableType {
-    typealias ViewModelType = AlbumViewModel
+class AlbumViewController: UIViewController, BindableType {
     
+    typealias ViewModelType = AlbumViewModel
+    private let tableView: UITableView
     private let disposeBag = DisposeBag()
     private let header: AlbumHeaderView
     var viewModel: AlbumViewModel!
@@ -25,23 +25,14 @@ class AlbumViewController: UITableViewController, BindableType {
     }
     
     init() {
+        tableView = UITableView.mold
+        tableView.rowHeight = ViewTraits.rowHeight
         header = AlbumHeaderView()
-        super.init(style: UITableView.Style.plain)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.backgroundColor = .white
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        tableView.rowHeight = ViewTraits.rowHeight
-        tableView.register(UINib(nibName: "TrackTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: TrackTableViewCell.identifier)
-        tableView.refreshControl = UIRefreshControl(frame: CGRect.zero)
-        tableView.alwaysBounceVertical = true
-        tableView.refreshControl?.beginRefreshing()
     }
     
     override func viewWillLayoutSubviews() {

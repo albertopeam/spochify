@@ -11,24 +11,17 @@ import RxSwift
 import RxDataSources
 import RxCocoa
 
-class StartViewController: UICollectionViewController, BindableType {
-    typealias ViewModelType = StartViewModel
+class StartViewController: UIViewController, BindableType {
     
-    private let flowLayout: UICollectionViewFlowLayout
-    private let refreshControl: UIRefreshControl
+    typealias ViewModelType = StartViewModel
+    private let collectionView: UICollectionView
     private let columns: Float = 1.5
     private let disposeBag = DisposeBag()
     var viewModel: StartViewModel!
     
     init() {
-        flowLayout = UICollectionViewFlowLayout()
-        flowLayout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        flowLayout.minimumLineSpacing = 8
-        flowLayout.minimumInteritemSpacing = 8
-        flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 50)
-        refreshControl = UIRefreshControl(frame: CGRect.zero)
-        refreshControl.tintColor = .gray
-        super.init(collectionViewLayout: flowLayout)
+        collectionView = UICollectionView.mold
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,18 +31,9 @@ class StartViewController: UICollectionViewController, BindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = String(localizedKey: String.Key.navStart)
-        collectionView.backgroundColor = .white
-        collectionView.register(PlaylistsCollectionViewCell.self, forCellWithReuseIdentifier: PlaylistsCollectionViewCell.identifier)
-        collectionView.register(AlbumsCollectionViewCell.self, forCellWithReuseIdentifier: AlbumsCollectionViewCell.identifier)
-        collectionView.register(HorizontalCollectionReusableView.self,
-                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                withReuseIdentifier: HorizontalCollectionReusableView.identifier)
-        collectionView.register(UINib(nibName: "HorizontalCollectionReusableView", bundle: nil),
-                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                withReuseIdentifier: HorizontalCollectionReusableView.identifier)
-        collectionView.addSubview(refreshControl)
-        collectionView.alwaysBounceVertical = true
-        refreshControl.beginRefreshing()
+        addStickedView(collectionView)
+        let flowLayout = collectionView.flowLayout
+        flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 50)
         let size = (UIScreen.main.bounds.width - flowLayout.minimumInteritemSpacing - flowLayout.sectionInset.left - flowLayout.sectionInset.right) / CGFloat(columns)
         flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right, height: size)
     }
@@ -57,11 +41,7 @@ class StartViewController: UICollectionViewController, BindableType {
     func bindViewModel() {
         viewModel.start
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [unowned self] (_) in
-                self.refreshControl.endRefreshing()
-                }, onError: { [unowned self] (_) in
-                    self.refreshControl.endRefreshing()
-            })
+            .subscribe(onNext: { [unowned self] (_) in self.collectionView.refreshControl?.endRefreshing() }, onError: { [unowned self] (_) in self.collectionView.refreshControl?.endRefreshing() })
             .disposed(by: disposeBag)
         let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, StartModel>>(configureCell: { [unowned self] dataSource, table, indexPath, item in
             return self.cell(for: indexPath, item: item)
@@ -89,7 +69,7 @@ class StartViewController: UICollectionViewController, BindableType {
             return self.albumCell(albumsViewModel: albumsViewModel, indexPath: indexPath)
         }
     }
-    
+
     private func albumCell(albumsViewModel: AlbumsViewModel, indexPath: IndexPath) -> AlbumsCollectionViewCell {
         guard let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: AlbumsCollectionViewCell.identifier, for: indexPath) as? AlbumsCollectionViewCell else {
             fatalError()
@@ -102,7 +82,7 @@ class StartViewController: UICollectionViewController, BindableType {
             .disposed(by: cell.disposeBag)
         return cell
     }
-    
+
     private func playlistCell(playlistsViewModel: PlaylistsViewModel, indexPath: IndexPath) -> PlaylistsCollectionViewCell {
         guard let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistsCollectionViewCell.identifier, for: indexPath) as? PlaylistsCollectionViewCell else {
             fatalError()
@@ -115,7 +95,7 @@ class StartViewController: UICollectionViewController, BindableType {
             .disposed(by: cell.disposeBag)
         return cell
     }
-    
+
     private func sectionHeader(dataSource: CollectionViewSectionedDataSource<SectionModel<String, StartViewController.StartModel>>, indexPath: IndexPath) -> HorizontalCollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
                                                                            withReuseIdentifier: HorizontalCollectionReusableView.identifier,
@@ -125,7 +105,7 @@ class StartViewController: UICollectionViewController, BindableType {
         header.titleLabel.text = dataSource.sectionModels[indexPath.section].model
         return header
     }
-    
+
     private func map(start: Start) -> [SectionModel<String, StartModel>] {
         let playlistSection = SectionModel<String, StartModel>(model: String(localizedKey: String.Key.startFeatured),
                                                                items: [StartModel.playlist(playlistViewModel: PlaylistsViewModel(playlists: start.featured))])

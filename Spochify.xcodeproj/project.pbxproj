@@ -31,6 +31,12 @@
 		C36C86F7225CF7FF0035DCF8 /* UIApplication+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36C86F6225CF7FF0035DCF8 /* UIApplication+Shared.swift */; };
 		C36C86F9225D417F0035DCF8 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C86F8225D417F0035DCF8 /* RxDataSources.framework */; };
 		C36E3AC92289A1A800C9D4E0 /* Codables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36E3AC82289A1A800C9D4E0 /* Codables.swift */; };
+		C36E3ACB2289C0CB00C9D4E0 /* UIRefreshControl+Molds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36E3ACA2289C0CB00C9D4E0 /* UIRefreshControl+Molds.swift */; };
+		C36E3ACD2289C25B00C9D4E0 /* UITableView+Molds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36E3ACC2289C25B00C9D4E0 /* UITableView+Molds.swift */; };
+		C36E3ACF2289C41C00C9D4E0 /* UICollectionView+Molds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36E3ACE2289C41C00C9D4E0 /* UICollectionView+Molds.swift */; };
+		C38731ED228A13090041C46C /* UIViewController+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38731EC228A13090041C46C /* UIViewController+Constraints.swift */; };
+		C38731EF228A174C0041C46C /* UICollectionView+FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38731EE228A174C0041C46C /* UICollectionView+FlowLayout.swift */; };
+		C38F6F6B2289B93D00298F86 /* UICollectionViewFlowLayout+Molds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F6F6A2289B93D00298F86 /* UICollectionViewFlowLayout+Molds.swift */; };
 		C3A988DC2271F6FE00842FD9 /* PlaylistsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A988DB2271F6FE00842FD9 /* PlaylistsCollectionViewCell.swift */; };
 		C3A988DE2271F76000842FD9 /* AlbumsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A988DD2271F76000842FD9 /* AlbumsCollectionViewCell.swift */; };
 		C3A988E22271F7BA00842FD9 /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A988E02271F7BA00842FD9 /* AlbumCollectionViewCell.swift */; };
@@ -136,6 +142,12 @@
 		C36C86F6225CF7FF0035DCF8 /* UIApplication+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Shared.swift"; sourceTree = "<group>"; };
 		C36C86F8225D417F0035DCF8 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		C36E3AC82289A1A800C9D4E0 /* Codables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codables.swift; sourceTree = "<group>"; };
+		C36E3ACA2289C0CB00C9D4E0 /* UIRefreshControl+Molds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+Molds.swift"; sourceTree = "<group>"; };
+		C36E3ACC2289C25B00C9D4E0 /* UITableView+Molds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Molds.swift"; sourceTree = "<group>"; };
+		C36E3ACE2289C41C00C9D4E0 /* UICollectionView+Molds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Molds.swift"; sourceTree = "<group>"; };
+		C38731EC228A13090041C46C /* UIViewController+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Constraints.swift"; sourceTree = "<group>"; };
+		C38731EE228A174C0041C46C /* UICollectionView+FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+FlowLayout.swift"; sourceTree = "<group>"; };
+		C38F6F6A2289B93D00298F86 /* UICollectionViewFlowLayout+Molds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+Molds.swift"; sourceTree = "<group>"; };
 		C3A988DB2271F6FE00842FD9 /* PlaylistsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsCollectionViewCell.swift; sourceTree = "<group>"; };
 		C3A988DD2271F76000842FD9 /* AlbumsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsCollectionViewCell.swift; sourceTree = "<group>"; };
 		C3A988E02271F7BA00842FD9 /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -298,7 +310,15 @@
 			isa = PBXGroup;
 			children = (
 				C36C86F4225CEE970035DCF8 /* BindableType.swift */,
+				C36C86F6225CF7FF0035DCF8 /* UIApplication+Shared.swift */,
+				C36E3ACE2289C41C00C9D4E0 /* UICollectionView+Molds.swift */,
+				C3AC5433225F802E0007090C /* UICollectionViewFlowLayout+Columns.swift */,
+				C38F6F6A2289B93D00298F86 /* UICollectionViewFlowLayout+Molds.swift */,
 				C313AA5322624661003E2895 /* UIColor+Spochify.swift */,
+				C36E3ACA2289C0CB00C9D4E0 /* UIRefreshControl+Molds.swift */,
+				C36E3ACC2289C25B00C9D4E0 /* UITableView+Molds.swift */,
+				C38731EC228A13090041C46C /* UIViewController+Constraints.swift */,
+				C38731EE228A174C0041C46C /* UICollectionView+FlowLayout.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -374,8 +394,6 @@
 			children = (
 				C35995B0225B560300F3FAD2 /* String+Localizable.swift */,
 				C3C8C298225CB65800EFBED0 /* URL+Init.swift */,
-				C36C86F6225CF7FF0035DCF8 /* UIApplication+Shared.swift */,
-				C3AC5433225F802E0007090C /* UICollectionViewFlowLayout+Columns.swift */,
 				C366A9AA2270893D009DF4A1 /* DateFormatter+Defaults.swift */,
 			);
 			path = Extensions;
@@ -839,6 +857,7 @@
 				C3A988E92272597D00842FD9 /* StartViewModel.swift in Sources */,
 				C3E264EF2270BADE00447DC9 /* HorizontalCollectionViewCell.swift in Sources */,
 				C3E55B0C225B2A4B00DD3D9A /* CategoriesViewController.swift in Sources */,
+				C38731EF228A174C0041C46C /* UICollectionView+FlowLayout.swift in Sources */,
 				C3AC5432225F79270007090C /* Album.swift in Sources */,
 				C366A9AD227092AD009DF4A1 /* Start.swift in Sources */,
 				C313AA5122622ACF003E2895 /* PlaylistHeaderView.swift in Sources */,
@@ -849,6 +868,7 @@
 				C3EDE15D226E053A004FB94E /* PlayerRemoteControls.swift in Sources */,
 				C3CB4256226F4E2A00859A23 /* MiniPlayerViewModel.swift in Sources */,
 				C3A988DE2271F76000842FD9 /* AlbumsCollectionViewCell.swift in Sources */,
+				C38731ED228A13090041C46C /* UIViewController+Constraints.swift in Sources */,
 				C3182E9C2257D7B400180BD5 /* LoginViewController.swift in Sources */,
 				C35995BA225BACCF00F3FAD2 /* Scene.swift in Sources */,
 				C31013C722581031009BDB95 /* Storage.swift in Sources */,
@@ -861,6 +881,8 @@
 				C3E55AFC225B25E100DD3D9A /* Playlist.swift in Sources */,
 				C3DC4FA02265C8720069733D /* CategoryPlaylistsViewController.swift in Sources */,
 				C3182E9A2257D7B400180BD5 /* AppDelegate.swift in Sources */,
+				C36E3ACD2289C25B00C9D4E0 /* UITableView+Molds.swift in Sources */,
+				C36E3ACF2289C41C00C9D4E0 /* UICollectionView+Molds.swift in Sources */,
 				C3DC4FB4226612AC0069733D /* PlayerViewController.swift in Sources */,
 				C3AC5440225FE3470007090C /* PlaylistViewController.swift in Sources */,
 				C35995B1225B560300F3FAD2 /* String+Localizable.swift in Sources */,
@@ -878,6 +900,7 @@
 				C35995BD225BACCF00F3FAD2 /* SceneTransitionType.swift in Sources */,
 				C3D810BF2263264F00153C56 /* HomeViewController.swift in Sources */,
 				C3DC4FAE2265D7240069733D /* Provider.swift in Sources */,
+				C38F6F6B2289B93D00298F86 /* UICollectionViewFlowLayout+Molds.swift in Sources */,
 				C36E3AC92289A1A800C9D4E0 /* Codables.swift in Sources */,
 				C3A988E22271F7BA00842FD9 /* AlbumCollectionViewCell.swift in Sources */,
 				C3C8C299225CB65800EFBED0 /* URL+Init.swift in Sources */,
@@ -891,6 +914,7 @@
 				C3D810C62263322300153C56 /* LoginViewModel.swift in Sources */,
 				C3DFE961225F27FC002D2AF4 /* Track.swift in Sources */,
 				C3DC4FA62265C9570069733D /* CategoryPlaylistsViewModel.swift in Sources */,
+				C36E3ACB2289C0CB00C9D4E0 /* UIRefreshControl+Molds.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,23 +9,17 @@
 import UIKit.UIViewController
 import RxSwift
 
-class CategoriesViewController: UICollectionViewController, BindableType {
-    typealias ViewModelType = CategoriesViewModel
+class CategoriesViewController: UIViewController, BindableType {
     
-    var viewModel: CategoriesViewModel!
-    private let flowLayout: UICollectionViewFlowLayout
-    private let refreshControl: UIRefreshControl
+    typealias ViewModelType = CategoriesViewModel
+    private let collectionView: UICollectionView
     private let columns: Float = 2
     private let disposeBag = DisposeBag()
+    var viewModel: CategoriesViewModel!
     
     init() {
-        flowLayout = UICollectionViewFlowLayout()
-        flowLayout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        flowLayout.minimumLineSpacing = 8
-        flowLayout.minimumInteritemSpacing = 8
-        refreshControl = UIRefreshControl(frame: CGRect.zero)
-        refreshControl.tintColor = .gray
-        super.init(collectionViewLayout: flowLayout)
+        collectionView = UICollectionView.mold
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,37 +29,30 @@ class CategoriesViewController: UICollectionViewController, BindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = String(localizedKey: String.Key.navCategories)
-        collectionView.backgroundColor = .white
-        collectionView.register(UINib(nibName: "CategoryCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
-        collectionView.addSubview(refreshControl)
-        collectionView.alwaysBounceVertical = true
-        refreshControl.beginRefreshing()
-        flowLayout.numberOfColumns(columns)
+        addStickedView(collectionView)
+        collectionView.flowLayout.numberOfColumns(columns)
     }
     
     func bindViewModel() {
         viewModel.categories
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [unowned self] (_) in
-                self.refreshControl.endRefreshing()
+                self.collectionView.refreshControl?.endRefreshing()
             }, onError: { (_) in
-                self.refreshControl.endRefreshing()
+                self.collectionView.refreshControl?.endRefreshing()
             })
             .disposed(by: disposeBag)
-        
         viewModel.categories
             .observeOn(MainScheduler.instance)
             .bind(to: collectionView.rx.items(cellIdentifier: CategoryCollectionViewCell.identifier)) { index, model, cell in
                 guard let cell = cell as? CategoryCollectionViewCell else { fatalError() }
                 cell.draw(category: model)
             }.disposed(by: disposeBag)
-        
         collectionView.rx
             .modelSelected(Category.self)
             .flatMap({ [unowned self] in self.viewModel.tappedCategory.execute($0) })
             .subscribe()
             .disposed(by: disposeBag)
-        
         viewModel.hasTracks
             .bind(onNext: { playing in self.collectionView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: MiniPlayerView.ViewTraits.height, right: 0) })
             .disposed(by: disposeBag)

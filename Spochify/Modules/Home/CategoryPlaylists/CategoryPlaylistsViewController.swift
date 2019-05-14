@@ -9,23 +9,17 @@
 import UIKit
 import RxSwift
 
-class CategoryPlaylistsViewController: UICollectionViewController, BindableType {
-    typealias ViewModelType = CategoryPlaylistsViewModel
+class CategoryPlaylistsViewController: UIViewController, BindableType {
     
-    private let flowLayout: UICollectionViewFlowLayout
-    private let refreshControl: UIRefreshControl
+    typealias ViewModelType = CategoryPlaylistsViewModel
+    private let collectionView: UICollectionView
     private let columns: Float = 2
     private let disposeBag = DisposeBag()
     var viewModel: CategoryPlaylistsViewModel!
     
     init() {
-        flowLayout = UICollectionViewFlowLayout()
-        flowLayout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        flowLayout.minimumLineSpacing = 8
-        flowLayout.minimumInteritemSpacing = 8
-        refreshControl = UIRefreshControl(frame: CGRect.zero)
-        refreshControl.tintColor = .gray
-        super.init(collectionViewLayout: flowLayout)
+        collectionView = UICollectionView.mold
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,12 +28,8 @@ class CategoryPlaylistsViewController: UICollectionViewController, BindableType 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = .white
-        collectionView.register(UINib(nibName: "PlaylistCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
-        collectionView.addSubview(refreshControl)
-        collectionView.alwaysBounceVertical = true
-        refreshControl.beginRefreshing()
-        flowLayout.numberOfColumns(columns)
+        addStickedView(collectionView)
+        collectionView.flowLayout.numberOfColumns(columns)
     }
     
     func bindViewModel() {
@@ -49,7 +39,7 @@ class CategoryPlaylistsViewController: UICollectionViewController, BindableType 
             .disposed(by: disposeBag)
         viewModel.playlists()
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [unowned self] (_) in self.refreshControl.endRefreshing() }, onError: { (_) in self.refreshControl.endRefreshing() })
+            .subscribe(onNext: { [unowned self] (_) in self.collectionView.refreshControl?.endRefreshing() }, onError: { (_) in self.collectionView.refreshControl?.endRefreshing() })
             .disposed(by: disposeBag)
         viewModel.playlists()
             .observeOn(MainScheduler.instance)
